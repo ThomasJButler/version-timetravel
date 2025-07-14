@@ -167,11 +167,23 @@ html.is-loading body::after {
   padding: var(--space-xl);
 }
 
-.skeleton-screenshots {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: var(--space-md);
+.skeleton-desktop {
+  width: 100%;
+  height: 250px;
+  border-radius: 12px;
   margin-bottom: var(--space-lg);
+}
+
+.skeleton-bottom {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: var(--space-xl);
+}
+
+.skeleton-mobile {
+  width: 120px;
+  height: 200px;
+  border-radius: 8px;
 }
 
 /* Image Loading States */

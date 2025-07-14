@@ -5,6 +5,25 @@ All notable changes to the Portfolio Version TimeTravel project will be document
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.0] - 2025-01-16
+
+### Changed
+- Redesigned timeline module layout for better visual hierarchy
+- Desktop screenshot now displayed prominently at full width
+- Mobile screenshot positioned on the side of content
+- Alternating left/right mobile placement for visual variety
+
+### Fixed
+- Fixed CSS and JS paths in version25.html, version28.html, version29.html
+- Changed from relative paths (src/css/) to absolute paths (/css/)
+- Updated image references to use proper paths
+
+### Improved
+- Better use of horizontal space in timeline cards
+- Larger, more visible desktop screenshots
+- Enhanced visual hierarchy with new layout
+- Improved responsive design for mobile devices
+
 ## [1.1.1] - 2025-01-16
 
 ### Fixed

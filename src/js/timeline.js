@@ -225,28 +225,33 @@ export class Timeline {
               <span class="version-tag">${version.title}</span>
             </div>
             ${version.screenshots ? `
-              <div class="version-screenshots">
-                <div class="screenshot-wrapper" data-type="desktop">
-                  <img src="${version.screenshots.desktop}" alt="Version ${version.number} Desktop" loading="lazy">
-                  <span class="screenshot-label">Desktop</span>
-                </div>
-                <div class="screenshot-wrapper" data-type="mobile">
-                  <img src="${version.screenshots.mobile}" alt="Version ${version.number} Mobile" loading="lazy">
-                  <span class="screenshot-label">Mobile</span>
-                </div>
+              <div class="version-desktop">
+                <img src="${version.screenshots.desktop}" alt="Version ${version.number} Desktop" loading="lazy">
+                <span class="desktop-label">Desktop View</span>
               </div>
-            ` : ''}
-            <div class="version-features">
-              <h4>Key Changes</h4>
-              <ul class="features-list">
-                ${version.features.map(feature => `<li>${feature}</li>`).join('')}
-              </ul>
-            </div>
-            ${version.path ? `
-              <button class="view-version-btn" data-path="${version.path}">
-                Time Travel <i class="fas fa-rocket"></i>
-              </button>
-            ` : ''}
+              <div class="version-bottom">
+                <div class="version-details">
+            ` : '<div class="version-details">'}
+                  <div class="version-features">
+                    <h4>Key Changes</h4>
+                    <ul class="features-list">
+                      ${version.features.map(feature => `<li>${feature}</li>`).join('')}
+                    </ul>
+                  </div>
+                  ${version.path ? `
+                    <button class="view-version-btn" data-path="${version.path}">
+                      Time Travel <i class="fas fa-rocket"></i>
+                    </button>
+                  ` : ''}
+                </div>
+                ${version.screenshots ? `
+                  <div class="version-mobile">
+                    <img src="${version.screenshots.mobile}" alt="Version ${version.number} Mobile" loading="lazy">
+                    <span class="mobile-label">Mobile</span>
+                  </div>
+                ` : ''}
+              </div>
+            ${!version.screenshots ? '</div>' : ''}
           </div>
         </div>
       </div>
@@ -264,8 +269,10 @@ export class Timeline {
     });
     
     // Handle screenshot clicks
-    const screenshots = this.container.querySelectorAll('.screenshot-wrapper');
-    screenshots.forEach(screenshot => {
+    const desktopShots = this.container.querySelectorAll('.version-desktop');
+    const mobileShots = this.container.querySelectorAll('.version-mobile');
+    
+    [...desktopShots, ...mobileShots].forEach(screenshot => {
       screenshot.addEventListener('click', (e) => {
         const img = screenshot.querySelector('img');
         this.showImageModal(img.src, img.alt);
@@ -382,14 +389,16 @@ export class Timeline {
               <div class="version-box-skeleton">
                 <div class="skeleton skeleton-title"></div>
                 <div class="skeleton skeleton-text skeleton-text-short"></div>
-                <div class="skeleton-screenshots">
-                  <div class="skeleton skeleton-image"></div>
-                  <div class="skeleton skeleton-image"></div>
+                <div class="skeleton skeleton-desktop"></div>
+                <div class="skeleton-bottom">
+                  <div class="skeleton-details">
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text"></div>
+                    <div class="skeleton skeleton-text skeleton-text-short"></div>
+                    <div class="skeleton skeleton-button"></div>
+                  </div>
+                  <div class="skeleton skeleton-mobile"></div>
                 </div>
-                <div class="skeleton skeleton-text"></div>
-                <div class="skeleton skeleton-text"></div>
-                <div class="skeleton skeleton-text skeleton-text-short"></div>
-                <div class="skeleton skeleton-button"></div>
               </div>
             </div>
           </div>
