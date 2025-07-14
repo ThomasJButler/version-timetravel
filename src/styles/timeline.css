@@ -432,6 +432,22 @@
   }
 }
 
+/* Highlight Effect */
+.version-card.highlight .version-box {
+  animation: highlightPulse 2s ease-out;
+}
+
+@keyframes highlightPulse {
+  0%, 100% {
+    transform: scale(1);
+    box-shadow: 0 0 20px var(--matrix-green);
+  }
+  50% {
+    transform: scale(1.02);
+    box-shadow: 0 0 40px var(--matrix-green), 0 0 60px var(--matrix-cyan);
+  }
+}
+
 /* Stagger Animation for Timeline Items */
 .version-card:nth-child(1) { animation-delay: 0.1s; }
 .version-card:nth-child(2) { animation-delay: 0.2s; }

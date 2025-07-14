@@ -14,6 +14,9 @@ export class Timeline {
   
   async init() {
     try {
+      // Show loading state
+      this.showLoading();
+      
       // Load version data
       await this.loadVersionData();
       
@@ -22,8 +25,15 @@ export class Timeline {
       
       // Initialize interactions
       this.initInteractions();
+      
+      // Initialize lazy loading
+      this.initLazyLoading();
+      
+      // Remove loading state
+      this.hideLoading();
     } catch (error) {
       console.error('Failed to initialize timeline:', error);
+      this.showError();
     }
   }
   
@@ -170,7 +180,7 @@ export class Timeline {
     if (version.isLive) {
       // Special rendering for v3.0
       return `
-        <div class="version-card version-live" data-version="${version.id}">
+        <div class="version-card version-live" data-version="${version.id}" id="${version.id}">
           <div class="timeline-dot"></div>
           <div class="version-content">
             <div class="version-box live-version">
@@ -203,7 +213,7 @@ export class Timeline {
     }
     
     return `
-      <div class="version-card" data-version="${version.id}">
+      <div class="version-card" data-version="${version.id}" id="${version.id}">
         <div class="timeline-dot"></div>
         <div class="version-content">
           <div class="version-box">
@@ -360,5 +370,99 @@ export class Timeline {
         style.remove();
       }
     });
+  }
+  
+  showLoading() {
+    this.container.innerHTML = `
+      <div class="timeline-skeleton">
+        ${[1, 2, 3, 4, 5, 6].map(() => `
+          <div class="version-card-skeleton">
+            <div class="timeline-dot-skeleton"></div>
+            <div class="version-content-skeleton">
+              <div class="version-box-skeleton">
+                <div class="skeleton skeleton-title"></div>
+                <div class="skeleton skeleton-text skeleton-text-short"></div>
+                <div class="skeleton-screenshots">
+                  <div class="skeleton skeleton-image"></div>
+                  <div class="skeleton skeleton-image"></div>
+                </div>
+                <div class="skeleton skeleton-text"></div>
+                <div class="skeleton skeleton-text"></div>
+                <div class="skeleton skeleton-text skeleton-text-short"></div>
+                <div class="skeleton skeleton-button"></div>
+              </div>
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    `;
+  }
+  
+  hideLoading() {
+    // Timeline content is already rendered by render() method
+    // Add fade-in animation
+    const cards = this.container.querySelectorAll('.version-card');
+    cards.forEach((card, index) => {
+      card.classList.add('content-loading');
+      setTimeout(() => {
+        card.classList.add('content-loaded');
+      }, index * 100);
+    });
+  }
+  
+  showError() {
+    this.container.innerHTML = `
+      <div class="error-container">
+        <div class="error-content">
+          <i class="fas fa-exclamation-triangle"></i>
+          <h3>Failed to Load Timeline</h3>
+          <p>Please refresh the page to try again.</p>
+          <button class="reload-btn" onclick="location.reload()">
+            <i class="fas fa-redo"></i> Reload
+          </button>
+        </div>
+      </div>
+    `;
+  }
+  
+  initLazyLoading() {
+    const images = this.container.querySelectorAll('img[loading="lazy"]');
+    
+    if ('IntersectionObserver' in window) {
+      const imageObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const img = entry.target;
+            
+            // Add loading state
+            img.classList.add('image-loading');
+            
+            // Create new image to preload
+            const tempImg = new Image();
+            tempImg.onload = () => {
+              img.classList.remove('image-loading');
+              img.classList.add('loaded');
+            };
+            tempImg.onerror = () => {
+              img.classList.remove('image-loading');
+              img.alt = 'Failed to load image';
+            };
+            
+            // Start loading
+            tempImg.src = img.src;
+            
+            // Stop observing this image
+            observer.unobserve(img);
+          }
+        });
+      }, {
+        rootMargin: '50px 0px'
+      });
+      
+      images.forEach(img => imageObserver.observe(img));
+    } else {
+      // Fallback for browsers without IntersectionObserver
+      images.forEach(img => img.classList.add('loaded'));
+    }
   }
 }

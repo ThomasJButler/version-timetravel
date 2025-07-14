@@ -25,6 +25,14 @@
     <script type="module" src="/src/main.js"></script>
 </head>
 <body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
+    <!-- Scroll Progress -->
+    <div class="scroll-progress">
+        <div class="scroll-progress-bar"></div>
+    </div>
+    
     <!-- Matrix Background -->
     <canvas id="matrix-canvas" aria-hidden="true"></canvas>
     
@@ -53,7 +61,7 @@
     </header>
 
     <!-- Main Content -->
-    <main>
+    <main id="main">
         <!-- Hero Section -->
         <section id="hero" class="hero-section">
             <div class="container">
@@ -71,6 +79,37 @@
                     <div class="stat">
                         <span class="stat-number">∞</span>
                         <span class="stat-label">Learning</span>
+                    </div>
+                </div>
+                
+                <!-- Quick Version Links -->
+                <div class="version-links">
+                    <h3 class="links-title">Quick Access</h3>
+                    <div class="links-grid">
+                        <a href="#v1" class="version-link-btn" data-version="v1">
+                            <span class="version-number">v1.0</span>
+                            <span class="version-date">Aug 2024</span>
+                        </a>
+                        <a href="#v2" class="version-link-btn" data-version="v2">
+                            <span class="version-number">v2.0</span>
+                            <span class="version-date">Sep 2024</span>
+                        </a>
+                        <a href="#v2.5" class="version-link-btn" data-version="v2.5">
+                            <span class="version-number">v2.5</span>
+                            <span class="version-date">Oct 2024</span>
+                        </a>
+                        <a href="#landing" class="version-link-btn" data-version="landing">
+                            <span class="version-number">Landing</span>
+                            <span class="version-date">Nov 2024</span>
+                        </a>
+                        <a href="#v2.8" class="version-link-btn" data-version="v2.8">
+                            <span class="version-number">v2.8</span>
+                            <span class="version-date">Jan 2025</span>
+                        </a>
+                        <a href="#v3" class="version-link-btn live" data-version="v3">
+                            <span class="version-number">v3.0</span>
+                            <span class="version-date">Live Now</span>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -165,5 +204,10 @@
             </div>
         </div>
     </footer>
+    
+    <!-- Back to Top Button -->
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
 </body>
 </html>

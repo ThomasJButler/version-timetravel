@@ -36,8 +36,8 @@ class VersionViewer {
   }
   
   loadVersion(path, id, num, date) {
-    // Show loading
-    this.loadingOverlay.classList.add('active');
+    // Show loading with custom content
+    this.showLoading(num);
     
     // Update version info
     if (num) this.versionNumber.textContent = `Version ${num}`;
@@ -49,15 +49,22 @@ class VersionViewer {
     // Handle load complete
     this.frame.addEventListener('load', () => {
       setTimeout(() => {
-        this.loadingOverlay.classList.remove('active');
+        this.hideLoading();
         this.frame.classList.add('loaded');
       }, 500);
-    });
+    }, { once: true });
     
     // Handle load error
     this.frame.addEventListener('error', () => {
       this.showError('Failed to load version');
-    });
+    }, { once: true });
+    
+    // Timeout fallback
+    setTimeout(() => {
+      if (this.loadingOverlay.classList.contains('active')) {
+        this.showError('Loading timeout - please refresh');
+      }
+    }, 10000);
   }
   
   initControls() {
@@ -148,6 +155,28 @@ class VersionViewer {
         icon.classList.add('fa-expand');
       });
     }
+  }
+  
+  showLoading(versionNum) {
+    this.loadingOverlay.innerHTML = `
+      <div class="viewer-loading">
+        <div class="viewer-loading-content">
+          <div class="matrix-spinner"></div>
+          <div class="loading-text">Loading Version ${versionNum || ''}</div>
+          <div class="loading-progress">
+            <div class="loading-progress-bar"></div>
+          </div>
+        </div>
+      </div>
+    `;
+    this.loadingOverlay.classList.add('active');
+  }
+  
+  hideLoading() {
+    this.loadingOverlay.classList.remove('active');
+    setTimeout(() => {
+      this.loadingOverlay.innerHTML = '';
+    }, 300);
   }
   
   showError(message) {
