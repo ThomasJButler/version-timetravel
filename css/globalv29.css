@@ -1,0 +1,1030 @@
+/* ==========================================================================
+   Global CSS Styles for Thomas J Butler Portfolio
+   Modern Matrix-themed portfolio with retro influences
+   Author: Thomas J Butler
+   ========================================================================== */
+
+
+   /* @font-face {
+  font-family: system-ui;
+  font-style: normal;
+  font-weight: 300;
+  src: local(".SFNSText-Light"), local(".HelveticaNeueDeskInterface-Light"), local(".LucidaGrandeUI"), local("Ubuntu Light"), local("Segoe UI Light"), local("Roboto-Light"), local("DroidSans"), local("Tahoma");
+}*/
+
+   /* CSS Reset & Base Styles
+      ========================================================================== */
+   * {
+       margin: 0;
+       padding: 0;
+       box-sizing: border-box;
+   }
+
+   /* Hide Menu Toggle Button by Default */
+   .menu-toggle {
+    display: none;
+    }
+   
+   /* Base Elements
+      ========================================================================== */
+   body {
+       background-color: #0d0d0d;
+       color: #00FF00;
+       font-family: system-ui;
+       font-style: normal;
+       font-weight: 300;
+       line-height: 1.6;
+       overflow-x: hidden;
+   }
+   
+   /* Typography
+      ========================================================================== */
+   h1, h2, h3 {
+       color: #00FF00;
+       display: flex;
+       flex-direction: row;
+       flex-wrap: wrap;
+       font-family: system-ui;
+       font-style: normal;
+       font-weight: 300;
+       justify-content: center;
+       align-items: center;
+       text-shadow: 0 0 10px #00FF00;
+   }
+   
+   p {
+       color: #FF00FF;
+       font-family: 'VT23', monospace;
+       display: flex;
+       flex-direction: row;
+       flex-wrap: wrap;
+       justify-content: center;
+       margin: 20px 0;
+   }
+   
+   /* Links & Buttons
+      ========================================================================== */
+   a {
+       color: #00FF00;
+       text-decoration: underline;
+       transition: all 0.3s ease;
+   }
+   
+   a:hover {
+       color: #FF00FF;
+   }
+
+   
+   /* Call-to-Action Buttons
+      ========================================================================== */
+   .cta-button {
+       align-items: center;
+       background-color: #00FF00;
+       border-radius: 5px;
+       color: #0d0d0d;
+       display: flex;
+       justify-content: center;
+       margin-top: 20px;
+       padding: 10px 20px;
+       text-decoration: none;
+       transition: all 0.3s ease;
+   }
+   
+   .cta-button::before {
+       content: "\2192";
+       margin-left: 20px;
+       transition: all 0.3s ease;
+   }
+   
+   .cta-button:hover {
+       background-color: #FF00FF;
+       box-shadow: 0 0 15px #FF00FF;
+   }
+   
+   /* Layout & Container Styles
+      ========================================================================== */
+   .container {
+       margin: 0 auto;
+       max-width: 1200px;
+       padding: 0 20px;
+   }
+   
+   main {
+       padding-top: 150px;
+       position: relative;
+       z-index: 1;
+   }
+   
+   section {
+       background-color: rgba(13, 13, 13, 0.7);
+       border-bottom: 1px solid #00FF00;
+       border-radius: 5px;
+       margin-bottom: 20px;
+       opacity: 0;
+       padding: 50px 0;
+       transform: translateY(20px);
+       transition: opacity 0.5s ease, transform 0.5s ease;
+   }
+   
+   section.active {
+       opacity: 1;
+       transform: translateY(0);
+   }
+   
+   /* Grid Layout
+      ========================================================================== */
+   .grid-container {
+       display: grid;
+       gap: 50px;
+       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+       padding: 50px;
+   }
+   
+   .grid-item {
+       align-items: center;
+       background-color: rgba(17, 17, 17, 0.7);
+       border: 1px solid #00FF00;
+       border-radius: 10px;
+       display: flex;
+       flex-direction: column;
+       justify-content: center;
+       padding: 25px;
+       transition: all 0.3s ease;
+   }
+   
+   .grid-item:hover {
+       box-shadow: 0 0 20px #00FF00;
+       transform: translateY(-5px);
+   }
+   
+   .grid-item img {
+       display: inline-flex;
+       margin-bottom: 15px;
+       max-width: 80%;
+   }
+   
+/* Contact Form Styles
+   ========================================================================== */
+   #contact form {
+    display: flex;
+    flex-direction: column;
+    max-width: 400px;
+    margin: 0 auto;
+    justify-content: center;
+    align-content: center;
+    align-items: center;
+    border: 3px solid;
+    border-radius: 25px;
+    padding: 20px;
+}
+
+#contact form label {
+    color: #00FF00;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+}
+
+#contact form input,
+#contact form textarea {
+    background: rgba(0, 20, 0, 0.8);
+    border: 1px solid #00FF00;
+    border-radius: 8px;
+    color: #00FF00;
+    font-family: 'VT323', monospace;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    padding: 1rem;
+    transition: all 0.3s ease;
+}
+
+#contact form input:focus,
+#contact form textarea:focus {
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+    outline: none;
+}
+
+#contact form textarea {
+    min-height: 150px;
+    resize: vertical;
+}
+
+
+/* Send Message Button */
+#contact form button[type="btn-contact"] {
+    background: rgba(0, 40, 0, 0.8);
+    border: 1px solid #00FF00;
+    border-radius: 8px;
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.3);
+    color: #00FF00;
+    cursor: pointer;
+    font-family: 'VT323', monospace;
+    font-size: 1.2rem;
+    margin: 1rem auto;
+    overflow: hidden;
+    padding: 1rem 2rem;
+    position: relative;
+    transition: all 0.3s ease;
+    width: fit-content;
+}
+
+/* Matrix rain effect */
+#contact form button[type="btn-contact"]::before {
+    animation: matrixRain 2s linear infinite;
+    background: linear-gradient(to bottom, 
+        transparent, 
+        rgba(0, 255, 0, 0.1), 
+        transparent);
+    content: '';
+    height: 200%;
+    left: 0;
+    position: absolute;
+    top: -100%;
+    width: 100%;
+    pointer-events: none;
+}
+
+/* Hover effects */
+#contact form button[type="btn-contact"]:hover {
+    background: rgba(0, 60, 0, 0.9);
+    box-shadow: 0 0 20px rgba(0, 255, 0, 0.5);
+    transform: translateY(-2px) scale(1.05);
+    color: #FFF;
+    text-shadow: 0 0 8px #00FF00;
+}
+
+/* Add icon to button */
+#contact form button[type="btn-contact"]::after {
+    content: '\f061'; /* Font Awesome arrow icon */
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-left: 8px;
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: all 0.3s ease;
+}
+
+#contact form button[type="btn-contact"]:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Loading state */
+#contact form button[type="btn-contact"].loading {
+    cursor: wait;
+    opacity: 0.8;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #contact form {
+        padding: -1px 3rem;
+    }
+    
+    #contact form button[type="btn-contact"] {
+        font-size: 1.1rem;
+        padding: 0.8rem 1.6rem;
+    }
+}
+   
+   /* Scrollbar Styling
+      ========================================================================== */
+   ::-webkit-scrollbar {
+       width: 10px;
+   }
+   
+   ::-webkit-scrollbar-track {
+       background: #0d0d0d;
+   }
+   
+   ::-webkit-scrollbar-thumb {
+       background: #00FF00;
+       border-radius: 5px;
+   }
+   
+   /*::-webkit-scrollbar-thumb:hover {
+       background: #FF00FF;
+   }*/
+   
+   /* Selection Styling
+      ========================================================================== */
+   ::selection {
+       background: #00FF00;
+       color: #0d0d0d;
+   }
+
+   /* ==========================================================================
+   Header & Navigation Styles
+   ========================================================================== */
+header {
+    animation: slideDown 1s ease-in-out;
+    background: rgba(26, 26, 26, 0.9);
+    box-shadow: 0 0 15px #00FF00;
+    padding: 10px 0;
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+}
+
+header .container {
+    column-gap: 50px;
+    display: flex;
+    /*flex-direction: center;*/
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 0 20px;
+    row-gap: 10px;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin: 0;
+}
+
+header h3 {
+    font-size: 1.2rem;
+    margin: 5px 0 0;
+}
+
+/* Navigation Elements
+   ========================================================================== */
+nav {
+    align-items: center;
+    display: flex;
+}
+
+nav ul {
+    display: flex;
+    list-style-type: none;
+}
+
+nav ul li,
+li {
+    background: rgba(0, 20, 0, 0.7);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 255, 0, 0.15);
+    color: #00FF00;
+    cursor: pointer;
+    font-family: system-ui;
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: 1px;
+    list-style-type: none;
+    margin: 8px;
+    overflow: hidden;
+    padding: 8px 15px;
+    position: relative;
+    text-transform: uppercase;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+nav ul li a,
+li a {
+    color: #00FF00;
+    display: inline-block;
+    position: relative;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    z-index: 2;
+}
+
+/* Navigation Styles with Version TimeTravel
+   ========================================================================== */
+   nav ul {
+    display: flex;
+    list-style-type: none;
+}
+
+nav ul li {
+    background: rgba(0, 20, 0, 0.7);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    border-radius: 8px;
+    margin: 8px;
+    overflow: hidden;
+    padding: 8px 15px;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+@media screen and (max-width: 480px) {
+    nav ul li {
+        padding: 10px;
+    }
+    
+}
+
+/* Special styling for Version TimeTravel */
+nav ul li.version-timetravel {
+    background: rgba(0, 40, 0, 0.8);
+    border-color: #00FF00;
+    box-shadow: 0 0 10px rgba(0, 255, 0, 0.2);
+}
+
+nav ul li.version-timetravel:hover {
+    background: rgba(0, 60, 0, 0.9);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+    transform: translateY(-2px) scale(1.02);
+}
+
+nav ul li.version-timetravel a {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+nav ul li.version-timetravel i {
+    font-size: 0.9em;
+}
+
+/* Remove old logo-container styles */
+.logo-container {
+    display: none;
+}
+
+/* Mobile adjustments */
+@media (max-width: 767px) {
+    nav ul li.version-timetravel {
+        width: 100%;
+        text-align: center;
+        justify-content: center;
+    }
+    
+    nav ul li.version-timetravel a {
+        justify-content: center;
+    }
+}
+
+/* Matrix Effect Styles
+   ========================================================================== */
+#matrix {
+    height: 100%;
+    left: 0;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: -1;
+}
+
+.matrix-rain {
+    animation: matrixRain 5s linear infinite;
+    color: #00FF00;
+    font-family: 'Matrix', monospace;
+    font-size: 20px;
+    position: absolute;
+}
+
+/* Navigation Hover Effects
+   ========================================================================== */
+li::before,
+nav ul li::before {
+    animation: matrixRain 4s infinite linear;
+    background: linear-gradient(180deg, 
+        transparent 0%, 
+        rgba(0, 255, 0, 0.3) 45%, 
+        rgba(0, 255, 0, 0.3) 55%, 
+        transparent 100%);
+    content: '';
+    height: 200%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: -100%;
+    transition: opacity 0.3s ease;
+    width: 100%;
+}
+
+li::after,
+nav ul li::after {
+    background-image: 
+        radial-gradient(circle at 30% 50%, rgba(0, 255, 0, 0.2) 1px, transparent 1px),
+        radial-gradient(circle at 70% 50%, rgba(0, 255, 0, 0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
+    background-position: 0 0, 0 0, -5px -5px, -5px -5px;
+    background-size: 20px 20px, 20px 20px, 10px 10px, 10px 10px;
+    border-radius: 8px;
+    bottom: 0;
+    content: '';
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: scale(1.1);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+/* Hover States
+   ========================================================================== */
+li:hover,
+nav ul li:hover {
+    animation: flicker 0.5s infinite;
+    background: rgba(0, 30, 0, 0.8);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5), inset 0 0 10px rgba(0, 255, 0, 0.3);
+    transform: translateY(-2px) scale(1.02);
+}
+
+li:hover::before,
+nav ul li:hover::before {
+    opacity: 1;
+}
+
+li:hover::after,
+nav ul li:hover::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+li:hover a,
+nav ul li:hover a {
+    color: #FFFFFF;
+    text-shadow: 0 0 8px #00FF00, 0 0 12px #00FF00;
+}
+
+/* Animation Keyframes
+   ========================================================================== */
+@keyframes matrixRain {
+    0% { transform: translateY(-50%); }
+    100% { transform: translateY(50%); }
+}
+
+@keyframes glitch {
+    0%, 100% { transform: translate(0); }
+    20% { transform: translate(-2px, 2px); }
+    40% { transform: translate(-2px, -2px); clip: rect(0, 900px, 0, 0); }
+    60% { transform: translate(2px, 2px); }
+    80% { transform: translate(2px, -2px); clip: rect(0, 900px, 900px, 0); }
+}
+
+@keyframes flicker {
+    0%, 100% { opacity: 0.95; }
+    5% { opacity: 0.85; }
+    10% { opacity: 0.95; }
+    15% { opacity: 0.9; }
+    20% { opacity: 0.95; }
+    25% { opacity: 0.85; }
+    30% { opacity: 0.95; }
+    35% { opacity: 0.9; }
+    40% { opacity: 0.95; }
+    45% { opacity: 0.85; }
+    50% { opacity: 0.95; }
+}
+
+/* Vincent Gallery Styles
+   ========================================================================== */
+.vincent-gallery {
+    display: grid;
+    gap: 20px;
+    grid-auto-flow: dense;
+    grid-auto-rows: 200px;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0 auto;
+    max-width: 1600px;
+    padding: 50px;
+}
+
+.vincent-container {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    overflow: hidden;
+    perspective: 1000px;
+    transition: transform 0.3s ease;
+}
+
+.vincent-container:hover {
+    transform: scale(1.05);
+    z-index: 1;
+}
+
+.wide { grid-column: span 2; }
+.tall { grid-row: span 2; }
+
+/* Responsive Design
+   ========================================================================== */
+@media screen and (max-width: 1200px) {
+    .vincent-gallery {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+@media screen and (max-width: 900px) {
+    .vincent-gallery {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media screen and (max-width: 768px) {
+    header .container {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem;
+        position: relative;
+    }
+
+     /* Title styles */
+     header h1 {
+        font-size: 1.5rem;
+        margin: 0;
+    }
+
+    header h3 {
+        display: none; /* Hide the subtitle on mobile */
+    }
+
+    /* Navigation menu */
+
+    nav {
+        display: block;
+        flex-direction: column;
+        position: absolute;
+        top: 100%;
+        width: 100%;
+    }
+
+    nav span {
+        display: block !important;
+    }
+
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        right: 0;
+        background: rgba(0, 20, 0, 0.95);
+        border: 1px solid rgba(0, 255, 0, 0.2);
+        border-radius: 50px;
+        padding: 0.5rem;
+        margin-top: 0.5rem;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+        width: 200px; /* Set specific width */
+    }
+
+ 
+    /* Menu toggle button */
+   nav .menu-toggle {
+        display: flex;
+        justify-content: center;
+        height: 30px;
+        padding: 5px;
+        background: rgba(0, 20, 0, 0.7);
+        border: 1px solid rgba(0, 255, 0, 0.2);
+        border-radius: 20px;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        flex-direction: column;
+        margin-block: -5px;
+    }
+
+    nav .menu-toggle:hover {
+        background: rgba(0, 30, 0, 0.8);
+        border-color: rgba(0, 255, 0, 0.4);
+    }
+
+    nav .menu-toggle span {
+        width: 20px;
+        height: 2px;
+        background-color: #00FF00;
+        margin: 2px 0;
+        transition: all 0.3s ease;
+    }
+
+    /* Active menu toggle state */
+    nav .menu-toggle.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+
+    nav .menu-toggle.active span:nth-child(2) {
+        opacity: 0;
+    }
+
+    nav .menu-toggle.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(5px, -5px);
+    }
+
+
+    main {
+        padding-top: 100px;
+    }
+}
+
+@media screen and (max-width: 600px) {
+    .vincent-gallery {
+        grid-template-columns: 1fr;
+    }
+
+    .wide, .tall {
+        grid-column: auto;
+        grid-row: auto;
+    }
+
+    header h1 { font-size: 1.5rem; }
+    header h3 { display: none; }
+
+    .grid-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+
+    .container {
+        max-width: 300px;
+    }
+
+    footer {
+        padding: 15px;
+    }
+
+    footer ul {
+        flex-direction: column;
+        gap: 20px;
+    }
+}
+
+/* ==========================================================================
+   Footer Styles
+   ========================================================================== */
+   footer {
+    background: rgba(26, 26, 26, 0.9);
+    padding: 30px 0;
+    text-align: center;
+}
+
+footer ul {
+    display: flex;
+    justify-content: center;
+    list-style-type: none;
+    margin-bottom: 20px;
+}
+
+
+footer ul li {
+    margin: 0 15px;
+}
+
+/* Notification System
+   ========================================================================== */
+.notification {
+    border-radius: 4px;
+    color: white;
+    font-weight: bold;
+    opacity: 1;
+    padding: 15px 20px;
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    transition: opacity 0.5s ease;
+    z-index: 1000;
+}
+
+.notification.success {
+    background-color: #4CAF50;
+}
+
+.notification.error {
+    background-color: #F44336;
+}
+
+/* Matrix-Themed UI Elements
+   ========================================================================== */
+.matrix-btn {
+    background: transparent;
+    border: 1px solid #00FF00;
+    color: #00FF00;
+    cursor: pointer;
+    font-family: 'Courier New', monospace;
+    font-size: 1rem;
+    padding: 10px 20px;
+    transition: all 0.3s ease;
+}
+
+.matrix-btn:hover {
+    background: #00FF00;
+    box-shadow: 0 0 15px #00FF00;
+    color: #0d0d0d;
+}
+
+.matrix-icon {
+    color: #00FF00;
+    font-size: 2rem;
+    transition: all 0.3s ease;
+}
+
+.matrix-icon:hover {
+    color: #FF00FF;
+    text-shadow: 0 0 10px #FF00FF;
+}
+
+/* Additional Animation Effects
+   ========================================================================== */
+@keyframes y2kPulse {
+    0%, 100% { background-color: rgba(0, 30, 0, 0.8); }
+    50% { background-color: rgba(0, 40, 0, 0.8); }
+}
+
+@keyframes loadingDots {
+    0%, 100% { content: ''; }
+    25% { content: '.'; }
+    50% { content: '..'; }
+    75% { content: '...'; }
+}
+
+@keyframes dialUp {
+    0% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0.4); }
+    70% { box-shadow: 0 0 0 10px rgba(0, 255, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(0, 255, 0, 0); }
+}
+
+/* Additional Interactive Effects
+   ========================================================================== */
+li:active::after,
+nav ul li:active::after {
+    animation: loadingDots 1s infinite;
+    bottom: 5px;
+    content: '';
+    font-size: 12px;
+    position: absolute;
+    right: 5px;
+}
+
+li:active,
+nav ul li:active {
+    animation: dialUp 0.5s;
+}
+
+/* Mobile Navigation Additions
+   ========================================================================== */
+.logo-container {
+    align-items: center;
+    display: none;
+}
+
+.menu-toggle {
+    cursor: pointer;
+    display: none;
+    flex-direction: column;
+}
+
+.menu-toggle span {
+    background-color: #00FF00;
+    height: 3px;
+    margin: 3px 0;
+    transition: all 0.3s ease;
+    width: 25px;
+}
+
+.home-button {
+    color: #00FF00;
+    font-size: 1.2rem;
+    margin-right: 15px;
+    text-decoration: none;
+}
+
+/* Utility Classes
+   ========================================================================== */
+.l1 a {
+    display: none;
+}
+
+/* Introduction Expertise Card Styles */
+.introduction-expertise-grid {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    padding: 20px;
+}
+
+.introduction-expertise-card {
+    background: rgba(0, 20, 0, 0.7);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 255, 0, 0.15);
+    color: #00FF00;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 15px;
+    position: relative;
+    text-align: center;
+    transition: all 0.3s ease;
+}
+
+.introduction-expertise-card:hover {
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5);
+    transform: translateY(-5px);
+}
+
+.introduction-expertise-icon {
+    margin-bottom: 15px;
+}
+
+.introduction-expertise-icon img {
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.introduction-expertise-description {
+    margin: 10px 0;
+}
+
+.introduction-expertise-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;  
+} 
+
+.introduction-expertise-buttons a.neo-matrix-btn {
+    width: 100%;  /* Make button full width */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    margin: 0;    /* Remove margin to fit full width */
+    padding: 12px 20px;  /* Slightly larger padding */
+    background: rgba(0, 20, 0, 0.7);
+    border: 1px solid rgba(0, 255, 0, 0.2);
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 255, 0, 0.15);
+    color: #00FF00;
+    cursor: pointer;
+    font-family: system-ui;
+    font-style: normal;
+    font-weight: 300;
+    letter-spacing: 1px;
+    overflow: hidden;
+    position: relative;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s cubic-bezier(0.165, 0.84, 0.44, 1);
+    align-self: center;
+}
+
+.introduction-expertise-buttons a.neo-matrix-btn i {
+    margin-left: auto;  /* Push icon to the right */
+}
+
+.introduction-expertise-buttons a.neo-matrix-btn .btn-text {
+    flex: 1;  /* Allow text to take remaining space */
+    text-align: center;  /* Center the text */
+}
+
+.introduction-expertise-buttons a.neo-matrix-btn::before {
+    animation: matrixRain 4s infinite linear;
+    background: linear-gradient(180deg, 
+        transparent 0%, 
+        rgba(0, 255, 0, 0.3) 45%, 
+        rgba(0, 255, 0, 0.3) 55%, 
+        transparent 100%);
+    content: '';
+    height: 200%;
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    top: -100%;
+    transition: opacity 0.3s ease;
+    width: 100%;
+}
+
+.introduction-expertise-buttons a.neo-matrix-btn::after {
+    background-image: 
+        radial-gradient(circle at 30% 50%, rgba(0, 255, 0, 0.2) 1px, transparent 1px),
+        radial-gradient(circle at 70% 50%, rgba(0, 255, 0, 0.2) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px),
+        linear-gradient(0deg, rgba(0, 255, 0, 0.1) 1px, transparent 1px);
+    background-position: 0 0, 0 0, -5px -5px, -5px -5px;
+    background-size: 20px 20px, 20px 20px, 10px 10px, 10px 10px;
+    border-radius: 8px;
+    bottom: 0;
+    content: '';
+    left: 0;
+    opacity: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: scale(1.1);
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.introduction-expertise-buttons a.neo-matrix-btn:hover {
+    animation: flicker 0.5s infinite;
+    background: rgba(0, 30, 0, 0.8);
+    box-shadow: 0 0 15px rgba(0, 255, 0, 0.5), inset 0 0 10px rgba(0, 255, 0, 0.3);
+    transform: translateY(-2px) scale(1.02);
+}
+
+.introduction-expertise-buttons a.neo-matrix-btn:hover::before {
+    opacity: 1;
+}
+
+.introduction-expertise-buttons a.neo-matrix-btn:hover::after {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.introduction-expertise-buttons a.neo-matrix-btn:hover {
+    color: #FFFFFF;
+    text-shadow: 0 0 8px #00FF00, 0 0 12px #00FF00;
+}
+
