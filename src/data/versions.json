@@ -1,0 +1,163 @@
+{
+  "versions": [
+    {
+      "id": "v1",
+      "number": "1.0",
+      "date": "August 2024",
+      "title": "The Beginning",
+      "screenshots": {
+        "desktop": "https://res.cloudinary.com/depqttzlt/image/upload/v1737668237/VersionTimeTravelv1desktop_fcmf21.png",
+        "mobile": "https://res.cloudinary.com/depqttzlt/image/upload/v1737668237/VersionTimeTravelv1mobile_xd9ypl.png"
+      },
+      "features": [
+        "Initial portfolio launch",
+        "Basic responsive design",
+        "Simple navigation structure",
+        "Project portfolio section",
+        "Contact form implementation",
+        "Social media integration",
+        "Basic SEO implementation",
+        "Custom 404 page"
+      ],
+      "techStack": ["HTML", "CSS", "JavaScript"],
+      "path": "src/versions/v1/index.html"
+    },
+    {
+      "id": "v2",
+      "number": "2.0",
+      "date": "September 2024",
+      "title": "Matrix Theme Born",
+      "screenshots": {
+        "desktop": "https://res.cloudinary.com/depqttzlt/image/upload/v1737668253/VersionTimeTravelv2desktop_gg9tpn.png",
+        "mobile": "https://res.cloudinary.com/depqttzlt/image/upload/v1737668253/VersionTimeTravelv2mobile_lcyyvb.png"
+      },
+      "features": [
+        "Introduced Matrix theme",
+        "Dynamic canvas background",
+        "Responsive grid layout",
+        "Skill progress visualization",
+        "Project showcase section",
+        "Dark mode toggle functionality",
+        "Enhanced SEO optimization",
+        "Lazy loading for images"
+      ],
+      "techStack": ["HTML", "CSS", "JavaScript", "Canvas API"],
+      "path": "src/versions/v2/index.html"
+    },
+    {
+      "id": "v2.5",
+      "number": "2.5",
+      "date": "October 2024",
+      "title": "Animation Upgrade",
+      "screenshots": {
+        "desktop": "https://res.cloudinary.com/depqttzlt/image/upload/v1737668269/VersionTimeTravelv25desktop_wrj8uu.png",
+        "mobile": "https://res.cloudinary.com/depqttzlt/image/upload/v1737668270/VersionTimeTravelv25mobile_ua2l41.png"
+      },
+      "features": [
+        "Enhanced Matrix animation effects",
+        "Vincent van Gogh-inspired infinity gallery",
+        "Improved mobile responsiveness",
+        "Integrated GSAP animations",
+        "Added ScrollMagic effects",
+        "Time Travel Version History feature",
+        "Enhanced performance optimization",
+        "Implemented custom error pages"
+      ],
+      "techStack": ["HTML", "CSS", "JavaScript", "GSAP", "ScrollMagic"],
+      "path": "version25.html"
+    },
+    {
+      "id": "landing",
+      "number": "Landing Page",
+      "date": "November 2024",
+      "title": "Experimental Features",
+      "screenshots": {
+        "desktop": "https://res.cloudinary.com/depqttzlt/image/upload/v1737668231/landingpagedesktop_ssozki.png",
+        "mobile": "https://res.cloudinary.com/depqttzlt/image/upload/v1737668228/landingpagemobile_exon4w.png"
+      },
+      "features": [
+        "Pre-v3 experimentation",
+        "Version TimeTravel addition",
+        "FontAwesome elements",
+        "Interactive CV feature",
+        "New navigation concepts",
+        "Advanced CSS buttons",
+        "Improved Matrix effects",
+        "Refined responsive design"
+      ],
+      "techStack": ["HTML", "CSS", "JavaScript", "FontAwesome"],
+      "path": "landingpage.html"
+    },
+    {
+      "id": "v2.8",
+      "number": "2.8",
+      "date": "January 2025",
+      "title": "Matrix Evolution",
+      "screenshots": {
+        "desktop": "https://res.cloudinary.com/depqttzlt/image/upload/v1737668269/VersionTimeTravelv25desktop_wrj8uu.png",
+        "mobile": "https://res.cloudinary.com/depqttzlt/image/upload/v1737668270/VersionTimeTravelv25mobile_ua2l41.png"
+      },
+      "features": [
+        "Refined Matrix theme",
+        "Smoother animations",
+        "Better mobile experience",
+        "Performance optimizations",
+        "Accessibility improvements",
+        "SEO enhancements",
+        "Code quality improvements",
+        "Bug fixes and polish"
+      ],
+      "techStack": ["HTML", "CSS", "JavaScript", "GSAP", "ScrollMagic"],
+      "path": "version28.html"
+    },
+    {
+      "id": "v2.9",
+      "number": "2.9",
+      "date": "January 2025",
+      "title": "Final Static Version",
+      "screenshots": {
+        "desktop": "https://res.cloudinary.com/depqttzlt/image/upload/v1737668269/VersionTimeTravelv25desktop_wrj8uu.png",
+        "mobile": "https://res.cloudinary.com/depqttzlt/image/upload/v1737668270/VersionTimeTravelv25mobile_ua2l41.png"
+      },
+      "features": [
+        "Last static HTML version",
+        "Performance optimizations",
+        "Enhanced accessibility",
+        "Refined UI/UX design",
+        "Code refactoring",
+        "Preparation for v3.0",
+        "Final bug fixes",
+        "Documentation updates"
+      ],
+      "techStack": ["HTML", "CSS", "JavaScript", "GSAP", "ScrollMagic"],
+      "path": "version29.html"
+    },
+    {
+      "id": "v3",
+      "number": "3.0",
+      "date": "February 2025",
+      "title": "Current Live Version",
+      "isLive": true,
+      "techStack": [
+        "React 18",
+        "Next.js 14",
+        "TypeScript",
+        "Tailwind CSS",
+        "Three.js",
+        "Node.js",
+        "PostgreSQL",
+        "Vercel"
+      ],
+      "features": [
+        "Complete framework migration",
+        "Server-side rendering",
+        "Progressive Web App",
+        "Advanced 3D animations",
+        "API integrations",
+        "Real-time features",
+        "Enhanced performance",
+        "WCAG AA compliance"
+      ]
+    }
+  ]
+}
