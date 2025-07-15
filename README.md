@@ -2,6 +2,8 @@
 
 > An interactive timeline showcasing the evolution of my portfolio from static HTML to modern React
 
+<img width="1287" height="720" alt="image" src="https://github.com/user-attachments/assets/d7463e9c-a685-47d6-9ac9-8a10a6544f15" />
+
 ![Version TimeTravel](https://img.shields.io/badge/Portfolio-Evolution-00FF00?style=for-the-badge&logo=github)
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
