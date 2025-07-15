@@ -135,6 +135,35 @@ export class Timeline {
           'Contact form'
         ],
         path: 'version1.html'
+      },
+      {
+        id: 'commercial',
+        number: 'Commercial',
+        date: 'December 2024',
+        title: 'Professional Portfolio',
+        isExternal: true,
+        externalUrl: 'https://thomasjbutler.me',
+        screenshots: {
+          desktop: 'https://res.cloudinary.com/depqttzlt/image/upload/v1752552064/commercialdesktop_nn2p8t.png',
+          mobile: 'https://res.cloudinary.com/depqttzlt/image/upload/v1752552062/commercialmobile_nrh17c.png'
+        },
+        techStack: [
+          'React',
+          'JavaScript',
+          'SCSS',
+          'Bootstrap 5',
+          'Vite'
+        ],
+        features: [
+          'Separate site for commercial work',
+          '3+ years experience showcase',
+          'Apple-inspired design',
+          'Light/dark theme switching',
+          'Multi-language support',
+          '90+ Lighthouse score',
+          'WCAG compliant',
+          'SEO optimized'
+        ]
       }
     ];
   }
