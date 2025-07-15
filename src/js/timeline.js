@@ -39,7 +39,7 @@ export class Timeline {
   
   async loadVersionData() {
     try {
-      const response = await fetch('/src/data/versions.json');
+      const response = await fetch('/data/versions.json');
       const data = await response.json();
       this.versions = data.versions.reverse(); // Show newest first
     } catch (error) {
