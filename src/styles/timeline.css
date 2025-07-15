@@ -81,15 +81,17 @@
 .timeline-dot::before {
   content: '';
   position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 30px;
-  height: 30px;
+  /* Center accounting for parent's size */
+  top: -8px;
+  left: -8px;
+  width: 36px;
+  height: 36px;
   border: 1px solid var(--matrix-green);
   border-radius: 50%;
   opacity: 0;
   animation: pulse 2s infinite;
+  transform-origin: center;
+  pointer-events: none;
 }
 
 .timeline-dot:hover {
@@ -198,7 +200,7 @@
   overflow: hidden;
   border-radius: 12px;
   border: 1px solid var(--border-primary);
-  background: #000;
+  background: linear-gradient(135deg, rgba(0, 20, 0, 0.8), rgba(0, 40, 0, 0.8));
   cursor: pointer;
   transition: all var(--duration-base) var(--ease-out);
   aspect-ratio: 16 / 9;
@@ -516,6 +518,35 @@
 .version-card:nth-child(4) { animation-delay: 0.4s; }
 .version-card:nth-child(5) { animation-delay: 0.5s; }
 .version-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* External/Commercial Portfolio Styles */
+.version-external .version-box {
+  background: linear-gradient(135deg, rgba(0, 40, 40, 0.9), rgba(0, 20, 40, 0.9));
+  border-color: var(--matrix-cyan);
+}
+
+.external-tag {
+  background: rgba(0, 255, 255, 0.1);
+  border-color: var(--matrix-cyan);
+  color: var(--matrix-cyan);
+}
+
+.external-btn {
+  background: linear-gradient(135deg, rgba(0, 40, 40, 0.9), rgba(0, 60, 60, 0.9));
+  border-color: var(--matrix-cyan);
+  color: var(--matrix-cyan);
+}
+
+.external-btn:hover {
+  border-color: var(--matrix-green);
+  color: var(--matrix-green);
+  box-shadow: 0 5px 15px rgba(0, 255, 255, 0.3);
+}
+
+.external-btn i {
+  margin-left: var(--space-xs);
+  font-size: 0.9em;
+}
 
 /* Additional Responsive Styles */
 @media (max-width: 768px) {

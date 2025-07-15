@@ -3,6 +3,11 @@
    Based on Thomas J Butler Design System
    =================================== */
 
+/* Import other styles - must be at top */
+@import './timeline.css';
+@import './viewer.css';
+@import './loading.css';
+
 /* CSS Variables from Design System */
 :root {
   /* Primary Colors */
@@ -23,21 +28,26 @@
   --bg-overlay: rgba(0, 0, 0, 0.8);
   
   /* Typography */
-  --font-primary: 'VT323', monospace;
-  --font-body: system-ui, -apple-system, sans-serif;
-  --font-code: 'Courier New', monospace;
+  --font-primary: 'VT323', 'Fira Code', monospace;
+  --font-body: -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+  --font-code: 'Fira Code', 'Courier New', monospace;
   
-  /* Type Scale */
-  --font-size-base: clamp(1rem, 0.9rem + 0.5vw, 1.125rem);
-  --font-size-sm: clamp(0.875rem, 0.8rem + 0.4vw, 1rem);
-  --font-size-h3: clamp(1.5rem, 1.2rem + 1.5vw, 2rem);
-  --font-size-h2: clamp(1.75rem, 1.4rem + 1.8vw, 2.5rem);
-  --font-size-h1: clamp(2rem, 1.5rem + 2.5vw, 3.5rem);
+  /* Type Scale - Enhanced readability */
+  --font-size-base: clamp(1.125rem, 1rem + 0.625vw, 1.375rem);
+  --font-size-sm: clamp(1rem, 0.9rem + 0.5vw, 1.2rem);
+  --font-size-h3: clamp(1.75rem, 1.4rem + 1.75vw, 2.25rem);
+  --font-size-h2: clamp(2rem, 1.6rem + 2vw, 2.75rem);
+  --font-size-h1: clamp(2.5rem, 2rem + 2.5vw, 4rem);
   
-  /* Line Heights */
-  --line-height-tight: 1.2;
-  --line-height-base: 1.6;
-  --line-height-relaxed: 1.8;
+  /* Line Heights - Optimized for readability */
+  --line-height-tight: 1.3;
+  --line-height-base: 1.75;
+  --line-height-relaxed: 2;
+  
+  /* Font Weights */
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
   
   /* Letter Spacing */
   --letter-spacing-tight: -0.02em;
@@ -103,6 +113,9 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   position: relative;
+  font-weight: var(--font-weight-normal);
+  text-rendering: optimizeLegibility;
+  font-feature-settings: "kern" 1, "liga" 1;
 }
 
 /* Typography */
@@ -110,17 +123,29 @@ h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-primary);
   line-height: var(--line-height-tight);
   letter-spacing: var(--letter-spacing-wide);
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
   text-shadow: var(--matrix-glow);
+  font-weight: var(--font-weight-medium);
 }
 
-h1 { font-size: var(--font-size-h1); }
-h2 { font-size: var(--font-size-h2); }
-h3 { font-size: var(--font-size-h3); }
+h1 { 
+  font-size: var(--font-size-h1); 
+  margin-bottom: var(--space-xl);
+}
+h2 { 
+  font-size: var(--font-size-h2); 
+  margin-bottom: var(--space-lg);
+}
+h3 { 
+  font-size: var(--font-size-h3); 
+  margin-bottom: var(--space-md);
+}
 
 p {
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-lg);
   color: var(--text-secondary);
+  line-height: var(--line-height-relaxed);
+  max-width: 75ch;
 }
 
 a {
@@ -271,13 +296,18 @@ section {
   position: relative;
   display: inline-block;
   width: 100%;
+  font-weight: var(--font-weight-semibold);
+  letter-spacing: var(--letter-spacing-wider);
 }
 
 .section-intro {
   text-align: center;
-  max-width: 60ch;
+  max-width: 65ch;
   margin: 0 auto var(--space-2xl);
-  font-size: var(--font-size-base);
+  font-size: clamp(1.2rem, 1.1rem + 0.5vw, 1.5rem);
+  line-height: var(--line-height-relaxed);
+  color: var(--text-secondary);
+  font-weight: var(--font-weight-normal);
 }
 
 /* Hero Section */
@@ -519,6 +549,17 @@ section {
   box-shadow: 0 4px 12px rgba(0, 255, 255, 0.3);
 }
 
+.version-link-btn.external {
+  border-color: var(--matrix-cyan);
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.05), rgba(0, 40, 40, 0.9));
+}
+
+.version-link-btn.external:hover {
+  border-color: var(--matrix-green);
+  box-shadow: 0 4px 12px rgba(0, 255, 255, 0.4);
+  background: linear-gradient(135deg, rgba(0, 255, 255, 0.1), rgba(0, 60, 60, 0.9));
+}
+
 .version-link-btn .version-number {
   font-family: var(--font-primary);
   font-size: var(--font-size-base);
@@ -598,11 +639,6 @@ section {
   box-shadow: 0 0 10px var(--matrix-green);
 }
 
-/* Import other styles */
-@import './timeline.css';
-@import './viewer.css';
-@import './loading.css';
-
 /* Accessibility */
 .skip-link {
   position: absolute;
@@ -625,5 +661,141 @@ section {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
+  }
+}
+
+/* Section Divider */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-2xl) 0;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-primary), transparent);
+}
+
+.divider-icon {
+  padding: 0 var(--space-xl);
+  color: var(--matrix-green);
+  font-size: 1.5rem;
+  opacity: 0.6;
+  animation: pulse 2s infinite;
+}
+
+/* V3 Preview Placeholder */
+.v3-preview-placeholder {
+  margin-bottom: var(--space-3xl);
+  padding: var(--space-3xl);
+  background: linear-gradient(135deg, rgba(0, 40, 0, 0.3), rgba(0, 60, 0, 0.3));
+  border: 2px dashed var(--border-primary);
+  border-radius: 12px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.v3-preview-placeholder::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--matrix-green), transparent);
+  animation: scanline 4s linear infinite;
+}
+
+.placeholder-content {
+  position: relative;
+  z-index: 1;
+}
+
+.placeholder-content i {
+  font-size: 3rem;
+  color: var(--matrix-green);
+  margin-bottom: var(--space-lg);
+  display: block;
+  animation: bounce 2s infinite;
+}
+
+.placeholder-content h3 {
+  color: var(--matrix-cyan);
+  margin-bottom: var(--space-sm);
+}
+
+.placeholder-content p {
+  color: var(--text-muted);
+  margin: 0;
+}
+
+@keyframes scanline {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+/* Image Loading States */
+img {
+  opacity: 0;
+  transition: opacity var(--duration-slow) var(--ease-out);
+}
+
+img.loaded {
+  opacity: 1;
+}
+
+img.image-loading {
+  opacity: 0.3;
+  filter: blur(10px);
+}
+
+/* Performance Optimizations */
+.will-change-transform {
+  will-change: transform;
+}
+
+.hardware-accelerated {
+  transform: translateZ(0);
+  backface-visibility: hidden;
+}
+
+/* Loading Content Animation */
+.content-loading {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.content-loaded {
+  opacity: 1;
+  transform: translateY(0);
+  transition: all var(--duration-slow) var(--ease-out);
+}
+
+/* Glitch Effect for Headings */
+@keyframes glitchText {
+  0%, 100% {
+    text-shadow: 
+      0 0 10px var(--matrix-green),
+      0 0 20px var(--matrix-green);
+  }
+  20% {
+    text-shadow: 
+      2px 0 10px var(--matrix-cyan),
+      -2px 0 10px var(--matrix-magenta);
+  }
+  40% {
+    text-shadow: 
+      -2px 0 10px var(--matrix-cyan),
+      2px 0 10px var(--matrix-magenta);
   }
 }

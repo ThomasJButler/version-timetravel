@@ -146,35 +146,52 @@ export class Timeline {
   }
   
   createVersionCard(version, index) {
-    if (version.isLive) {
-      // Special rendering for v3.0
+    if (version.isExternal) {
+      // Special rendering for external/commercial portfolio
       return `
-        <div class="version-card version-live" data-version="${version.id}" id="${version.id}">
+        <div class="version-card version-external" data-version="${version.id}" id="${version.id}">
           <div class="timeline-dot"></div>
           <div class="version-content">
-            <div class="version-box live-version">
+            <div class="version-box external-version">
               <div class="version-header">
                 <div class="version-info">
-                  <h3>Version ${version.number}</h3>
+                  <h3>${version.number} Portfolio</h3>
                   <span class="version-date">${version.date}</span>
                 </div>
-                <span class="version-tag">Live Now</span>
+                <span class="version-tag external-tag">${version.title}</span>
               </div>
-              <div class="version-features">
-                <h4>Modern Tech Stack</h4>
-                <ul class="features-list">
-                  ${version.techStack.map(tech => `<li>${tech}</li>`).join('')}
-                </ul>
-              </div>
-              <div class="version-features">
-                <h4>Key Features</h4>
-                <ul class="features-list">
-                  ${version.features.map(feature => `<li>${feature}</li>`).join('')}
-                </ul>
-              </div>
-              <a href="https://thomasjbutler.me" class="view-version-btn" target="_blank" rel="noopener">
-                Visit Live Site <i class="fas fa-external-link-alt"></i>
-              </a>
+              ${version.screenshots ? `
+                <div class="version-desktop">
+                  <img src="${version.screenshots.desktop}" alt="${version.number} Portfolio Desktop" loading="lazy">
+                  <span class="desktop-label">Desktop View</span>
+                </div>
+                <div class="version-bottom">
+                  <div class="version-details">
+              ` : '<div class="version-details">'}
+                    <div class="version-features">
+                      <h4>Tech Stack</h4>
+                      <ul class="features-list">
+                        ${version.techStack.map(tech => `<li>${tech}</li>`).join('')}
+                      </ul>
+                    </div>
+                    <div class="version-features">
+                      <h4>Key Features</h4>
+                      <ul class="features-list">
+                        ${version.features.map(feature => `<li>${feature}</li>`).join('')}
+                      </ul>
+                    </div>
+                    <a href="${version.externalUrl}" class="view-version-btn external-btn" target="_blank" rel="noopener">
+                      Visit Professional Site <i class="fas fa-external-link-alt"></i>
+                    </a>
+                  </div>
+                  ${version.screenshots ? `
+                    <div class="version-mobile">
+                      <img src="${version.screenshots.mobile}" alt="${version.number} Portfolio Mobile" loading="lazy">
+                      <span class="mobile-label">Mobile</span>
+                    </div>
+                  ` : ''}
+                </div>
+              ${!version.screenshots ? '</div>' : ''}
             </div>
           </div>
         </div>

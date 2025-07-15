@@ -111,30 +111,32 @@
       "path": "/version28.html"
     },
     {
-      "id": "v3",
-      "number": "3.0",
-      "date": "February 2025",
-      "title": "Current Live Version",
-      "isLive": true,
+      "id": "commercial",
+      "number": "Commercial",
+      "date": "December 2024",
+      "title": "Professional Portfolio",
+      "isExternal": true,
+      "externalUrl": "https://thomasjbutler.me",
+      "screenshots": {
+        "desktop": "https://res.cloudinary.com/depqttzlt/image/upload/v1752552064/commercialdesktop_nn2p8t.png",
+        "mobile": "https://res.cloudinary.com/depqttzlt/image/upload/v1752552062/commercialmobile_nrh17c.png"
+      },
       "techStack": [
-        "React 18",
-        "Next.js 14",
-        "TypeScript",
-        "Tailwind CSS",
-        "Three.js",
-        "Node.js",
-        "PostgreSQL",
-        "Vercel"
+        "React",
+        "JavaScript",
+        "SCSS",
+        "Bootstrap 5",
+        "Vite"
       ],
       "features": [
-        "Complete framework migration",
-        "Server-side rendering",
-        "Progressive Web App",
-        "Advanced 3D animations",
-        "API integrations",
-        "Real-time features",
-        "Enhanced performance",
-        "WCAG AA compliance"
+        "Separate site for commercial work",
+        "3+ years experience showcase",
+        "Apple-inspired design",
+        "Light/dark theme switching",
+        "Multi-language support",
+        "90+ Lighthouse score",
+        "WCAG compliant",
+        "SEO optimized"
       ]
     }
   ]
