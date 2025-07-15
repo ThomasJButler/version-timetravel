@@ -105,7 +105,7 @@ export class Timeline {
       {
         id: 'v2',
         number: '2.0',
-        date: 'September 2024',
+        date: 'August 2024',
         title: 'Matrix Theme Born',
         screenshots: {
           desktop: 'https://res.cloudinary.com/depqttzlt/image/upload/v1737668253/VersionTimeTravelv2desktop_gg9tpn.png',

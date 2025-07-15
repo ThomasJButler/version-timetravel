@@ -3,7 +3,7 @@
     {
       "id": "v1",
       "number": "1.0",
-      "date": "August 2024",
+      "date": "January 2024",
       "title": "The Beginning",
       "screenshots": {
         "desktop": "https://res.cloudinary.com/depqttzlt/image/upload/v1737668237/VersionTimeTravelv1desktop_fcmf21.png",
@@ -25,7 +25,7 @@
     {
       "id": "v2",
       "number": "2.0",
-      "date": "September 2024",
+      "date": "August 2024",
       "title": "Matrix Theme Born",
       "screenshots": {
         "desktop": "https://res.cloudinary.com/depqttzlt/image/upload/v1737668253/VersionTimeTravelv2desktop_gg9tpn.png",
@@ -94,8 +94,8 @@
       "date": "January 2025",
       "title": "Final Static Version",
       "screenshots": {
-        "desktop": "https://res.cloudinary.com/depqttzlt/image/upload/v1737668269/VersionTimeTravelv25desktop_wrj8uu.png",
-        "mobile": "https://res.cloudinary.com/depqttzlt/image/upload/v1737668270/VersionTimeTravelv25mobile_ua2l41.png"
+        "desktop": "https://res.cloudinary.com/depqttzlt/image/upload/v1752549398/v28desktop_f5lxp1.png",
+        "mobile": "https://res.cloudinary.com/depqttzlt/image/upload/v1752549394/v28mobile_g7rovj.png"
       },
       "features": [
         "Refined Matrix theme",

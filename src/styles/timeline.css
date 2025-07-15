@@ -5,6 +5,7 @@
 /* Timeline Section */
 .timeline-section {
   background: linear-gradient(180deg, transparent 0%, var(--matrix-dark) 50%, transparent 100%);
+  min-height: 60vh;
 }
 
 .timeline-wrapper {
@@ -165,6 +166,8 @@
   justify-content: space-between;
   align-items: flex-start;
   margin-bottom: var(--space-lg);
+  gap: var(--space-md);
+  flex-wrap: wrap;
 }
 
 .version-info h3 {
@@ -190,6 +193,8 @@
   font-family: var(--font-primary);
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wider);
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 /* Desktop Screenshot - Full Width */
