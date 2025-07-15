@@ -377,105 +377,38 @@ export class Timeline {
   }
   
   showImageModal(src, alt) {
+    console.log('Opening modal with image:', src);
+    
     // Create modal
     const modal = document.createElement('div');
     modal.className = 'image-modal';
     modal.innerHTML = `
       <div class="modal-content">
         <button class="modal-close">&times;</button>
-        <img src="${src}" alt="${alt}">
+        <img src="${src}" alt="${alt}" onerror="console.error('Failed to load image:', this.src)">
       </div>
     `;
     
     document.body.appendChild(modal);
     
-    // Add styles
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes fadeIn {
-        from { opacity: 0; }
-        to { opacity: 1; }
-      }
-      
-      .image-modal {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.95);
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        z-index: 1000;
-        animation: fadeIn 0.3s ease;
-        cursor: pointer;
-      }
-      
-      .modal-content {
-        position: relative;
-        max-width: 90vw;
-        max-height: 90vh;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      
-      .modal-content img {
-        max-width: 100%;
-        max-height: 90vh;
-        width: auto;
-        height: auto;
-        object-fit: contain;
-        border: 2px solid var(--matrix-green);
-        border-radius: 8px;
-        box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
-        display: block;
-      }
-      
-      .modal-close {
-        position: absolute;
-        top: -50px;
-        right: 0;
-        background: rgba(0, 0, 0, 0.7);
-        border: 1px solid var(--matrix-green);
-        border-radius: 50%;
-        color: var(--matrix-green);
-        font-size: 2rem;
-        cursor: pointer;
-        padding: 0.5rem 0.75rem;
-        transition: all 0.3s ease;
-        width: 50px;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-      }
-      
-      .modal-close:hover {
-        background: rgba(0, 255, 0, 0.1);
-        transform: scale(1.1);
-      }
-      
-      @media (max-width: 768px) {
-        .modal-close {
-          top: 10px;
-          right: 10px;
-          font-size: 1.5rem;
-          width: 40px;
-          height: 40px;
-        }
-      }
-    `;
-    document.head.appendChild(style);
+    // Force reflow to ensure animation plays
+    modal.offsetHeight;
     
     // Close on click
     modal.addEventListener('click', (e) => {
       if (e.target === modal || e.target.classList.contains('modal-close')) {
         modal.remove();
-        style.remove();
       }
     });
+    
+    // Close on ESC key
+    const handleEsc = (e) => {
+      if (e.key === 'Escape') {
+        modal.remove();
+        document.removeEventListener('keydown', handleEsc);
+      }
+    };
+    document.addEventListener('keydown', handleEsc);
   }
   
   showLoading() {
