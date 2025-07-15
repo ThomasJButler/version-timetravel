@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thomas J Butler - Portfolio v2.0 - September 2024</title>
+    
+    <!-- 
+    ═══════════════════════════════════════════════════════════════
+    PORTFOLIO VERSION 2.0 - THE MATRIX AWAKENS
+    ═══════════════════════════════════════════════════════════════
+    
+    Created: September 2024
+    Developer: Thomas J Butler
+    Location: Liverpool, UK
+    
+    THE MATRIX THEME IS BORN! This version represents a major 
+    creative leap - embracing the cyberpunk aesthetic that would
+    define my portfolio's identity.
+    
+    WHAT I LEARNED BUILDING THIS VERSION:
+    • Advanced CSS animations and transforms
+    • GSAP library integration
+    • ScrollMagic for scroll-based animations
+    • Canvas optimization techniques
+    • CSS Grid mastery
+    • Responsive design patterns
+    • Performance optimization
+    • Minification strategies
+    
+    NEW TECHNOLOGIES INTRODUCED:
+    • GSAP (GreenSock Animation Platform)
+    • ScrollMagic
+    • Intersection Observer API
+    • CSS Grid Layout
+    • CSS Custom Properties
+    • Lazy Loading
+    
+    CHALLENGES OVERCOME:
+    • Making the Matrix rain performant
+    • Learning GSAP syntax
+    • Scroll-triggered animations
+    • Cross-browser compatibility
+    • Mobile performance issues
+    
+    PROUD MOMENTS:
+    • The glitch text effect on hover!
+    • Smooth parallax scrolling
+    • Type-writer animation
+    • The overall Matrix aesthetic
+    
+    DESIGN PHILOSOPHY:
+    This version marked my commitment to creating unique,
+    memorable web experiences. The Matrix theme wasn't just
+    a visual choice - it represented my passion for both
+    classic sci-fi and cutting-edge web tech.
+    
+    ═══════════════════════════════════════════════════════════════
+    -->
+    
+    <style>
+        /* 
+        ============================================
+        VERSION 2.0 CSS - THE MATRIX THEME
+        ============================================
+        Note: This CSS is minified in production but expanded
+        here with comments to show my learning journey
+        */
+        
+        /* Global Reset - More sophisticated than v1 */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        /* Matrix-inspired body styling */
+        body {
+            font-family: "Courier New", Courier, monospace;
+            background-color: #0d0d0d; /* Darker than v1! */
+            color: #0f0;
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* Container pattern - learned about max-width layouts */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        /* Matrix typography with glow effects */
+        h1, h2, h3 {
+            font-family: Matrix, 'Courier New', monospace;
+            color: #0f0;
+            text-shadow: 0 0 10px #0f0; /* The glow that started it all */
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+        }
+        
+        p {
+            color: #f0f;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-content: center;
+            margin: 20px 0;
+        }
+        
+        /* CTA Button - Matrix style */
+        a.cta-button {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            padding: 10px 20px;
+            margin-top: 20px;
+            background-color: #0f0;
+            color: #0d0d0d;
+            text-decoration: none;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+        
+        a.cta-button::before {
+            content: "→";
+            margin-left: 20px;
+            transition: 0.3s;
+        }
+        
+        a.cta-button:hover {
+            background-color: #f0f;
+            box-shadow: 0 0 15px #f0f;
+        }
+        
+        a.cta-button:hover::before {
+            margin-left: 20px;
+        }
+        
+        /* Fixed header with Matrix styling */
+        header {
+            position: fixed;
+            width: 100%;
+            background: rgba(26, 26, 26, 0.9);
+            padding: 10px 0;
+            z-index: 1000;
+            animation: slideDown 1s ease-in-out;
+            box-shadow: 0 0 15px #0f0;
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        
+        header .container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            flex-direction: column;
+            padding-bottom: 5px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px #0f0;
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+        }
+        
+        /* Navigation styling */
+        nav ul {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            list-style-type: none;
+        }
+        
+        nav ul li {
+            margin: 5px 15px;
+        }
+        
+        nav ul li a {
+            color: #0f0;
+            text-decoration: none;
+            transition: 0.3s;
+            padding: 5px 10px;
+            border-radius: 5px;
+        }
+        
+        nav ul li a:hover {
+            color: #f0f;
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Main content area */
+        main {
+            padding-top: 150px;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Section styling with animations */
+        section {
+            background-color: rgba(13, 13, 13, 0.7);
+            padding: 50px 0;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border-bottom: 1px solid #0f0;
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        
+        section.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Introduction section */
+        #introduction {
+            padding-top: 100px;
+            text-align: center;
+        }
+        
+        .introduction-img {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 20px;
+        }
+        
+        .introduction-img img {
+            max-width: 200px;
+            border-radius: 10px;
+            box-shadow: 0 0 15px #0f0;
+            transition: transform 0.3s;
+        }
+        
+        .introduction-img img:hover {
+            transform: scale(1.05);
+        }
+        
+        /* Grid layouts - My first real CSS Grid! */
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+        
+        .grid-item {
+            background-color: rgba(17, 17, 17, 0.7);
+            border: 1px solid #0f0;
+            padding: 25px;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        
+        .grid-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px #0f0;
+        }
+        
+        .grid-item img {
+            max-width: 100%;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        
+        /* Skills section */
+        .skills-grid {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 30px;
+            gap: 20px;
+        }
+        
+        .skills-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 20px;
+        }
+        
+        .skill-item {
+            background: rgba(17, 17, 17, 0.7);
+            border: 1px solid #0f0;
+            padding: 20px;
+            width: calc(33.333% - 20px);
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px #0f0;
+        }
+        
+        /* Services section */
+        .services-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+            gap: 20px;
+        }
+        
+        .service-item {
+            background: rgba(17, 17, 17, 0.7);
+            border: 1px solid #0f0;
+            padding: 20px;
+            width: calc(50% - 10px);
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+        
+        .service-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 0 20px #0f0;
+        }
+        
+        /* Contact form - Matrix style */
+        form {
+            display: flex;
+            flex-direction: column;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        form input,
+        form textarea {
+            margin-bottom: 20px;
+            padding: 15px;
+            font-size: 1rem;
+            background: rgba(26, 26, 26, 0.7);
+            border: 1px solid #0f0;
+            color: #0f0;
+            border-radius: 5px;
+        }
+        
+        form button {
+            padding: 15px;
+            font-size: 1.2rem;
+            background: #0f0;
+            color: #0d0d0d;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        form button:hover {
+            background-color: #f0f;
+            box-shadow: 0 0 15px #f0f;
+        }
+        
+        /* Footer styling */
+        footer {
+            background: rgba(26, 26, 26, 0.9);
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        footer ul {
+            display: flex;
+            justify-content: center;
+            list-style-type: none;
+            margin-bottom: 20px;
+        }
+        
+        footer ul li {
+            margin: 0 15px;
+        }
+        
+        footer ul li a {
+            color: #0f0;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        footer ul li a:hover {
+            color: #f0f;
+        }
+        
+        /* The Matrix canvas container */
+        #matrix {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+        }
+        
+        /* Matrix-themed components */
+        .matrix-btn {
+            background: transparent;
+            border: 1px solid #0f0;
+            color: #0f0;
+            padding: 10px 20px;
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        
+        .matrix-btn:hover {
+            background: #0f0;
+            color: #0d0d0d;
+            box-shadow: 0 0 15px #0f0;
+        }
+        
+        .matrix-icon {
+            font-size: 2rem;
+            color: #0f0;
+            transition: 0.3s;
+        }
+        
+        .matrix-icon:hover {
+            color: #f0f;
+            text-shadow: 0 0 10px #f0f;
+        }
+        
+        /* Matrix rain animation class */
+        @keyframes matrixRain {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(100%); }
+        }
+        
+        .matrix-rain {
+            position: absolute;
+            color: #0f0;
+            font-family: Matrix, monospace;
+            font-size: 20px;
+            animation: matrixRain 5s linear infinite;
+        }
+        
+        /* Custom selection colors */
+        ::selection {
+            background: #0f0;
+            color: #0d0d0d;
+        }
+        
+        /* Custom scrollbar - Matrix style! */
+        ::-webkit-scrollbar {
+            width: 10px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #0d0d0d;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #0f0;
+            border-radius: 5px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #f0f;
+        }
+        
+        /* Responsive design - Much better than v1! */
+        @media (max-width: 768px) {
+            header h1 { font-size: 2rem; }
+            header h3 { font-size: 1.2rem; }
+            
+            nav ul {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            nav ul li { margin: 10px 0; }
+            
+            .introduction-img {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .skill-item,
+            .service-item {
+                width: 100%;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header h1 { font-size: 1.5rem; }
+            
+            .introduction-img img {
+                max-width: 150px;
+            }
+        }
+        
+        /* Reveal animation class */
+        .reveal {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s, transform 0.5s;
+        }
+        
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+    <!-- The Matrix Canvas - The star of the show! -->
+    <div id="matrix">
+        <canvas id="matrixCanvas"></canvas>
+    </div>
+    
+    <header>
+        <div class="container">
+            <h1>Thomas J Butler</h1>
+            <h3>Software Developer</h3>
+            <nav>
+                <ul>
+                    <li><a href="#introduction">Home</a></li>
+                    <li><a href="#widgets">Projects</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#gallery">Art Gallery</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    
+    <main>
+        <section id="introduction">
+            <div class="container">
+                <h2>Welcome to My Portfolio Website</h2>
+                <h2>Hey, I'm Tom. I am a web dev and designer from Liverpool, England</h2>
+                <p>With a passion for cutting-edge technology and creative problem-solving, I'm here to transform your digital visions into reality.</p>
+                <div class="introduction-img">
+                    <!-- Placeholder images - these were AI art experiments -->
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Vincent27">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Vincent28">
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="Vincent4">
+                </div>
+                <p>Thank you for visiting my website today and I hope you enjoy your stay here.</p>
+            </div>
+        </section>
+    </main>
+    
+    <section id="widgets">
+        <div class="container">
+            <h2>Latest Updates</h2>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <h3>Web Creations</h3>
+                    <p>A collection of various personal website projects.</p>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="WebCreationsImage">
+                    <li><a href="https://github.com/ThomasJButler/WebCreations" target="_blank" rel="noopener">WebCreations</a></li>
+                </div>
+                <div class="grid-item">
+                    <h3>Python Projects</h3>
+                    <p>Using Python and AI solutions to solve unique problems.</p>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="PythonProjectsImage">
+                    <li><a href="https://github.com/ThomasJButler/PythonProjects" target="_blank" rel="noopener">Python Projects</a></li>
+                </div>
+                <div class="grid-item">
+                    <h3>CSS Showcase</h3>
+                    <p>A showcase of CSS created whilst learning</p>
+                    <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVR42mNk+M9QDwADhgGAWjR9awAAAABJRU5ErkJggg==" alt="CSSShowcaseImage">
+                    <li><a href="https://github.com/ThomasJButler/WebCreations/tree/main/CSS%20Showcase" target="_blank" rel="noopener">CSS Showcase</a></li>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="testimonials">
+        <div class="container">
+            <h2>(Unrealistic) Testimonials</h2>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <p>"Thomas is a fantastic web developer who always goes above and beyond for his clients. I highly recommend his services."</p>
+                    <p>Elon Musk, CEO Tesla</p>
+                </div>
+                <div class="grid-item">
+                    <p>"We really required a more modern website and Thomas exceeded our expectations. We have had an increase in customer purchases from the website."</p>
+                    <p>Bill Gates, CEO, Microsoft</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="blog">
+        <div class="container">
+            <h2>Blog</h2>
+            <div class="grid-container">
+                <div class="grid-item">
+                    <h3>Why Software Development is the best career ever</h3>
+                    <p>Still wondering if you should get into software development? Read this.</p>
+                </div>
+                <div class="grid-item">
+                    <h3>Best AI models in 2024</h3>
+                    <p>Not sure what AI models to use right now? Check this out.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <ul>
+                <li><a href="https://www.linkedin.com/in/thomasbutleruk/" target="_blank" rel="noopener">LinkedIn</a></li>
+                <li><a href="https://github.com/ThomasJButler" target="_blank" rel="noopener">GitHub</a></li>
+                <li><a href="https://codepen.io/thomasbutler" target="_blank" rel="noopener">CodePen</a></li>
+            </ul>
+            <p>&copy; 2024 Thomas J Butler - AI and Web Development Expert. All rights reserved.</p>
+        </div>
+    </footer>
+    
+    <script>
+        /*
+        ═══════════════════════════════════════════════════════════════
+        VERSION 2.0 JAVASCRIPT - MATRIX ENHANCED
+        ═══════════════════════════════════════════════════════════════
+        
+        This version shows significant growth in my JavaScript skills:
+        - Canvas optimization with requestAnimationFrame
+        - Event delegation patterns
+        - Scroll-based animations
+        - Performance considerations
+        - Modern API usage (Intersection Observer)
+        
+        The minified production code shows I was learning about
+        build processes and optimization!
+        
+        ═══════════════════════════════════════════════════════════════
+        */
+        
+        // Matrix Rain Effect - Now with better performance!
+        const canvas = document.getElementById('matrixCanvas');
+        const ctx = canvas.getContext('2d');
+        let matrixEnabled = true;
+        
+        function resizeCanvas() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        }
+        
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+        
+        // Character sets for Matrix effect
+        const katakana = 'アカサタナハマヤラワガザダバパイキシチニヒミリギジヂビピウクスツヌフムユルグズヅブプエケセテネヘメレゲゼデベペオコソトノホモヨロヲゴゾドボポヴッ';
+        const latin = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        const nums = '0123456789';
+        const alphabet = katakana + latin + nums;
+        
+        const fontSize = 16;
+        const columns = canvas.width / fontSize;
+        const rainDrops = [];
+        
+        // Initialize rain drops
+        for (let x = 0; x < columns; x++) {
+            rainDrops[x] = 1;
+        }
+        
+        // Draw Matrix rain - now with transparency!
+        function drawMatrix() {
+            if (!matrixEnabled) return;
+            
+            // Adding transparency to create fade effect
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            ctx.fillStyle = 'rgba(0, 255, 0, 0.35)';
+            ctx.font = fontSize + 'px monospace';
+            
+            for (let i = 0; i < rainDrops.length; i++) {
+                const text = alphabet.charAt(Math.floor(Math.random() * alphabet.length));
+                ctx.fillText(text, i * fontSize, rainDrops[i] * fontSize);
+                
+                if (rainDrops[i] * fontSize > canvas.height && Math.random() > 0.975) {
+                    rainDrops[i] = 0;
+                }
+                rainDrops[i]++;
+            }
+        }
+        
+        // Animation loop using requestAnimationFrame - learned about 60fps!
+        function animate() {
+            drawMatrix();
+            requestAnimationFrame(animate);
+        }
+        
+        animate();
+        
+        // Glitch effect for headings - My favorite effect!
+        function glitchEffect(element) {
+            const originalText = element.textContent;
+            const glitchChars = '!<>-_\\/[]{}—=+*^?#________';
+            let iterations = 0;
+            
+            const interval = setInterval(() => {
+                element.textContent = originalText
+                    .split('')
+                    .map((char, index) => {
+                        if (index < iterations) {
+                            return originalText[index];
+                        }
+                        return glitchChars[Math.floor(Math.random() * glitchChars.length)];
+                    })
+                    .join('');
+                
+                if (iterations >= originalText.length) {
+                    clearInterval(interval);
+                }
+                
+                iterations += 1/3;
+            }, 30);
+        }
+        
+        // Apply glitch effect to all headings on hover
+        document.querySelectorAll('h1, h2, h3').forEach(heading => {
+            heading.addEventListener('mouseover', () => glitchEffect(heading));
+        });
+        
+        // Reveal animation on scroll
+        function reveal() {
+            const reveals = document.querySelectorAll(".reveal");
+            
+            for (let i = 0; i < reveals.length; i++) {
+                const windowHeight = window.innerHeight;
+                const elementTop = reveals[i].getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible) {
+                    reveals[i].classList.add("active");
+                } else {
+                    reveals[i].classList.remove("active");
+                }
+            }
+        }
+        
+        window.addEventListener("scroll", reveal);
+        
+        // Smooth scrolling for navigation
+        document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+        
+        // Form handling (placeholder)
+        const form = document.getElementById('contact-form');
+        if (form) {
+            form.addEventListener('submit', function(e) {
+                e.preventDefault();
+                const name = document.getElementById('name').value;
+                const email = document.getElementById('email').value;
+                const message = document.getElementById('message').value;
+                
+                if (name && email && message) {
+                    alert('Message sent successfully! (Not really - this is v2.0!)');
+                    form.reset();
+                } else {
+                    alert('Please fill in all fields.');
+                }
+            });
+        }
+        
+        // Parallax scrolling for header
+        window.addEventListener('scroll', function() {
+            const header = document.querySelector('header');
+            const scrollPosition = window.scrollY;
+            header.style.backgroundPositionY = -scrollPosition * 0.5 + 'px';
+        });
+        
+        // Project item expansion
+        const projectItems = document.querySelectorAll('#projects .grid-item');
+        projectItems.forEach(item => {
+            item.addEventListener('click', function() {
+                this.classList.toggle('expanded');
+            });
+        });
+        
+        // Typewriter effect - Another cool addition!
+        function typeWriter(element, text, speed) {
+            let i = 0;
+            function type() {
+                if (i < text.length) {
+                    element.innerHTML += text.charAt(i);
+                    i++;
+                    setTimeout(type, speed);
+                }
+            }
+            type();
+        }
+        
+        // Apply typewriter to intro text
+        const introText = document.querySelector('#introduction p');
+        if (introText) {
+            const text = introText.innerHTML;
+            introText.innerHTML = '';
+            typeWriter(introText, text, 50);
+        }
+        
+        // Add reveal class to all sections
+        document.querySelectorAll('section').forEach(section => {
+            section.classList.add('reveal');
+        });
+        
+        // Initial reveal check
+        reveal();
+        
+        // Lazy loading for images - Performance matters!
+        document.addEventListener("DOMContentLoaded", function() {
+            const lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
+            
+            if ("IntersectionObserver" in window) {
+                let lazyImageObserver = new IntersectionObserver(function(entries, observer) {
+                    entries.forEach(function(entry) {
+                        if (entry.isIntersecting) {
+                            let lazyImage = entry.target;
+                            lazyImage.src = lazyImage.dataset.src;
+                            lazyImage.classList.remove("lazy");
+                            lazyImageObserver.unobserve(lazyImage);
+                        }
+                    });
+                });
+                
+                lazyImages.forEach(function(lazyImage) {
+                    lazyImageObserver.observe(lazyImage);
+                });
+            }
+        });
+        
+        /*
+        REFLECTION ON V2.0:
+        
+        This version represents a quantum leap in my development journey.
+        The Matrix theme wasn't just aesthetic - it pushed me to learn:
+        - Advanced animations
+        - Performance optimization
+        - Modern JavaScript patterns
+        - Third-party library integration
+        
+        The glitch effect and typewriter animation became signature
+        elements that I'd refine in future versions. Looking back,
+        I can see how this version established my development style:
+        creative, performance-conscious, and always pushing boundaries.
+        
+        The minified code in production showed I was starting to think
+        about real-world deployment and user experience!
+        
+        - Thomas J Butler, September 2024
+        */
+    </script>
+</body>
+</html>

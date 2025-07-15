@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Version Viewer | TimeTravel</title>
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Viewer Styles -->
+    <link rel="stylesheet" href="/src/styles/viewer.css">
+    
+    <!-- Viewer Script -->
+    <script type="module" src="/src/js/viewer.js"></script>
+</head>
+<body>
+    <!-- Viewer Controls -->
+    <div class="viewer-controls">
+        <div class="controls-left">
+            <button class="control-btn" id="back-btn" title="Back to Timeline">
+                <i class="fas fa-arrow-left"></i>
+                <span>Back to Timeline</span>
+            </button>
+            <div class="version-info">
+                <span id="version-number"></span>
+                <span id="version-date"></span>
+            </div>
+        </div>
+        
+        <div class="controls-center">
+            <div class="viewport-toggles">
+                <button class="viewport-btn active" data-viewport="desktop" title="Desktop View">
+                    <i class="fas fa-desktop"></i>
+                </button>
+                <button class="viewport-btn" data-viewport="tablet" title="Tablet View">
+                    <i class="fas fa-tablet-alt"></i>
+                </button>
+                <button class="viewport-btn" data-viewport="mobile" title="Mobile View">
+                    <i class="fas fa-mobile-alt"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div class="controls-right">
+            <button class="control-btn" id="fullscreen-btn" title="Fullscreen">
+                <i class="fas fa-expand"></i>
+            </button>
+            <button class="control-btn" id="refresh-btn" title="Refresh">
+                <i class="fas fa-sync-alt"></i>
+            </button>
+        </div>
+    </div>
+    
+    <!-- Version Preview -->
+    <div class="viewer-container">
+        <div class="device-frame" data-viewport="desktop">
+            <iframe id="version-frame" src="" frameborder="0"></iframe>
+        </div>
+    </div>
+    
+    <!-- Loading Overlay -->
+    <div class="loading-overlay">
+        <div class="loading-spinner"></div>
+        <p>Loading version...</p>
+    </div>
+</body>
+</html>

@@ -1,0 +1,18 @@
+{
+  "name": "version-timetravel",
+  "private": true,
+  "version": "1.3.0",
+  "type": "module",
+  "description": "Portfolio Version TimeTravel - A visual journey through Thomas J Butler's portfolio evolution",
+  "author": "Thomas J Butler",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
+  },
+  "devDependencies": {
+    "vite": "^5.0.8",
+    "postcss": "^8.4.32",
+    "autoprefixer": "^10.4.16"
+  }
+}

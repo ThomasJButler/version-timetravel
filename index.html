@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Experience the evolution of Thomas J Butler's portfolio through an interactive timeline showcasing each version from v1.0 to the current v3.0">
+    <meta name="author" content="Thomas J Butler">
+    <meta name="keywords" content="portfolio, web development, version history, Thomas J Butler, Liverpool, UI evolution">
+    
+    <title>Version TimeTravel | Portfolio Evolution</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&family=Fira+Code:wght@400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    <!-- Styles -->
+    <link rel="stylesheet" href="/src/styles/global.css">
+    <link rel="stylesheet" href="/src/styles/timeline.css">
+    
+    <!-- Main App -->
+    <script type="module" src="/src/main.js"></script>
+</head>
+<body>
+    <!-- Skip Link for Accessibility -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+    
+    <!-- Scroll Progress -->
+    <div class="scroll-progress">
+        <div class="scroll-progress-bar"></div>
+    </div>
+    
+    <!-- Matrix Background -->
+    <canvas id="matrix-canvas" aria-hidden="true"></canvas>
+    
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container">
+            <div class="header-content">
+                <div class="branding">
+                    <h1 class="site-title">Portfolio TimeTravel</h1>
+                    <p class="site-tagline">Journey through code evolution</p>
+                </div>
+                <nav class="main-nav" aria-label="Main navigation">
+                    <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
+                        <span></span>
+                        <span></span>
+                        <span></span>
+                    </button>
+                    <ul class="nav-list">
+                        <li><a href="https://thomasjbutler.github.io/ThomasJButler/" target="_blank" rel="noopener">Live Portfolio <i class="fas fa-external-link-alt"></i></a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#v3-tech">v3.0 Stack</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main id="main">
+        <!-- Hero Section -->
+        <section id="hero" class="hero-section">
+            <div class="container">
+                <h2 class="hero-title">Portfolio Evolution Timeline</h2>
+                <p class="hero-subtitle">From static HTML to modern React with Vite build tools - witness the transformation over time.</p>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">6</span>
+                        <span class="stat-label">Versions</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">2</span>
+                        <span class="stat-label">Years Journey</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">∞</span>
+                        <span class="stat-label"> Amounts of Learning</span>
+                    </div>
+                </div>
+                
+                <!-- Quick Version Links -->
+                <div class="version-links">
+                    <h3 class="links-title">Quick Access</h3>
+                    <div class="links-grid">
+                        <a href="#v1" class="version-link-btn" data-version="v1">
+                            <span class="version-number">v1.0</span>
+                            <span class="version-date">Jan 2024</span>
+                        </a>
+                        <a href="#v2" class="version-link-btn" data-version="v2">
+                            <span class="version-number">v2.0</span>
+                            <span class="version-date">August 2024</span>
+                        </a>
+                        <a href="#v2.5" class="version-link-btn" data-version="v2.5">
+                            <span class="version-number">v2.5</span>
+                            <span class="version-date">Oct 2024</span>
+                        </a>
+                        <a href="#landing" class="version-link-btn" data-version="landing">
+                            <span class="version-number">Landing</span>
+                            <span class="version-date">Nov 2024</span>
+                        </a>
+                        <a href="#v2.8" class="version-link-btn" data-version="v2.8">
+                            <span class="version-number">v2.8</span>
+                            <span class="version-date">Jan 2025</span>
+                        </a>
+                        <a href="#commercial" class="version-link-btn external" data-version="commercial">
+                            <span class="version-number">Commercial</span>
+                            <span class="version-date">Dec 2024</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="about-section">
+            <div class="container">
+                <h2 class="section-title">About This Journey</h2>
+                <p class="section-intro">
+                    This timeline documents my web development evolution, capturing each iteration 
+                    of my portfolio from January 2024 to present. Each version represents not just 
+                    a visual update, but a milestone in my technical growth.
+                </p>
+            </div>
+        </section>
+
+        <!-- Section Divider -->
+        <div class="section-divider">
+            <div class="divider-line"></div>
+            <div class="divider-icon">
+                <i class="fas fa-code"></i>
+            </div>
+            <div class="divider-line"></div>
+        </div>
+
+                <!-- v3.0 Tech Stack Section -->
+        <section id="v3-tech" class="tech-stack-section">
+            <div class="container">
+                <!-- v3.0 Video Banner -->
+                <div class="v3-preview-placeholder">
+                    <video class="v3-preview-video" autoplay loop muted playsinline>
+                        <source src="https://res.cloudinary.com/depqttzlt/video/upload/v1752558251/large_green_banner_dv0bkk.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+                
+                <h2 class="section-title">Version 3.0 | Current Live Stack</h2>
+                <p class="section-intro">The current portfolio has evolved into a modern, performant web application.</p>
+                
+                <div class="tech-grid">
+                    <div class="tech-category">
+                        <h3>Frontend</h3>
+                        <ul class="tech-list">
+                            <li><i class="fab fa-react"></i> React 18</li>
+                            <li><i class="fab fa-js"></i> Next.js 14</li>
+                            <li><i class="fas fa-paint-brush"></i> Tailwind CSS</li>
+                            <li><i class="fas fa-cube"></i> Vite 7.0</li>
+                        </ul>
+                    </div>
+                    <div class="tech-category">
+                        <h3>Backend & Tools</h3>
+                        <ul class="tech-list">
+                            <li><i class="fab fa-node"></i> Node.js</li>
+                            <li><i class="fas fa-code"></i> TypeScript</li>
+                            <li><i class="fas fa-database"></i> PostgreSQL</li>
+                            <li><i class="fas fa-cloud"></i> Vercel</li>
+                        </ul>
+                    </div>
+                    <div class="tech-category">
+                        <h3>Features</h3>
+                        <ul class="tech-list">
+                            <li><i class="fas fa-bolt"></i> SSR/SSG</li>
+                            <li><i class="fas fa-mobile-alt"></i> PWA</li>
+                            <li><i class="fas fa-search"></i> SEO Optimized</li>
+                            <li><i class="fas fa-universal-access"></i> WCAG AA</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section Divider *Check this as may be the reason for issue with the footer rendering *-->
+        <div class="section-divider">
+            <div class="divider-line"></div>
+            <div class="divider-icon">
+                <i class="fas fa-timeline"></i>
+            </div>
+            <div class="divider-line"></div>
+        </div>
+
+        <!-- Timeline Section -->
+        <section id="timeline" class="timeline-section">
+            <div class="container">
+                <h2 class="section-title">Version Timeline</h2>
+                <div class="timeline-wrapper">
+                    <div class="timeline-line"></div>
+                    <div id="timeline-container" class="timeline-container">
+                        <!-- Timeline items will be dynamically inserted here -->
+                    </div>
+                </div>
+                
+                <!-- CTA Section at bottom of timeline -->
+                <div class="timeline-cta">
+                    <a href="https://thomasjbutler.github.io/ThomasJButler/" class="timeline-cta-button" target="_blank" rel="noopener">
+                        Visit Live v3.0 <i class="fas fa-arrow-right"></i>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+        
+    <!-- Back to Top Button -->
+    <button class="back-to-top" aria-label="Back to top">
+        <i class="fas fa-arrow-up"></i>
+    </button>
+</body>
+</html>
