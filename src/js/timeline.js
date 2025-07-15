@@ -52,44 +52,13 @@ export class Timeline {
   getFallbackData() {
     return [
       {
-        id: 'v3',
-        number: '3.0',
-        date: 'February 2025',
-        title: 'Current Live Version',
-        isLive: true,
-        techStack: ['React 18', 'Next.js 14', 'TypeScript', 'Tailwind CSS'],
-        features: [
-          'Server-side rendering',
-          'Progressive Web App',
-          'Advanced animations',
-          'API integrations'
-        ]
-      },
-      {
-        id: 'v2.9',
-        number: '2.9',
-        date: 'January 2025',
-        title: 'Final Static Version',
-        screenshots: {
-          desktop: 'https://res.cloudinary.com/depqttzlt/image/upload/v1737668269/VersionTimeTravelv25desktop_wrj8uu.png',
-          mobile: 'https://res.cloudinary.com/depqttzlt/image/upload/v1737668270/VersionTimeTravelv25mobile_ua2l41.png'
-        },
-        features: [
-          'Performance optimizations',
-          'Enhanced accessibility',
-          'Refined UI/UX',
-          'Code refactoring'
-        ],
-        path: 'versions/v2.9/'
-      },
-      {
         id: 'v2.8',
         number: '2.8',
         date: 'January 2025',
         title: 'Matrix Evolution',
         screenshots: {
-          desktop: 'https://res.cloudinary.com/depqttzlt/image/upload/v1737668269/VersionTimeTravelv25desktop_wrj8uu.png',
-          mobile: 'https://res.cloudinary.com/depqttzlt/image/upload/v1737668270/VersionTimeTravelv25mobile_ua2l41.png'
+          desktop: 'https://res.cloudinary.com/depqttzlt/image/upload/v1752549398/v28desktop_f5lxp1.png',
+          mobile: 'https://res.cloudinary.com/depqttzlt/image/upload/v1752549394/v28mobile_g7rovj.png'
         },
         features: [
           'Matrix theme refinement',
@@ -153,7 +122,7 @@ export class Timeline {
       {
         id: 'v1',
         number: '1.0',
-        date: 'August 2024',
+        date: 'January 2024',
         title: 'The Beginning',
         screenshots: {
           desktop: 'https://res.cloudinary.com/depqttzlt/image/upload/v1737668237/VersionTimeTravelv1desktop_fcmf21.png',
@@ -203,7 +172,7 @@ export class Timeline {
                   ${version.features.map(feature => `<li>${feature}</li>`).join('')}
                 </ul>
               </div>
-              <a href="https://thomasjbutler.co.uk" class="view-version-btn" target="_blank" rel="noopener">
+              <a href="https://thomasjbutler.me" class="view-version-btn" target="_blank" rel="noopener">
                 Visit Live Site <i class="fas fa-external-link-alt"></i>
               </a>
             </div>
