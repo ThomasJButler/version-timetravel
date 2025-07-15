@@ -5,7 +5,8 @@
 /* Timeline Section */
 .timeline-section {
   background: linear-gradient(180deg, transparent 0%, var(--matrix-dark) 50%, transparent 100%);
-  min-height: 60vh;
+  min-height: auto;
+  padding-bottom: var(--space-4xl);
 }
 
 .timeline-wrapper {
@@ -46,7 +47,7 @@
 .version-card {
   display: flex;
   align-items: center;
-  margin-bottom: var(--space-3xl);
+  margin-bottom: var(--space-2xl);
   opacity: 0;
   transform: translateY(30px);
   animation: slideUp var(--duration-slow) var(--ease-out) forwards;
@@ -131,7 +132,7 @@
   background: var(--matrix-darker);
   border: 1px solid var(--border-primary);
   border-radius: 12px;
-  padding: var(--space-xl);
+  padding: var(--space-lg);
   position: relative;
   overflow: hidden;
   transition: all var(--duration-base) var(--ease-out);
@@ -200,7 +201,7 @@
 /* Desktop Screenshot - Full Width */
 .version-desktop {
   width: 100%;
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
   position: relative;
   overflow: hidden;
   border-radius: 12px;
@@ -308,7 +309,7 @@
 
 /* Features List */
 .version-features {
-  margin-bottom: var(--space-lg);
+  margin-bottom: var(--space-md);
 }
 
 .version-features h4 {
@@ -337,6 +338,40 @@
   position: absolute;
   left: 0;
   color: var(--matrix-green);
+}
+
+/* Features Expanded */
+.features-expanded {
+  margin-top: var(--space-xs);
+  animation: slideDown var(--duration-base) var(--ease-out);
+}
+
+/* See More Button */
+.see-more-btn {
+  background: none;
+  border: 1px solid var(--border-primary);
+  color: var(--text-muted);
+  padding: var(--space-xs) var(--space-md);
+  border-radius: 20px;
+  font-family: var(--font-primary);
+  font-size: var(--font-size-sm);
+  cursor: pointer;
+  transition: all var(--duration-fast) var(--ease-out);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-xs);
+  margin-top: var(--space-sm);
+}
+
+.see-more-btn:hover {
+  border-color: var(--matrix-green);
+  color: var(--matrix-green);
+  transform: translateY(-1px);
+}
+
+.see-more-btn i {
+  font-size: 0.8em;
+  transition: transform var(--duration-fast) var(--ease-out);
 }
 
 /* View Version Button */
@@ -497,6 +532,18 @@
   100% {
     opacity: 0;
     transform: scale(2);
+  }
+}
+
+/* Slide Down Animation */
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    max-height: 0;
+  }
+  to {
+    opacity: 1;
+    max-height: 500px;
   }
 }
 

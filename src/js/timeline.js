@@ -176,9 +176,20 @@ export class Timeline {
                     </div>
                     <div class="version-features">
                       <h4>Key Features</h4>
-                      <ul class="features-list">
-                        ${version.features.map(feature => `<li>${feature}</li>`).join('')}
+                      <ul class="features-list" data-version="${version.id}">
+                        ${version.features.slice(0, 3).map(feature => `<li>${feature}</li>`).join('')}
+                        ${version.features.length > 3 ? `
+                          <div class="features-expanded" style="display: none;">
+                            ${version.features.slice(3).map(feature => `<li>${feature}</li>`).join('')}
+                          </div>
+                        ` : ''}
                       </ul>
+                      ${version.features.length > 3 ? `
+                        <button class="see-more-btn" data-version="${version.id}" data-expanded="false">
+                          <span class="see-more-text">See more</span>
+                          <i class="fas fa-chevron-down"></i>
+                        </button>
+                      ` : ''}
                     </div>
                     <a href="${version.externalUrl}" class="view-version-btn external-btn" target="_blank" rel="noopener">
                       Visit Professional Site <i class="fas fa-external-link-alt"></i>
@@ -220,9 +231,20 @@ export class Timeline {
             ` : '<div class="version-details">'}
                   <div class="version-features">
                     <h4>Key Changes</h4>
-                    <ul class="features-list">
-                      ${version.features.map(feature => `<li>${feature}</li>`).join('')}
+                    <ul class="features-list" data-version="${version.id}">
+                      ${version.features.slice(0, 3).map(feature => `<li>${feature}</li>`).join('')}
+                      ${version.features.length > 3 ? `
+                        <div class="features-expanded" style="display: none;">
+                          ${version.features.slice(3).map(feature => `<li>${feature}</li>`).join('')}
+                        </div>
+                      ` : ''}
                     </ul>
+                    ${version.features.length > 3 ? `
+                      <button class="see-more-btn" data-version="${version.id}" data-expanded="false">
+                        <span class="see-more-text">See more</span>
+                        <i class="fas fa-chevron-down"></i>
+                      </button>
+                    ` : ''}
                   </div>
                   ${version.path ? `
                     <button class="view-version-btn" data-path="${version.path}">
@@ -251,6 +273,33 @@ export class Timeline {
       btn.addEventListener('click', (e) => {
         const path = btn.getAttribute('data-path');
         this.openVersion(path);
+      });
+    });
+    
+    // Handle see more buttons
+    const seeMoreButtons = this.container.querySelectorAll('.see-more-btn');
+    seeMoreButtons.forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const versionId = btn.getAttribute('data-version');
+        const expanded = btn.getAttribute('data-expanded') === 'true';
+        const featuresList = this.container.querySelector(`.features-list[data-version="${versionId}"]`);
+        const expandedFeatures = featuresList.querySelector('.features-expanded');
+        const btnText = btn.querySelector('.see-more-text');
+        const btnIcon = btn.querySelector('i');
+        
+        if (expandedFeatures) {
+          if (expanded) {
+            expandedFeatures.style.display = 'none';
+            btnText.textContent = 'See more';
+            btnIcon.className = 'fas fa-chevron-down';
+            btn.setAttribute('data-expanded', 'false');
+          } else {
+            expandedFeatures.style.display = 'block';
+            btnText.textContent = 'See less';
+            btnIcon.className = 'fas fa-chevron-up';
+            btn.setAttribute('data-expanded', 'true');
+          }
+        }
       });
     });
     
