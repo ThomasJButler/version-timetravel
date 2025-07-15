@@ -476,31 +476,34 @@
   color: var(--matrix-green);
 }
 
-/* CTA Section */
-.cta-section {
+/* Timeline CTA Section */
+.timeline-cta {
   text-align: center;
-  margin-top: var(--space-3xl);
+  margin-top: var(--space-4xl);
+  padding-top: var(--space-2xl);
 }
 
-.cta-button {
+.timeline-cta-button {
   display: inline-flex;
   align-items: center;
   gap: var(--space-md);
   background: linear-gradient(135deg, var(--matrix-green), var(--matrix-cyan));
   color: #000;
-  padding: var(--space-md) var(--space-2xl);
+  padding: var(--space-lg) var(--space-3xl);
   border-radius: 50px;
   font-family: var(--font-primary);
   font-size: var(--font-size-h3);
   font-weight: bold;
   text-transform: uppercase;
   letter-spacing: var(--letter-spacing-wider);
+  text-decoration: none;
   transition: all var(--duration-base) var(--ease-out);
   position: relative;
   overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 255, 0, 0.3);
 }
 
-.cta-button::before {
+.timeline-cta-button::before {
   content: '';
   position: absolute;
   top: 50%;
@@ -513,14 +516,23 @@
   transition: width var(--duration-slow) var(--ease-out), height var(--duration-slow) var(--ease-out);
 }
 
-.cta-button:hover {
+.timeline-cta-button:hover {
   transform: translateY(-3px);
+  color: whitesmoke;
   box-shadow: 0 10px 30px rgba(0, 255, 0, 0.5);
 }
 
-.cta-button:hover::before {
+.timeline-cta-button:hover::before {
   width: 300px;
   height: 300px;
+}
+
+.timeline-cta-button i {
+  transition: transform var(--duration-base) var(--ease-out);
+}
+
+.timeline-cta-button:hover i {
+  transform: translateX(5px);
 }
 
 /* Pulse Animation */
