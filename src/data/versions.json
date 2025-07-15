@@ -92,7 +92,7 @@
       "id": "v2.8",
       "number": "2.8",
       "date": "January 2025",
-      "title": "Matrix Evolution",
+      "title": "Final Static Version",
       "screenshots": {
         "desktop": "https://res.cloudinary.com/depqttzlt/image/upload/v1737668269/VersionTimeTravelv25desktop_wrj8uu.png",
         "mobile": "https://res.cloudinary.com/depqttzlt/image/upload/v1737668270/VersionTimeTravelv25mobile_ua2l41.png"
@@ -109,28 +109,6 @@
       ],
       "techStack": ["HTML", "CSS", "JavaScript", "GSAP", "ScrollMagic"],
       "path": "/version28.html"
-    },
-    {
-      "id": "v2.9",
-      "number": "2.9",
-      "date": "January 2025",
-      "title": "Final Static Version",
-      "screenshots": {
-        "desktop": "https://res.cloudinary.com/depqttzlt/image/upload/v1737668269/VersionTimeTravelv25desktop_wrj8uu.png",
-        "mobile": "https://res.cloudinary.com/depqttzlt/image/upload/v1737668270/VersionTimeTravelv25mobile_ua2l41.png"
-      },
-      "features": [
-        "Last static HTML version",
-        "Performance optimizations",
-        "Enhanced accessibility",
-        "Refined UI/UX design",
-        "Code refactoring",
-        "Preparation for v3.0",
-        "Final bug fixes",
-        "Documentation updates"
-      ],
-      "techStack": ["HTML", "CSS", "JavaScript", "GSAP", "ScrollMagic"],
-      "path": "/version29.html"
     },
     {
       "id": "v3",

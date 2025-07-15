@@ -162,9 +162,9 @@ function initScrollProgress() {
  */
 function initKeyboardNavigation() {
   document.addEventListener('keydown', (e) => {
-    // Number keys 1-7 for version navigation
-    if (e.key >= '1' && e.key <= '7') {
-      const versions = ['v1', 'v2', 'v2.5', 'landing', 'v2.8', 'v2.9', 'v3'];
+    // Number keys 1-6 for version navigation
+    if (e.key >= '1' && e.key <= '6') {
+      const versions = ['v1', 'v2', 'v2.5', 'landing', 'v2.8', 'v3'];
       const versionIndex = parseInt(e.key) - 1;
       if (versions[versionIndex]) {
         const element = document.getElementById(versions[versionIndex]);

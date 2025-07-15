@@ -382,7 +382,7 @@ export class Timeline {
   showLoading() {
     this.container.innerHTML = `
       <div class="timeline-skeleton">
-        ${[1, 2, 3, 4, 5, 6, 7].map(() => `
+        ${[1, 2, 3, 4, 5, 6].map(() => `
           <div class="version-card-skeleton">
             <div class="timeline-dot-skeleton"></div>
             <div class="version-content-skeleton">

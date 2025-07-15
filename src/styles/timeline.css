@@ -516,7 +516,6 @@
 .version-card:nth-child(4) { animation-delay: 0.4s; }
 .version-card:nth-child(5) { animation-delay: 0.5s; }
 .version-card:nth-child(6) { animation-delay: 0.6s; }
-.version-card:nth-child(7) { animation-delay: 0.7s; }
 
 /* Additional Responsive Styles */
 @media (max-width: 768px) {

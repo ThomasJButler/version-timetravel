@@ -5,6 +5,18 @@ All notable changes to the Portfolio Version TimeTravel project will be document
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.2.1] - 2025-01-16
+
+### Removed
+- Removed v2.9 from timeline (nearly identical to v2.8)
+- Deleted version29.html and associated CSS/JS files
+- Updated v2.8 to be marked as "Final Static Version"
+
+### Changed
+- Reverted keyboard navigation to 1-6 keys
+- Adjusted quick access grid back to 6 versions
+- Updated documentation to reflect 6 versions
+
 ## [1.2.0] - 2025-01-16
 
 ### Changed
