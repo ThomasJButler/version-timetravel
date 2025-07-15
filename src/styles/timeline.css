@@ -635,3 +635,46 @@
     aspect-ratio: 16 / 10;
   }
 }
+
+/* Button Group Styles */
+.button-group {
+  display: flex;
+  gap: var(--space-sm);
+  margin-top: var(--space-md);
+  flex-wrap: wrap;
+}
+
+.button-group .view-version-btn {
+  flex: 1;
+  min-width: 120px;
+  justify-content: center;
+  font-size: 0.9rem;
+  padding: var(--space-sm) var(--space-md);
+}
+
+.github-btn {
+  background: linear-gradient(135deg, rgba(20, 20, 20, 0.9), rgba(40, 40, 40, 0.9));
+  border-color: rgba(255, 255, 255, 0.3);
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.github-btn:hover {
+  background: linear-gradient(135deg, rgba(30, 30, 30, 0.9), rgba(50, 50, 50, 0.9));
+  border-color: var(--matrix-green);
+  color: var(--matrix-green);
+  box-shadow: 0 5px 15px rgba(0, 255, 0, 0.2);
+}
+
+.github-btn i {
+  font-size: 1.1em;
+}
+
+@media (max-width: 480px) {
+  .button-group {
+    flex-direction: column;
+  }
+  
+  .button-group .view-version-btn {
+    width: 100%;
+  }
+}

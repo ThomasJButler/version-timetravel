@@ -51,6 +51,35 @@ export class Timeline {
   
   getFallbackData() {
     return [
+        {
+        id: 'commercial',
+        number: 'Commercial',
+        date: 'December 2024 (Updated to v2.0 June 2025)',
+        title: 'Professional Portfolio',
+        isExternal: true,
+        externalUrl: 'https://thomasjbutler.me',
+        screenshots: {
+          desktop: 'https://res.cloudinary.com/depqttzlt/image/upload/v1752552064/commercialdesktop_nn2p8t.png',
+          mobile: 'https://res.cloudinary.com/depqttzlt/image/upload/v1752552062/commercialmobile_nrh17c.png'
+        },
+        techStack: [
+          'React',
+          'JavaScript',
+          'SCSS',
+          'Bootstrap 5',
+          'Vite'
+        ],
+        features: [
+          'Separate site for commercial work',
+          '3+ years experience showcase',
+          'Apple-inspired design',
+          'Light/dark theme switching',
+          'Multi-language support',
+          '90+ Lighthouse score',
+          'WCAG compliant',
+          'SEO optimized'
+        ]
+      },
       {
         id: 'v2.8',
         number: '2.8',
@@ -136,35 +165,6 @@ export class Timeline {
         ],
         path: 'version1.html'
       },
-      {
-        id: 'commercial',
-        number: 'Commercial',
-        date: 'December 2024',
-        title: 'Professional Portfolio',
-        isExternal: true,
-        externalUrl: 'https://thomasjbutler.me',
-        screenshots: {
-          desktop: 'https://res.cloudinary.com/depqttzlt/image/upload/v1752552064/commercialdesktop_nn2p8t.png',
-          mobile: 'https://res.cloudinary.com/depqttzlt/image/upload/v1752552062/commercialmobile_nrh17c.png'
-        },
-        techStack: [
-          'React',
-          'JavaScript',
-          'SCSS',
-          'Bootstrap 5',
-          'Vite'
-        ],
-        features: [
-          'Separate site for commercial work',
-          '3+ years experience showcase',
-          'Apple-inspired design',
-          'Light/dark theme switching',
-          'Multi-language support',
-          '90+ Lighthouse score',
-          'WCAG compliant',
-          'SEO optimized'
-        ]
-      }
     ];
   }
   
@@ -181,13 +181,13 @@ export class Timeline {
         <div class="version-card version-external" data-version="${version.id}" id="${version.id}">
           <div class="timeline-dot"></div>
           <div class="version-content">
-            <div class="version-box external-version">
+            <div class="version-box">
               <div class="version-header">
                 <div class="version-info">
                   <h3>${version.number} Portfolio</h3>
                   <span class="version-date">${version.date}</span>
                 </div>
-                <span class="version-tag external-tag">${version.title}</span>
+                <span class="version-tag">${version.title}</span>
               </div>
               ${version.screenshots ? `
                 <div class="version-desktop">
@@ -198,13 +198,7 @@ export class Timeline {
                   <div class="version-details">
               ` : '<div class="version-details">'}
                     <div class="version-features">
-                      <h4>Tech Stack</h4>
-                      <ul class="features-list">
-                        ${version.techStack.map(tech => `<li>${tech}</li>`).join('')}
-                      </ul>
-                    </div>
-                    <div class="version-features">
-                      <h4>Key Features</h4>
+                      <h4>Key Changes</h4>
                       <ul class="features-list" data-version="${version.id}">
                         ${version.features.slice(0, 3).map(feature => `<li>${feature}</li>`).join('')}
                         ${version.features.length > 3 ? `
@@ -220,9 +214,14 @@ export class Timeline {
                         </button>
                       ` : ''}
                     </div>
-                    <a href="${version.externalUrl}" class="view-version-btn external-btn" target="_blank" rel="noopener">
-                      Visit Professional Site <i class="fas fa-external-link-alt"></i>
-                    </a>
+                    <div class="button-group">
+                      <a href="${version.externalUrl}" class="view-version-btn external-btn" target="_blank" rel="noopener">
+                        Visit Site <i class="fas fa-external-link-alt"></i>
+                      </a>
+                      <a href="https://github.com/ThomasJButler/Commercial-Portfolio-React" class="view-version-btn github-btn" target="_blank" rel="noopener" title="View on GitHub">
+                        <i class="fab fa-github"></i> GitHub
+                      </a>
+                    </div>
                   </div>
                   ${version.screenshots ? `
                     <div class="version-mobile">
