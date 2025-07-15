@@ -5,6 +5,22 @@ All notable changes to the Portfolio Version TimeTravel project will be document
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.0] - 2025-01-16
+
+### Removed
+- Deleted unused `/css/styles.css` file
+- Deleted unused `/js/timetravel.js` file  
+- Removed redundant `READMEv3.1.md` file
+
+### Fixed
+- Fixed CSS path in `version1.html` from `src/css/` to `/css/`
+- Fixed JS path in `version1.html` from `src/js/` to `/js/`
+- Fixed CSS path in `version2.html` from `src/css/` to `/css/`
+- Fixed JS path in `version2.html` from `src/js/` to `/js/`
+
+### Updated
+- Updated `files-to-remove.md` to track cleanup progress
+
 ## [1.2.1] - 2025-01-16
 
 ### Removed
