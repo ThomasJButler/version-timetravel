@@ -2,6 +2,8 @@ import { defineConfig } from 'vite'
 import path from 'path'
 
 export default defineConfig({
+  // Important: Set base to your repo name for GitHub Pages
+  base: '/version-timetravel/',
   root: './',
   build: {
     outDir: 'dist',
