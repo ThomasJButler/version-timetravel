@@ -102,6 +102,7 @@ html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100%;
 }
 
 body {
@@ -112,6 +113,7 @@ body {
   background-color: #000;
   min-height: 100vh;
   overflow-x: hidden;
+  overflow-y: auto;
   position: relative;
   font-weight: var(--font-weight-normal);
   text-rendering: optimizeLegibility;
