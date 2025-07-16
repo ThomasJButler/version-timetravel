@@ -887,9 +887,13 @@ img.image-loading {
   position: relative;
   max-width: 90vw;
   max-height: 90vh;
+  width: auto;
+  height: auto;
   display: flex;
   align-items: center;
   justify-content: center;
+  min-width: 300px;
+  min-height: 200px;
 }
 
 .modal-content img {
@@ -902,6 +906,36 @@ img.image-loading {
   border-radius: 8px;
   box-shadow: 0 0 30px rgba(0, 255, 0, 0.3);
   display: block;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+}
+
+.modal-content img.loading {
+  opacity: 0;
+}
+
+.modal-loading {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: var(--matrix-green);
+  font-size: 2rem;
+  display: none;
+}
+
+.modal-loading.active {
+  display: block;
+}
+
+/* Spinner animation for modal */
+@keyframes fa-spin {
+  0% { transform: translate(-50%, -50%) rotate(0deg); }
+  100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+.modal-loading .fa-spin {
+  animation: fa-spin 1s linear infinite;
 }
 
 .modal-close {

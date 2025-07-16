@@ -379,13 +379,15 @@ export class Timeline {
   showImageModal(src, alt) {
     console.log('Opening modal with image:', src);
     
-    // Create modal
+    // Create modal structure first
     const modal = document.createElement('div');
     modal.className = 'image-modal';
     modal.innerHTML = `
       <div class="modal-content">
         <button class="modal-close">&times;</button>
-        <img src="${src}" alt="${alt}" onerror="console.error('Failed to load image:', this.src)">
+        <div class="modal-loading active">
+          <i class="fas fa-spinner fa-spin"></i>
+        </div>
       </div>
     `;
     
@@ -393,6 +395,48 @@ export class Timeline {
     
     // Force reflow to ensure animation plays
     modal.offsetHeight;
+    
+    // Preload the image
+    const img = new Image();
+    
+    img.onload = () => {
+      console.log('Image loaded successfully:', src);
+      
+      // Create the actual image element
+      const imgElement = document.createElement('img');
+      imgElement.src = src;
+      imgElement.alt = alt;
+      imgElement.className = 'loading';
+      
+      // Add image to modal
+      const modalContent = modal.querySelector('.modal-content');
+      modalContent.appendChild(imgElement);
+      
+      // Hide loading spinner
+      const loadingElement = modal.querySelector('.modal-loading');
+      loadingElement.classList.remove('active');
+      
+      // Fade in the image
+      setTimeout(() => {
+        imgElement.classList.remove('loading');
+      }, 50);
+    };
+    
+    img.onerror = () => {
+      console.error('Failed to load image:', src);
+      const modalContent = modal.querySelector('.modal-content');
+      modalContent.innerHTML = `
+        <button class="modal-close">&times;</button>
+        <div style="color: var(--matrix-red); text-align: center; padding: 2rem;">
+          <i class="fas fa-exclamation-triangle" style="font-size: 3rem; margin-bottom: 1rem; display: block;"></i>
+          <p>Failed to load image</p>
+          <p style="font-size: 0.9rem; opacity: 0.7; margin-top: 0.5rem;">${src}</p>
+        </div>
+      `;
+    };
+    
+    // Start loading the image
+    img.src = src;
     
     // Close on click
     modal.addEventListener('click', (e) => {
