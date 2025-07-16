@@ -177,7 +177,7 @@ function initKeyboardNavigation() {
     // ESC to close viewer or go to top
     if (e.key === 'Escape') {
       if (window.location.pathname.includes('viewer.html')) {
-        window.location.href = '/';
+        window.location.href = import.meta.env.BASE_URL;
       } else {
         window.scrollTo({ top: 0, behavior: 'smooth' });
       }

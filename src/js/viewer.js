@@ -70,7 +70,7 @@ class VersionViewer {
   initControls() {
     // Back button
     this.backBtn.addEventListener('click', () => {
-      window.location.href = '/';
+      window.location.href = import.meta.env.BASE_URL;
     });
     
     // Viewport toggles
@@ -98,7 +98,7 @@ class VersionViewer {
           if (document.fullscreenElement) {
             this.toggleFullscreen();
           } else {
-            window.location.href = '/';
+            window.location.href = import.meta.env.BASE_URL;
           }
           break;
         case '1':
@@ -184,7 +184,7 @@ class VersionViewer {
       <div class="error-message">
         <i class="fas fa-exclamation-triangle"></i>
         <p>${message}</p>
-        <button onclick="window.location.href='/'">Back to Timeline</button>
+        <button onclick="window.location.href='${import.meta.env.BASE_URL}'">Back to Timeline</button>
       </div>
     `;
     this.loadingOverlay.classList.add('active');
