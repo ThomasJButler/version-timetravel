@@ -43,8 +43,13 @@ class VersionViewer {
     if (num) this.versionNumber.textContent = `Version ${num}`;
     if (date) this.versionDate.textContent = date;
     
+    // Construct the correct URL for the version file
+    // Remove leading slash if present and prepend base URL
+    const cleanPath = path.startsWith('/') ? path.substring(1) : path;
+    const fullPath = import.meta.env.BASE_URL + cleanPath;
+    
     // Load version in iframe
-    this.frame.src = path;
+    this.frame.src = fullPath;
     
     // Handle load complete
     this.frame.addEventListener('load', () => {

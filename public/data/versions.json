@@ -64,7 +64,7 @@
         "Implemented custom error pages"
       ],
       "techStack": ["HTML", "CSS", "JavaScript", "GSAP", "ScrollMagic"],
-      "path": "/version25.html"
+      "path": "version25.html"
     },
     {
       "id": "landing",
@@ -86,7 +86,7 @@
         "Refined responsive design"
       ],
       "techStack": ["HTML", "CSS", "JavaScript", "FontAwesome"],
-      "path": "/landingpage.html"
+      "path": "landingpage.html"
     },
     {
       "id": "v2.8",
@@ -108,7 +108,7 @@
         "Bug fixes and polish"
       ],
       "techStack": ["HTML", "CSS", "JavaScript", "GSAP", "ScrollMagic"],
-      "path": "/version28.html"
+      "path": "version28.html"
     },
     {
       "id": "commercial",

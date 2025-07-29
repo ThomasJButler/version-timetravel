@@ -5,6 +5,18 @@ All notable changes to the Portfolio Version TimeTravel project will be document
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.3.1] - 2025-01-29
+
+### Fixed
+- Fixed 404 routing issue when clicking "Time Travel" buttons on GitHub Pages production deployment
+- Updated viewer.js to properly handle base URL when loading version files
+- Fixed paths in versions.json to use relative paths without leading slashes
+- Enhanced vite.config.js with custom plugin to:
+  - Copy all version HTML files to dist directory
+  - Copy CSS and JS directories for legacy versions
+  - Automatically update absolute paths to relative paths in HTML files
+- Ensured all required files are included in production build
+
 ## [1.3.0] - 2025-01-16
 
 ### Removed
