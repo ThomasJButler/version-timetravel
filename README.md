@@ -30,41 +30,6 @@ Portfolio Version TimeTravel is a visual journey through my web development evol
 - **Animations**: CSS animations and transitions
 - **Design**: Matrix-themed custom design system
 
-## 🚀 Getting Started
-
-### Prerequisites
-
-- Node.js (v14 or higher)
-- npm or yarn
-
-### Installation
-
-1. Clone the repository:
-```bash
-git clone https://github.com/ThomasJButler/version-timetravel.git
-cd version-timetravel
-```
-
-2. Install dependencies:
-```bash
-npm install
-```
-
-3. Start the development server:
-```bash
-npm run dev
-```
-
-4. Open http://localhost:3000 in your browser
-
-### Building for Production
-
-```bash
-npm run build
-```
-
-The optimized files will be in the `dist` directory.
-
 ## 📁 Project Structure
 
 ```
@@ -124,36 +89,7 @@ version-timetravel/
    - Modern React application
    - Full-stack implementation
 
-## 🚀 Deployment
-
-### Vercel (Recommended)
-
-1. Install Vercel CLI:
-```bash
-npm i -g vercel
-```
-
-2. Deploy:
-```bash
-vercel
-```
-
-### GitHub Pages
-
-1. Build the project:
-```bash
-npm run build
-```
-
-2. Deploy the `dist` folder to GitHub Pages
-
-## 🤝 Contributing
-
-While this is a personal portfolio project, suggestions and feedback are welcome! Feel free to open an issue or submit a pull request.
-
-## 📝 License
-
-This project is open source and available under the [MIT License](LICENSE).
+## 🚀 Deployment | ### Vercel |
 
 ## 🙏 Acknowledgments
 
@@ -163,4 +99,4 @@ This project is open source and available under the [MIT License](LICENSE).
 
 ---
 
-**Created by Thomas J Butler** | [Portfolio](https://thomasjbutler.co.uk) | [LinkedIn](https://www.linkedin.com/in/thomasbutleruk/) | [GitHub](https://github.com/ThomasJButler)
+**Created by Thomas J Butler** | [Portfolio](https://thomasjbutler.me) | [LinkedIn](https://www.linkedin.com/in/thomasbutleruk/) | [GitHub](https://github.com/ThomasJButler)
