@@ -57,8 +57,8 @@ export class Timeline {
         date: 'July 2025',
         title: 'Hybrid Architecture',
         screenshots: {
-          desktop: 'https://res.cloudinary.com/depqttzlt/image/upload/v1754541799/v30_sesrmp.png',
-          mobile: 'https://res.cloudinary.com/depqttzlt/image/upload/v1754541799/v30_sesrmp.png'
+          desktop: 'https://res.cloudinary.com/depqttzlt/image/upload/v1758493550/version30desktop_oyyj4x.png',
+          mobile: 'https://res.cloudinary.com/depqttzlt/image/upload/v1758493550/version30mobile_dfhzex.png'
         },
         features: [
           'Hybrid HTML/CSS/JS with module system',
