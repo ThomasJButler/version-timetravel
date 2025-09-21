@@ -1,0 +1,395 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thomas J Butler - Portfolio v3.0 | Full-Stack Developer | Liverpool</title>
+
+    <!-- Meta Tags -->
+    <meta name="description" content="Thomas J Butler - Full-Stack Developer specializing in React, TypeScript, AI integration, and neurodiversity applications. Liverpool-based tech innovator with expertise in modern web development.">
+    <meta name="keywords" content="Thomas J Butler, full-stack developer, React developer, TypeScript, Liverpool developer, AI integration, neurodiversity tech, portfolio, web development">
+    <meta name="author" content="Thomas J Butler">
+    <meta name="robots" content="index, follow">
+
+    <!-- Theme Color -->
+    <meta name="theme-color" content="#00FF00">
+
+    <!-- Critical CSS to prevent FOUC -->
+    <style>
+        body:not(.loaded) {
+            visibility: hidden;
+            opacity: 0;
+        }
+        body {
+            animation: showFallback 2s forwards;
+        }
+        @keyframes showFallback {
+            to {
+                visibility: visible;
+                opacity: 1;
+            }
+        }
+        .page-loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #000;
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+        }
+        .page-loader.active {
+            opacity: 1;
+            visibility: visible;
+        }
+    </style>
+
+    <!-- Preconnect to external domains -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <!-- Preload critical fonts -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=VT323&display=swap" as="style">
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+
+    <!-- v3.0 CSS -->
+    <link rel="stylesheet" href="/css/version30.css">
+</head>
+<body class="index demo-version">
+    <!-- Matrix Background Effect -->
+    <div id="matrix">
+        <canvas id="matrixCanvas"></canvas>
+    </div>
+
+    <!-- Demo Banner -->
+    <div class="demo-banner">
+        <i class="fas fa-code"></i>
+        <span>Portfolio v3.0 - Hybrid Architecture with 3D Showcase</span>
+        <i class="fas fa-eye"></i>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="header-title">
+                <a href="#" style="text-decoration: none;">
+                    <h1>Thomas J Butler</h1>
+                </a>
+            </div>
+            <nav>
+                <div class="menu-toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                <ul>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#skills">Skills</a></li>
+                    <li><a href="#about">About Me</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section id="introduction">
+            <div class="container">
+                <h2 class="welcome-text">Hey, I'm Tom.</h2>
+                <br>
+                <h2>A Web Developer and Designer from Liverpool, England, UK</h2>
+                <h2>With a passion for cutting-edge technology and creative problem-solving, I'm here to help transform your digital visions into reality.</h2>
+                <h2 class="introduction-h2">My expertise spans web development, AI integration, and innovative design solutions.</h2>
+                <div class="introduction-img">
+                    <img src="https://res.cloudinary.com/depqttzlt/image/upload/v1737693667/CreateAiModel_oufvro.png" alt="AiTomatic Create a Model">
+                    <img src="https://res.cloudinary.com/depqttzlt/image/upload/v1737693678/MatrixArcade2_eg34bs.png" alt="The Matrix Arcade">
+                    <img src="https://res.cloudinary.com/depqttzlt/image/upload/v1737693677/Usage_Patterns_iw5j6a.png" alt="AiTomatic Usage Pattern">
+                </div>
+            </div>
+        </section>
+
+        <section id="rendering-info" class="reveal">
+            <div class="container">
+                <h2 class="section-title">--| v3.0 Rendering Structure |--</h2>
+                <div class="rendering-grid">
+                    <div class="rendering-card">
+                        <h3><i class="fas fa-file-code"></i> CSS Dependencies</h3>
+                        <ul>
+                            <li><strong>External:</strong> Google Fonts VT323, Font Awesome 5.15.3</li>
+                            <li><strong>Main CSS:</strong> /css/version30.css (modular structure)</li>
+                            <li><strong>Components:</strong> Header, Footer, Navigation, Buttons, Cards</li>
+                            <li><strong>Legacy:</strong> Global styles, Typography, Hover effects</li>
+                        </ul>
+                    </div>
+                    <div class="rendering-card">
+                        <h3><i class="fas fa-cogs"></i> JavaScript Modules</h3>
+                        <ul>
+                            <li><strong>Entry:</strong> /js/version30.js (standalone script)</li>
+                            <li><strong>Core:</strong> Matrix animation with Canvas API</li>
+                            <li><strong>Features:</strong> 3D cube rotation, Mobile menu, Touch support</li>
+                            <li><strong>Performance:</strong> FPS limiting, Scroll throttling, RAF optimization</li>
+                        </ul>
+                    </div>
+                    <div class="rendering-card">
+                        <h3><i class="fas fa-layer-group"></i> Build System</h3>
+                        <ul>
+                            <li><strong>Architecture:</strong> Hybrid HTML/CSS/JS structure</li>
+                            <li><strong>Workflow:</strong> Modular components with standalone files</li>
+                            <li><strong>Integration:</strong> Part of Version TimeTravel system</li>
+                            <li><strong>Legacy:</strong> Compatible with existing portfolio versions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="latest-updates" class="reveal">
+            <div class="container">
+                <h2 class="section-title">--| 3D Project Showcase |--</h2>
+                <p class="section-description">Interactive rotating cube demonstrating CSS 3D transforms and touch interactions</p>
+
+                <!-- 3D Rotating Cube Showcase -->
+                <div class="cube-showcase">
+                    <div class="cube-container" id="cube">
+                        <!-- Portfolio v3.0 - Front Face -->
+                        <div class="cube-face front">
+                            <div class="cube-project">
+                                <div class="cube-project-icon">
+                                    <i class="fab fa-html5"></i>
+                                </div>
+                                <h3>Portfolio v3.0</h3>
+                                <p class="cube-project-description">Hybrid architecture with modular CSS/JS, Matrix effects, and 3D interactive elements.</p>
+                                <div class="cube-project-tags">
+                                    <span>HTML5</span>
+                                    <span>CSS3</span>
+                                    <span>JavaScript</span>
+                                    <span>Canvas API</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Matrix Effect - Right Face -->
+                        <div class="cube-face right">
+                            <div class="cube-project">
+                                <div class="cube-project-icon">
+                                    <i class="fas fa-magic"></i>
+                                </div>
+                                <h3>Matrix Rain Effect</h3>
+                                <p class="cube-project-description">Custom canvas animation with interactive elements and performance optimization.</p>
+                                <div class="cube-project-tags">
+                                    <span>Canvas API</span>
+                                    <span>JavaScript</span>
+                                    <span>Animation</span>
+                                    <span>Interactive</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Animation System - Back Face -->
+                        <div class="cube-face back">
+                            <div class="cube-project">
+                                <div class="cube-project-icon">
+                                    <i class="fas fa-bolt"></i>
+                                </div>
+                                <h3>3D Transforms</h3>
+                                <p class="cube-project-description">CSS 3D cube with touch support, smooth transitions, and responsive design.</p>
+                                <div class="cube-project-tags">
+                                    <span>CSS 3D</span>
+                                    <span>Transform</span>
+                                    <span>Touch Events</span>
+                                    <span>Responsive</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Build System - Left Face -->
+                        <div class="cube-face left">
+                            <div class="cube-project">
+                                <div class="cube-project-icon">
+                                    <i class="fas fa-rocket"></i>
+                                </div>
+                                <h3>Modular Architecture</h3>
+                                <p class="cube-project-description">Component-based structure with separated CSS/JS files for maintainability.</p>
+                                <div class="cube-project-tags">
+                                    <span>Modular CSS</span>
+                                    <span>Standalone JS</span>
+                                    <span>Components</span>
+                                    <span>Maintainable</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- CSS Architecture - Top Face -->
+                        <div class="cube-face top">
+                            <div class="cube-project">
+                                <div class="cube-project-icon">
+                                    <i class="fas fa-palette"></i>
+                                </div>
+                                <h3>Modern CSS</h3>
+                                <p class="cube-project-description">CSS variables, responsive grid layouts, and advanced animations.</p>
+                                <div class="cube-project-tags">
+                                    <span>CSS Variables</span>
+                                    <span>Grid Layout</span>
+                                    <span>Responsive</span>
+                                    <span>Animations</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Performance - Bottom Face -->
+                        <div class="cube-face bottom">
+                            <div class="cube-project">
+                                <div class="cube-project-icon">
+                                    <i class="fas fa-tachometer-alt"></i>
+                                </div>
+                                <h3>Performance Optimized</h3>
+                                <p class="cube-project-description">FPS limiting, scroll throttling, and Request Animation Frame optimization.</p>
+                                <div class="cube-project-tags">
+                                    <span>FPS Limiting</span>
+                                    <span>RAF</span>
+                                    <span>Throttling</span>
+                                    <span>Optimized</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Cube Navigation -->
+                    <div class="cube-nav">
+                        <button onclick="rotateCube('front')" class="active">1</button>
+                        <button onclick="rotateCube('right')">2</button>
+                        <button onclick="rotateCube('back')">3</button>
+                        <button onclick="rotateCube('left')">4</button>
+                        <button onclick="rotateCube('top')">5</button>
+                        <button onclick="rotateCube('bottom')">6</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <h2>--| v3.0 Architecture Demo |--</h2>
+                <p>This demonstrates the v3.0 hybrid structure approach with modular components and 3D interactions</p>
+                <div class="contact-button-container">
+                    <a href="#" class="btn-contact-us">
+                        <i class="fas fa-code"></i>
+                        Explore v3.0 Features
+                    </a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container-footer">
+            <ul>
+                <li data-tooltip="v3.0 Architecture">
+                    <a href="#" data-text="v3.0">
+                        <i class="fas fa-code"></i> v3.0 Architecture
+                    </a>
+                </li>
+                <li data-tooltip="HTML/CSS/JS Hybrid">
+                    <a href="#" data-text="Hybrid">
+                        <i class="fas fa-layer-group"></i> Hybrid Structure
+                    </a>
+                </li>
+                <li data-tooltip="3D Interactions">
+                    <a href="#" data-text="3D">
+                        <i class="fas fa-cube"></i> 3D Showcase
+                    </a>
+                </li>
+                <li data-tooltip="Matrix Effects">
+                    <a href="#" data-text="Matrix">
+                        <i class="fas fa-magic"></i> Matrix Rain
+                    </a>
+                </li>
+            </ul>
+            <p>&copy; 2025 Thomas J Butler - Portfolio v3.0 Hybrid Architecture</p>
+        </div>
+    </footer>
+
+    <!-- Matrix Effect and Cube Rotation Scripts -->
+    <script src="/js/version30.js"></script>
+    <script>
+        // Rotating Cube 3D Effect
+        const cube = document.getElementById('cube');
+        let currentRotation = { x: 0, y: 0 };
+        let currentFace = 'front';
+
+        function rotateCube(face) {
+            document.querySelectorAll('.cube-nav button').forEach(btn => {
+                btn.classList.remove('active');
+            });
+
+            switch(face) {
+                case 'front':
+                    currentRotation = { x: 0, y: 0 };
+                    document.querySelector('.cube-nav button:nth-child(1)').classList.add('active');
+                    break;
+                case 'right':
+                    currentRotation = { x: 0, y: 90 };
+                    document.querySelector('.cube-nav button:nth-child(2)').classList.add('active');
+                    break;
+                case 'back':
+                    currentRotation = { x: 0, y: 180 };
+                    document.querySelector('.cube-nav button:nth-child(3)').classList.add('active');
+                    break;
+                case 'left':
+                    currentRotation = { x: 0, y: -90 };
+                    document.querySelector('.cube-nav button:nth-child(4)').classList.add('active');
+                    break;
+                case 'top':
+                    currentRotation = { x: -90, y: 0 };
+                    document.querySelector('.cube-nav button:nth-child(5)').classList.add('active');
+                    break;
+                case 'bottom':
+                    currentRotation = { x: 90, y: 0 };
+                    document.querySelector('.cube-nav button:nth-child(6)').classList.add('active');
+                    break;
+            }
+
+            cube.style.transform = `rotateX(${currentRotation.x}deg) rotateY(${currentRotation.y}deg)`;
+            currentFace = face;
+        }
+
+        // Touch/swipe support for mobile
+        let touchStartX = 0;
+        let touchStartY = 0;
+
+        cube.addEventListener('touchstart', (e) => {
+            touchStartX = e.touches[0].clientX;
+            touchStartY = e.touches[0].clientY;
+        });
+
+        cube.addEventListener('touchend', (e) => {
+            const touchEndX = e.changedTouches[0].clientX;
+            const touchEndY = e.changedTouches[0].clientY;
+            const diffX = touchStartX - touchEndX;
+            const diffY = touchStartY - touchEndY;
+
+            const minSwipeDistance = 50;
+
+            if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > minSwipeDistance) {
+                if (diffX > 0) {
+                    const nextFace = currentFace === 'front' ? 'right' :
+                                   currentFace === 'right' ? 'back' :
+                                   currentFace === 'back' ? 'left' : 'front';
+                    rotateCube(nextFace);
+                } else {
+                    const nextFace = currentFace === 'front' ? 'left' :
+                                   currentFace === 'left' ? 'back' :
+                                   currentFace === 'back' ? 'right' : 'front';
+                    rotateCube(nextFace);
+                }
+            }
+        });
+    </script>
+</body>
+</html>
