@@ -14,10 +14,10 @@ Portfolio Version TimeTravel is a visual journey through my web development evol
 
 ### ✨ Features
 
-- **Interactive Timeline**: Smooth-scrolling timeline with 6 portfolio versions
+- **Interactive Timeline**: Smooth-scrolling timeline with 9 portfolio versions
 - **Version Viewer**: Preview each version in desktop, tablet, and mobile viewports
 - **Matrix Theme**: Elegant cyberpunk aesthetic with ultra-subtle rain effect
-- **Keyboard Navigation**: Quick access with number keys (1-6) and arrow navigation
+- **Keyboard Navigation**: Quick access with number keys (1-9) and arrow navigation
 - **Learning Documentation**: Each version includes detailed notes about challenges and victories
 - **Responsive Design**: Fully optimized for all devices
 - **Performance Optimized**: Built with Vite for lightning-fast loading
@@ -58,7 +58,7 @@ version-timetravel/
 
 ## 🎮 Keyboard Shortcuts
 
-- **1-6**: Jump to specific version
+- **1-9**: Jump to specific version
 - **↑/↓**: Navigate between versions
 - **ESC**: Return to top
 - **Space**: Play/pause animations
@@ -85,9 +85,21 @@ version-timetravel/
    - Refined design system
    - Better mobile experience
 
-6. **v3.0** (Feb 2025) - Current Live Version
-   - Modern React application
-   - Full-stack implementation
+6. **v3.0** (July 2025) - Hybrid Architecture
+   - Vite build tools integration
+   - GSAP animations and ScrollMagic
+   - 3D rotating cube showcase
+   - Enhanced Matrix theme
+
+7. **v3.5** (Sept 2025) - Current Live Version
+   - Complete React 19 migration
+   - TypeScript integration
+   - Component-based architecture
+
+**Commercial Portfolio** - Separate Professional Site
+   - Showcases real-world commercial experience
+   - Independent from version timeline
+   - Available at thomasjbutler.me
 
 ## 🚀 Deployment | ### Vercel |
 

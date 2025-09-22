@@ -138,6 +138,51 @@
         "WCAG compliant",
         "SEO optimized"
       ]
+    },
+    {
+      "id": "v3",
+      "number": "3.0",
+      "date": "July 2025",
+      "title": "Hybrid Architecture",
+      "screenshots": {
+        "desktop": "https://res.cloudinary.com/depqttzlt/image/upload/v1754541799/v30_sesrmp.png",
+        "mobile": "https://res.cloudinary.com/depqttzlt/image/upload/v1754541799/v30_sesrmp.png"
+      },
+      "features": [
+        "Hybrid HTML/CSS/JS with module system",
+        "Vite build tools integration",
+        "GSAP animations and ScrollMagic",
+        "3D rotating cube showcase",
+        "Enhanced Matrix rain effect",
+        "Module-based CSS architecture",
+        "Performance optimized loading",
+        "Responsive grid layouts"
+      ],
+      "techStack": ["HTML", "CSS", "JavaScript", "Vite", "GSAP", "ScrollMagic"],
+      "path": "version30.html"
+    },
+    {
+      "id": "v3.5",
+      "number": "3.5",
+      "date": "September 2025",
+      "title": "Current Live Version",
+      "isLive": true,
+      "screenshots": {
+        "desktop": "https://res.cloudinary.com/depqttzlt/image/upload/v1754541799/v30_sesrmp.png",
+        "mobile": "https://res.cloudinary.com/depqttzlt/image/upload/v1754541799/v30_sesrmp.png"
+      },
+      "features": [
+        "Complete React 19 migration",
+        "TypeScript integration",
+        "Component-based architecture",
+        "Modern build tools (Vite 7)",
+        "Enhanced animations with Anime.js",
+        "Advanced state management",
+        "Optimized performance",
+        "Modern development workflow"
+      ],
+      "techStack": ["React 19", "TypeScript", "Vite 7", "Anime.js", "SCSS", "ES6+"],
+      "path": "#"
     }
   ]
 }

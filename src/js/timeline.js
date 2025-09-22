@@ -52,6 +52,23 @@ export class Timeline {
   getFallbackData() {
     return [
         {
+        id: 'v3',
+        number: '3.0',
+        date: 'July 2025',
+        title: 'Hybrid Architecture',
+        screenshots: {
+          desktop: 'https://res.cloudinary.com/depqttzlt/image/upload/v1758493550/version30desktop_oyyj4x.png',
+          mobile: 'https://res.cloudinary.com/depqttzlt/image/upload/v1758493550/version30mobile_dfhzex.png'
+        },
+        features: [
+          'Hybrid HTML/CSS/JS with module system',
+          'Vite build tools integration',
+          '3D rotating cube showcase',
+          'Enhanced Matrix rain effect'
+        ],
+        path: 'version30.html'
+        },
+        {
         id: 'commercial',
         number: 'Commercial',
         date: 'December 2024 (Updated to v2.0 June 2025)',
@@ -458,7 +475,7 @@ export class Timeline {
   showLoading() {
     this.container.innerHTML = `
       <div class="timeline-skeleton">
-        ${[1, 2, 3, 4, 5, 6].map(() => `
+        ${[1, 2, 3, 4, 5, 6, 7, 8, 9].map(() => `
           <div class="version-card-skeleton">
             <div class="timeline-dot-skeleton"></div>
             <div class="version-content-skeleton">
