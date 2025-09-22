@@ -30,6 +30,7 @@ export default defineConfig({
           'version2.html', 
           'version25.html',
           'version28.html',
+          'version30.html',
           'landingpage.html'
         ];
         
