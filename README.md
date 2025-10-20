@@ -8,11 +8,11 @@
 ![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black)
 
-## 🎯 Overview
+## Overview
 
 Portfolio Version TimeTravel is a visual journey through my web development evolution. This standalone application documents each iteration of my portfolio, capturing not just the visual changes but the technical growth and learning milestones along the way.
 
-### ✨ Features
+### Features
 
 - **Interactive Timeline**: Smooth-scrolling timeline with 9 portfolio versions
 - **Version Viewer**: Preview each version in desktop, tablet, and mobile viewports
@@ -22,7 +22,7 @@ Portfolio Version TimeTravel is a visual journey through my web development evol
 - **Responsive Design**: Fully optimized for all devices
 - **Performance Optimized**: Built with Vite for lightning-fast loading
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 - **Build Tool**: Vite
 - **Languages**: HTML5, CSS3, JavaScript (ES6+)
@@ -30,7 +30,7 @@ Portfolio Version TimeTravel is a visual journey through my web development evol
 - **Animations**: CSS animations and transitions
 - **Design**: Matrix-themed custom design system
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 version-timetravel/
@@ -56,14 +56,14 @@ version-timetravel/
 └── package.json         # Project dependencies
 ```
 
-## 🎮 Keyboard Shortcuts
+## Keyboard Shortcuts
 
 - **1-9**: Jump to specific version
 - **↑/↓**: Navigate between versions
 - **ESC**: Return to top
 - **Space**: Play/pause animations
 
-## 🌟 Version History
+## Version History
 
 1. **v1.0** (Aug 2024) - The Beginning
    - First portfolio with Matrix rain effect
@@ -101,7 +101,7 @@ version-timetravel/
    - Independent from version timeline
    - Available at thomasjbutler.me
 
-## 🚀 Deployment | ### Vercel |
+## Deployment | ### Vercel |
 
 ## 🙏 Acknowledgments
 
