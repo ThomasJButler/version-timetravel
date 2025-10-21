@@ -48,25 +48,21 @@
  * 4. Update notification styling in CSS
  * 5. Modify gallery hover sensitivity in applyHoverEffect
  */
-// Check if current page is the art gallery page by looking for 'art.html' in URL
 const isArtPage = window.location.pathname.includes('art.html');
 
-// Matrix Rain Effect Setup
-// Note: This will be replaced with landing page example in future
-const canvas = document.getElementById('matrixCanvas'); // Get canvas element
-let ctx; // Canvas context for drawing
-let matrixEnabled = !isArtPage; // Enable matrix effect except on art page
-let isVincentGalleryOpen = isArtPage; // Track if Van Gogh gallery is open
-let frameCount = 0; // Counter for animation frames
+// Matrix Rain Effect - will be replaced with landing page example in future
+const canvas = document.getElementById('matrixCanvas');
+let ctx;
+let matrixEnabled = !isArtPage;
+let isVincentGalleryOpen = isArtPage;
+let frameCount = 0;
 
-// Get drawing context if canvas exists
 if (canvas) {
     ctx = canvas.getContext('2d');
 } else {
     console.log('Matrix canvas not found. This might be the art page.');
 }
 
-// Function to make canvas fullscreen and handle window resizing
 function resizeCanvas() {
     if (canvas) {
         canvas.width = window.innerWidth;
@@ -74,34 +70,27 @@ function resizeCanvas() {
     }
 }
 
-// Initialize canvas size
 resizeCanvas();
-
-// Event listener to handle window resizing
 window.addEventListener('resize', resizeCanvas);
 
-// Define characters for matrix rain - mix of binary and Japanese katakana
+// Mix of binary and Japanese katakana
 const katakana = '101010101アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン010010101';
 const characters = katakana.split('');
 
-// Set up matrix display parameters
 const fontSize = 14;
-const columns = canvas ? canvas.width / fontSize : 0; // Calculate number of columns based on canvas width
+const columns = canvas ? canvas.width / fontSize : 0;
 
-// Initialize arrays for drop positions and colors
 const drops = [];
 const colors = [];
 for (let i = 0; i < columns; i++) {
-    drops[i] = Math.random() * -(canvas ? canvas.height : 0); // Random starting positions above canvas
-    // Assign colors: mostly green with rare cyan or red
+    drops[i] = Math.random() * -(canvas ? canvas.height : 0);
+    // Mostly green with rare cyan or red
     colors[i] = Math.random() < 0.99 ? '#0F0' : (Math.random() < 0.1 ? '#00FFFF' : '#FF2800');
 }
 
-// Control fade effect variables
 let fadeInterval;
 let fadeAmount = 0;
 
-// Function to gradually increase fade effect
 function setFadeInterval() {
     clearInterval(fadeInterval);
     fadeInterval = setInterval(() => {
@@ -111,17 +100,13 @@ function setFadeInterval() {
 
 setFadeInterval();
 
-// Main matrix drawing function
 function drawMatrix() {
     if (!canvas || !matrixEnabled || isVincentGalleryOpen) return;
 
-    // Create fade effect by drawing semi-transparent black rectangle
     ctx.fillStyle = `rgba(0, 0, 0, ${fadeAmount})`;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Draw each column of the matrix
     for (let i = 0; i < drops.length; i++) {
-        // Randomly select character
         const text = characters[Math.floor(Math.random() * characters.length)];
         ctx.fillStyle = colors[i];
         ctx.font = `${fontSize}px monospace`;
@@ -129,10 +114,9 @@ function drawMatrix() {
 
         // Update drop positions every 3 frames
         if (frameCount % 3 === 0) {
-            // Reset drops that reach bottom with small chance
             if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
                 drops[i] = 0;
-                // Small chance to change color
+                // Small chance to change colour
                 if (Math.random() < 0.05) {
                     colors[i] = Math.random() < 0.5 ? '#00FFFF' : '#FF2800';
                 } else {
@@ -146,7 +130,6 @@ function drawMatrix() {
     frameCount++;
 }
 
-// Animation loop function
 function animate() {
     if (canvas) {
         drawMatrix();
@@ -154,12 +137,10 @@ function animate() {
     }
 }
 
-// Start animation if not on art page
 if (!isArtPage) {
     animate();
 }
 
-// Scroll event handler to control matrix fade
 let lastScrollTop = 0;
 window.addEventListener('scroll', () => {
     let st = window.pageYOffset || document.documentElement.scrollTop;
@@ -173,9 +154,7 @@ window.addEventListener('scroll', () => {
     setFadeInterval();
 });
 
-// Interactive effects for matrix
 if (canvas) {
-    // Mouse interaction - drops follow cursor
     canvas.addEventListener('mousemove', (e) => {
         const x = Math.floor(e.clientX / fontSize);
         const y = Math.floor(e.clientY / fontSize);
@@ -191,30 +170,25 @@ if (canvas) {
         drops[x] = y;
     }, { passive: false });
 
-    // Toggle matrix effect on click
     canvas.addEventListener('click', () => {
         matrixEnabled = !matrixEnabled;
     });
 }
 
 document.addEventListener('DOMContentLoaded', function() {
-    // Handle special setup for art page
     if (isArtPage) {
         const vincentGallery = document.querySelector('.vincent-gallery');
         if (vincentGallery) {
-            vincentGallery.style.display = 'grid'; // Show the gallery grid
+            vincentGallery.style.display = 'grid';
         }
         if (canvas) {
-            canvas.style.display = 'none'; // Hide matrix canvas on art page
+            canvas.style.display = 'none';
         }
     }
 
-    // Add glitch and hover effects to all heading elements
     document.querySelectorAll('h1, h2, h3').forEach(heading => {
-        // Add smooth transition for hover effect
         heading.style.transition = 'transform 0.3s ease-in-out';
-        
-        // Apply glitch effect on mouseover if not in cooldown
+
         heading.addEventListener('mouseover', () => {
             if (heading.dataset.cooldown !== 'true') {
                 glitchEffect(heading);
@@ -222,27 +196,23 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Scale up heading on mouse enter
         heading.addEventListener('mouseenter', () => {
             heading.style.transform = 'scale(1.05)';
         });
 
-        // Reset heading scale on mouse leave
         heading.addEventListener('mouseleave', () => {
             heading.style.transform = 'scale(1)';
         });
     });
 
 
-    // Reveal elements when scrolling into view
     function reveal() {
         const reveals = document.querySelectorAll(".reveal");
         reveals.forEach(element => {
             const windowHeight = window.innerHeight;
             const elementTop = element.getBoundingClientRect().top;
-            const elementVisible = 150; // Threshold for visibility
-            
-            // Add/remove 'active' class based on visibility
+            const elementVisible = 150;
+
             if (elementTop < windowHeight - elementVisible) {
                 element.classList.add("active");
             } else {
@@ -251,10 +221,8 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Add scroll event listener for reveal effect
     window.addEventListener("scroll", reveal);
 
-    // Enable smooth scrolling for navigation links
     document.querySelectorAll('nav a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             e.preventDefault();
@@ -264,16 +232,14 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // Form validation handling
     const form = document.querySelector('form');
     if (form) {
         form.addEventListener('submit', function(e) {
             e.preventDefault();
-            // Basic form validation
             const name = document.getElementById('name').value;
             const email = document.getElementById('email').value;
             const message = document.getElementById('message').value;
-            
+
             if (name && email && message) {
                 form.submit();
             } else {
@@ -282,7 +248,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Parallax scrolling effect for header background
     window.addEventListener('scroll', function() {
         const header = document.querySelector('header');
         if (header) {
@@ -291,7 +256,6 @@ document.addEventListener('DOMContentLoaded', function() {
         }
     });
 
-    // Interactive project grid items
     const projectItems = document.querySelectorAll('#projects .grid-item');
     projectItems.forEach(item => {
         item.addEventListener('click', function() {
@@ -299,7 +263,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
-    // // Typewriter effect function
     function typeWriter(element, text, speed) {
         let i = 0;
         function type() {
@@ -312,7 +275,6 @@ document.addEventListener('DOMContentLoaded', function() {
         type();
     }
 
-    // Apply typewriter effect to introduction text
     const introText = document.querySelector('#introduction p');
     if (introText) {
         const text = introText.innerHTML;
@@ -320,30 +282,24 @@ document.addEventListener('DOMContentLoaded', function() {
         typeWriter(introText, text, 50);
     }
 
-    // Add reveal class to all sections for animation
     document.querySelectorAll('section').forEach(section => {
         section.classList.add('reveal');
     });
 
-    // Initialize reveal effect
     reveal();
 
-    // Mobile navigation menu handling
     const menuToggle = document.querySelector('.menu-toggle');
     const navUl = document.querySelector('nav ul');
     const introduction = document.querySelector('#introduction');
 
     if (menuToggle && navUl) {
-        // Toggle menu on button click
         menuToggle.addEventListener('click', function() {
             navUl.classList.toggle('show');
             menuToggle.classList.toggle('active');
-            
-            // Adjust introduction padding based on menu state
+
             introduction.style.paddingTop = navUl.classList.contains('show') ? '333px' : '30px';
         });
 
-        // Close menu when clicking outside
         document.addEventListener('click', function(e) {
             if (!navUl.contains(e.target) && !menuToggle.contains(e.target)) {
                 navUl.classList.remove('show');
@@ -352,7 +308,6 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
 
-        // Close menu on scroll
         window.addEventListener('scroll', function() {
             if (navUl.classList.contains('show')) {
                 navUl.classList.remove('show');
@@ -362,7 +317,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Lazy loading implementation for images
     const lazyImages = [].slice.call(document.querySelectorAll("img.lazy"));
 
     if ("IntersectionObserver" in window) {
@@ -382,13 +336,11 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Van Gogh Gallery functionality
     const vincentItems = document.querySelectorAll('.vincent-item');
     const vincentGallery = document.querySelector('.vincent-gallery');
     const openGalleryButton = document.querySelector('#open-vincent-gallery');
     const closeGalleryButton = document.querySelector('#close-vincent-gallery');
 
-    // Gallery open/close functions
     function openVincentGallery() {
         isVincentGalleryOpen = true;
         matrixEnabled = false;
@@ -403,7 +355,6 @@ document.addEventListener('DOMContentLoaded', function() {
         if (vincentGallery) vincentGallery.style.display = 'none';
     }
 
-    // 3D hover effect for gallery items
     function applyHoverEffect(event) {
         if (!vincentGallery) return;
         const galleryRect = vincentGallery.getBoundingClientRect();
@@ -425,14 +376,12 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
-    // Reset gallery items to initial position
     function resetHoverEffect() {
         vincentItems.forEach(item => {
             item.style.transform = 'rotateX(0) rotateY(0)';
         });
     }
 
-    // Add gallery event listeners
     if (openGalleryButton) {
         openGalleryButton.addEventListener('click', openVincentGallery);
     }
@@ -444,63 +393,53 @@ document.addEventListener('DOMContentLoaded', function() {
         vincentGallery.addEventListener('mouseleave', resetHoverEffect);
     }
 
-    // Project Stack Functionality
     const projectCards = document.querySelectorAll('.project-card');
     let lastClickedCard = null;
 
     projectCards.forEach((card, index) => {
-        // Add stacking order
         card.style.zIndex = 1000 - index;
-        
+
         card.addEventListener('click', function(e) {
-            // Prevent clicking links from toggling card
             if (e.target.closest('a')) return;
-            
-            // Close previously opened card
+
             if (lastClickedCard && lastClickedCard !== this) {
                 lastClickedCard.classList.remove('active');
             }
-            
+
             this.classList.toggle('active');
             lastClickedCard = this;
 
-            // Matrix effect on card activation
             const chars = '101010101アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン010010101';
             const matrixEffect = document.createElement('div');
             matrixEffect.className = 'matrix-activation';
             this.appendChild(matrixEffect);
-            
-            // Clean up effect
+
             setTimeout(() => matrixEffect.remove(), 1000);
 
-            // Scroll into view if needed
             if (this.classList.contains('active')) {
                 this.scrollIntoView({ behavior: 'smooth', block: 'center' });
             }
         });
 
-        // Add hover sound effect
         card.addEventListener('mouseenter', () => {
             playMatrixSound('hover');
         });
     });
 
-    // Matrix sound effects
     function playMatrixSound(type) {
         const audio = new Audio();
         audio.volume = 0.1;
         switch(type) {
             case 'hover':
-                audio.src = 'path/to/hover.mp3'; // Add your sound file
+                audio.src = 'path/to/hover.mp3';
                 break;
             case 'activate':
                 audio.src = 'path/to/activate.mp3';
                 break;
         }
-        audio.play().catch(() => {}); // Ignore autoplay restrictions
+        audio.play().catch(() => {});
     }
 
-    // Handle escape key to close cards
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape' && lastClickedCard) {
             lastClickedCard.classList.remove('active');
@@ -509,47 +448,41 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Project Stack Enhancements
 document.addEventListener('DOMContentLoaded', function() {
     const projectCards = document.querySelectorAll('.project-card');
-    
+
     projectCards.forEach((card, index) => {
         const header = card.querySelector('.project-header');
-        
-        // Only trigger on header click
+
         header.addEventListener('click', (e) => {
             e.stopPropagation();
-            
-            // Close other cards
+
             projectCards.forEach(otherCard => {
                 if (otherCard !== card && otherCard.classList.contains('active')) {
                     otherCard.classList.remove('active');
                 }
             });
-            
-            // Toggle current card
+
             card.classList.toggle('active');
-            
-            // Scroll into view with offset
+
             if (card.classList.contains('active')) {
                 const offset = 100;
                 const cardPosition = card.getBoundingClientRect().top;
                 const offsetPosition = cardPosition + window.pageYOffset - offset;
-                
+
                 window.scrollTo({
                     top: offsetPosition,
                     behavior: 'smooth'
                 });
             }
         });
-        
-        // Add hover effect
+
         header.addEventListener('mouseenter', () => {
             if (!card.classList.contains('active')) {
                 card.style.transform = 'translateX(1rem)';
             }
         });
-        
+
         header.addEventListener('mouseleave', () => {
             if (!card.classList.contains('active')) {
                 card.style.transform = 'none';
@@ -557,7 +490,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
     
-    // Close active card on escape key
     document.addEventListener('keydown', (e) => {
         if (e.key === 'Escape') {
             projectCards.forEach(card => {
@@ -567,19 +499,16 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 });
 
-// Notification system
 function showNotification(message, type) {
     const notification = document.createElement('div');
     notification.className = `notification ${type}`;
     notification.textContent = message;
-    
+
     document.body.appendChild(notification);
-    notification.offsetHeight; // Force reflow
-    
-    // Show notification
+    notification.offsetHeight;
+
     notification.classList.add('show');
-    
-    // Remove notification after delay
+
     setTimeout(() => {
         notification.classList.remove('show');
         setTimeout(() => {
