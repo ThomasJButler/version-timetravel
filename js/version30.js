@@ -15,12 +15,10 @@ let ctx = null;
 const matrixEnabled = true;
 let frameCount = 0;
 
-// Get drawing context if canvas exists
 if (canvas) {
     ctx = canvas.getContext('2d');
 }
 
-// Function to make canvas fullscreen and handle window resizing
 function resizeCanvas() {
     if (canvas) {
         canvas.width = window.innerWidth;
@@ -28,33 +26,26 @@ function resizeCanvas() {
     }
 }
 
-// Initialize canvas size
 resizeCanvas();
-
-// Event listener to handle window resizing
 window.addEventListener('resize', resizeCanvas);
 
-// Define characters for matrix rain - mix of binary and Japanese katakana
+// Mix of binary and Japanese katakana
 const katakana = '101010101アイウエオカキクケコサシスセソタチツテトナニヌネノハヒフヘホマミムメモヤユヨラリルレロワヲン010010101';
 const characters = katakana.split('');
 
-// Set up matrix display parameters
 const fontSize = 14;
 const columns = canvas ? Math.floor(canvas.width / fontSize) : 0;
 
-// Initialize arrays for drop positions and colors
 const drops = [];
-const colors = [];
+const colours = [];
 for (let i = 0; i < columns; i++) {
     drops[i] = Math.random() * -(canvas ? canvas.height : 0);
-    colors[i] = Math.random() < 0.99 ? '#0F0' : (Math.random() < 0.1 ? '#00FFFF' : '#FF2800');
+    colours[i] = Math.random() < 0.99 ? '#0F0' : (Math.random() < 0.1 ? '#00FFFF' : '#FF2800');
 }
 
-// Control fade effect variables
 let fadeInterval;
 let fadeAmount = 0;
 
-// Function to gradually increase fade effect
 function setFadeInterval() {
     clearInterval(fadeInterval);
     fadeInterval = setInterval(() => {
@@ -64,18 +55,15 @@ function setFadeInterval() {
 
 setFadeInterval();
 
-// Main matrix drawing function
 function drawMatrix() {
     if (!canvas || !ctx || !matrixEnabled) return;
 
-    // Create fade effect by drawing semi-transparent black rectangle
     ctx.fillStyle = `rgba(0, 0, 0, ${fadeAmount})`;
     ctx.fillRect(0, 0, canvas.width, canvas.height);
 
-    // Draw each column of the matrix
     for (let i = 0; i < drops.length; i++) {
         const text = characters[Math.floor(Math.random() * characters.length)];
-        ctx.fillStyle = colors[i];
+        ctx.fillStyle = colours[i];
         ctx.font = `${fontSize}px monospace`;
         ctx.fillText(text, i * fontSize, drops[i] * fontSize);
 
@@ -84,9 +72,9 @@ function drawMatrix() {
             if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
                 drops[i] = 0;
                 if (Math.random() < 0.05) {
-                    colors[i] = Math.random() < 0.5 ? '#00FFFF' : '#FF2800';
+                    colours[i] = Math.random() < 0.5 ? '#00FFFF' : '#FF2800';
                 } else {
-                    colors[i] = '#0F0';
+                    colours[i] = '#0F0';
                 }
             }
             drops[i]++;
@@ -96,20 +84,16 @@ function drawMatrix() {
     frameCount++;
 }
 
-// FPS limiter for better performance
 let lastFrameTime = 0;
-const targetFPS = 30; // Limit to 30 FPS for better performance
+const targetFPS = 30;
 const frameInterval = 1000 / targetFPS;
 let isScrolling = false;
 let scrollTimeout = null;
 
-// Animation loop function with FPS limiting and scroll optimization
 function animateMatrix(currentTime = 0) {
     if (!canvas) return;
 
     const deltaTime = currentTime - lastFrameTime;
-
-    // Reduce frame rate when scrolling for better performance
     const currentInterval = isScrolling ? frameInterval * 2 : frameInterval;
 
     if (deltaTime >= currentInterval) {
@@ -120,14 +104,12 @@ function animateMatrix(currentTime = 0) {
     requestAnimationFrame(animateMatrix);
 }
 
-// Start animation
 requestAnimationFrame(animateMatrix);
 
 /* ==========================================================================
    Throttle/RAF Utility Functions
    ========================================================================== */
 
-// Throttle function for better performance
 function rafThrottle(fn) {
     let isRunning = false;
     return function(...args) {
@@ -140,7 +122,6 @@ function rafThrottle(fn) {
     };
 }
 
-// Regular throttle function
 function throttle(func, limit) {
     let inThrottle;
     return function() {
@@ -158,12 +139,10 @@ function throttle(func, limit) {
    Scroll Handling and Performance Optimization
    ========================================================================== */
 
-// Throttled scroll handler for better performance
 const handleScroll = rafThrottle(() => {
     const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
 
-    // Mark as scrolling for performance optimization
-    isScrolling = true;
+        isScrolling = true;
 
     if (scrollTimeout) {
         clearTimeout(scrollTimeout);
@@ -173,21 +152,18 @@ const handleScroll = rafThrottle(() => {
         isScrolling = false;
     }, 150);
 
-    // Parallax effect for Matrix canvas - disabled during scroll for performance
-    if (canvas && !isScrolling) {
+        if (canvas && !isScrolling) {
         const parallaxSpeed = 0.5;
         canvas.style.transform = `translateY(${scrollTop * parallaxSpeed}px)`;
     }
 
-    // Control matrix fade based on scroll
-    if (scrollTop > 100) {
+        if (scrollTop > 100) {
         fadeAmount = Math.min(0.8, 0.05 + (scrollTop / 1000));
     } else {
         setFadeInterval();
     }
 });
 
-// Scroll event handler with RAF throttling
 window.addEventListener('scroll', handleScroll, { passive: true });
 
 /* ==========================================================================
@@ -207,8 +183,7 @@ if (canvas) {
             mouseY = e.touches[0].clientY;
         }
 
-        // Create ripple effect in matrix
-        const column = Math.floor(mouseX / fontSize);
+                const column = Math.floor(mouseX / fontSize);
         const radius = 5;
 
         for (let i = Math.max(0, column - radius); i < Math.min(drops.length, column + radius); i++) {
@@ -230,8 +205,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const nav = document.querySelector('nav ul');
 
     if (menuToggle && nav) {
-        // Set initial state only on mobile
-        if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 768) {
             nav.style.display = 'none';
         }
 
@@ -240,8 +214,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const isOpen = nav.classList.contains('show');
 
             if (isOpen) {
-                // Close menu
-                nav.classList.remove('show');
+                                nav.classList.remove('show');
                 menuToggle.classList.remove('active');
                 nav.style.opacity = '0';
                 nav.style.transform = 'translateY(-10px) scale(0.95)';
@@ -251,10 +224,8 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 }, 300);
             } else {
-                // Open menu
-                nav.style.display = 'flex';
-                // Force reflow to ensure animation plays
-                nav.offsetHeight;
+                                nav.style.display = 'flex';
+                                nav.offsetHeight;
                 setTimeout(() => {
                     nav.classList.add('show');
                     menuToggle.classList.add('active');
@@ -264,8 +235,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Close menu when clicking outside
-        document.addEventListener('click', (e) => {
+                document.addEventListener('click', (e) => {
             if (!nav.contains(e.target) && !menuToggle.contains(e.target) && nav.classList.contains('show')) {
                 nav.classList.remove('show');
                 menuToggle.classList.remove('active');
@@ -279,8 +249,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Close menu when clicking on a link
-        const navLinks = nav.querySelectorAll('a');
+                const navLinks = nav.querySelectorAll('a');
         navLinks.forEach(link => {
             link.addEventListener('click', () => {
                 if (nav.classList.contains('show')) {
@@ -297,24 +266,20 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         });
 
-        // Handle window resize
-        let resizeTimeout;
+                let resizeTimeout;
         window.addEventListener('resize', () => {
             clearTimeout(resizeTimeout);
             resizeTimeout = setTimeout(() => {
-                // Also resize canvas on window resize
-                resizeCanvas();
+                                resizeCanvas();
 
                 if (window.innerWidth > 768) {
-                    // Desktop view - show nav
-                    nav.style.display = '';
+                                        nav.style.display = '';
                     nav.style.opacity = '';
                     nav.style.transform = '';
                     nav.classList.remove('show');
                     menuToggle.classList.remove('active');
                 } else {
-                    // Mobile view - hide nav if not open
-                    if (!nav.classList.contains('show')) {
+                                        if (!nav.classList.contains('show')) {
                         nav.style.display = 'none';
                     }
                 }
@@ -327,7 +292,6 @@ document.addEventListener('DOMContentLoaded', () => {
    3D Rotating Cube Functionality
    ========================================================================== */
 
-// Rotating Cube 3D Effect
 const cube = document.getElementById('cube');
 let currentRotation = { x: 0, y: 0 };
 let currentFace = 'front';
@@ -335,8 +299,7 @@ let currentFace = 'front';
 function rotateCube(face) {
     if (!cube) return;
 
-    // Update button states
-    document.querySelectorAll('.cube-nav button').forEach(btn => {
+        document.querySelectorAll('.cube-nav button').forEach(btn => {
         btn.classList.remove('active');
     });
 
@@ -377,7 +340,6 @@ function rotateCube(face) {
     currentFace = face;
 }
 
-// Touch/swipe support for mobile cube interaction
 if (cube) {
     let touchStartX = 0;
     let touchStartY = 0;
@@ -393,34 +355,27 @@ if (cube) {
         const diffX = touchStartX - touchEndX;
         const diffY = touchStartY - touchEndY;
 
-        // Minimum swipe distance
-        const minSwipeDistance = 50;
+                const minSwipeDistance = 50;
 
         if (Math.abs(diffX) > Math.abs(diffY) && Math.abs(diffX) > minSwipeDistance) {
-            // Horizontal swipe
-            if (diffX > 0) {
-                // Swipe left - rotate right
-                const nextFace = currentFace === 'front' ? 'right' :
+                        if (diffX > 0) {
+                                const nextFace = currentFace === 'front' ? 'right' :
                                currentFace === 'right' ? 'back' :
                                currentFace === 'back' ? 'left' : 'front';
                 rotateCube(nextFace);
             } else {
-                // Swipe right - rotate left
-                const nextFace = currentFace === 'front' ? 'left' :
+                                const nextFace = currentFace === 'front' ? 'left' :
                                currentFace === 'left' ? 'back' :
                                currentFace === 'back' ? 'right' : 'front';
                 rotateCube(nextFace);
             }
         } else if (Math.abs(diffY) > Math.abs(diffX) && Math.abs(diffY) > minSwipeDistance) {
-            // Vertical swipe
-            if (diffY > 0) {
-                // Swipe up - rotate to top
-                if (currentFace !== 'top' && currentFace !== 'bottom') {
+                        if (diffY > 0) {
+                                if (currentFace !== 'top' && currentFace !== 'bottom') {
                     rotateCube('top');
                 }
             } else {
-                // Swipe down - rotate to bottom
-                if (currentFace !== 'top' && currentFace !== 'bottom') {
+                                if (currentFace !== 'top' && currentFace !== 'bottom') {
                     rotateCube('bottom');
                 }
             }
@@ -428,7 +383,6 @@ if (cube) {
     });
 }
 
-// Auto-rotation (optional - currently disabled)
 let autoRotate = false;
 let autoRotateInterval;
 
@@ -442,7 +396,6 @@ if (autoRotate) {
     }, 4000);
 }
 
-// Make rotateCube function available globally for onclick handlers
 window.rotateCube = rotateCube;
 
 /* ==========================================================================
@@ -488,13 +441,11 @@ document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
    Form Validation and Handling
    ========================================================================== */
 
-// Email validation helper
 function validateEmail(email) {
     const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return regex.test(email);
 }
 
-// Notification system
 function showNotification(message, options = {}) {
     const { type = 'info', duration = 3000 } = options;
 
@@ -522,13 +473,11 @@ function showNotification(message, options = {}) {
 
     document.body.appendChild(notification);
 
-    // Trigger animation
-    setTimeout(() => {
+        setTimeout(() => {
         notification.style.transform = 'translateX(0)';
     }, 10);
 
-    // Remove notification
-    setTimeout(() => {
+        setTimeout(() => {
         notification.style.transform = 'translateX(100%)';
         setTimeout(() => {
             if (notification.parentNode) {
@@ -538,7 +487,6 @@ function showNotification(message, options = {}) {
     }, duration);
 }
 
-// Contact form handling
 const contactForm = document.getElementById('contact-form');
 if (contactForm) {
     contactForm.addEventListener('submit', (e) => {
@@ -559,8 +507,7 @@ if (contactForm) {
             return;
         }
 
-        // Simulate form submission
-        showNotification('Message sent successfully!', { type: 'success' });
+                showNotification('Message sent successfully!', { type: 'success' });
         contactForm.reset();
     });
 }
@@ -605,8 +552,7 @@ document.addEventListener('keydown', (e) => {
         }
     }
 
-    // Cube navigation with number keys
-    if (cube) {
+        if (cube) {
         switch(e.key) {
             case '1':
                 rotateCube('front');
@@ -680,7 +626,6 @@ if (lazyImages.length > 0) {
    Interactive Button Effects
    ========================================================================== */
 
-// Enhanced button hover effects
 document.querySelectorAll('.cta-button, .neo-matrix-btn, .matrix-btn').forEach(button => {
     button.addEventListener('mouseenter', () => {
         button.style.transform = 'translateY(-2px) scale(1.05)';
@@ -737,7 +682,6 @@ document.addEventListener('mousemove', (e) => {
    Gallery and Image Effects
    ========================================================================== */
 
-// Enhanced gallery item hover effects
 const galleryItems = document.querySelectorAll('.gallery-item, .introduction-img img, .cube-project-icon img');
 galleryItems.forEach(item => {
     item.addEventListener('mouseenter', () => {
@@ -765,11 +709,9 @@ document.querySelectorAll('a[href$=".html"]').forEach(link => {
         e.preventDefault();
         showPageLoader();
 
-        // Set flag for next page
-        sessionStorage.setItem('navigating', 'true');
+                sessionStorage.setItem('navigating', 'true');
 
-        // Navigate after showing loader
-        setTimeout(() => {
+                setTimeout(() => {
             window.location.href = href;
         }, 300);
     });
@@ -808,7 +750,6 @@ if (typeof module !== 'undefined' && module.exports) {
     };
 }
 
-// Also make functions available on window for global access
 window.showPageLoader = showPageLoader;
 window.hidePageLoader = hidePageLoader;
 window.showNotification = showNotification;

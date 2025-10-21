@@ -1,6 +1,5 @@
 /**
  * Version Viewer
- * Handles version preview functionality
  */
 
 class VersionViewer {
@@ -14,89 +13,75 @@ class VersionViewer {
     this.loadingOverlay = document.querySelector('.loading-overlay');
     this.versionNumber = document.getElementById('version-number');
     this.versionDate = document.getElementById('version-date');
-    
+
     this.init();
   }
-  
+
   init() {
-    // Get version from URL params
     const params = new URLSearchParams(window.location.search);
     const versionPath = params.get('version');
     const versionId = params.get('id');
     const versionNum = params.get('num');
     const date = params.get('date');
-    
+
     if (versionPath) {
       this.loadVersion(versionPath, versionId, versionNum, date);
     } else {
       this.showError('No version specified');
     }
-    
+
     this.initControls();
   }
-  
+
   loadVersion(path, id, num, date) {
-    // Show loading with custom content
     this.showLoading(num);
-    
-    // Update version info
+
     if (num) this.versionNumber.textContent = `Version ${num}`;
     if (date) this.versionDate.textContent = date;
-    
-    // Construct the correct URL for the version file
-    // Remove leading slash if present and prepend base URL
+
     const cleanPath = path.startsWith('/') ? path.substring(1) : path;
     const fullPath = import.meta.env.BASE_URL + cleanPath;
-    
-    // Load version in iframe
+
     this.frame.src = fullPath;
-    
-    // Handle load complete
+
     this.frame.addEventListener('load', () => {
       setTimeout(() => {
         this.hideLoading();
         this.frame.classList.add('loaded');
       }, 500);
     }, { once: true });
-    
-    // Handle load error
+
     this.frame.addEventListener('error', () => {
       this.showError('Failed to load version');
     }, { once: true });
-    
-    // Timeout fallback
+
     setTimeout(() => {
       if (this.loadingOverlay.classList.contains('active')) {
         this.showError('Loading timeout - please refresh');
       }
     }, 10000);
   }
-  
+
   initControls() {
-    // Back button
     this.backBtn.addEventListener('click', () => {
       window.location.href = import.meta.env.BASE_URL;
     });
-    
-    // Viewport toggles
+
     this.viewportBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         const viewport = btn.getAttribute('data-viewport');
         this.setViewport(viewport);
       });
     });
-    
-    // Fullscreen toggle
+
     this.fullscreenBtn.addEventListener('click', () => {
       this.toggleFullscreen();
     });
-    
-    // Refresh button
+
     this.refreshBtn.addEventListener('click', () => {
       this.frame.src = this.frame.src;
     });
-    
-    // Keyboard shortcuts
+
     document.addEventListener('keydown', (e) => {
       switch(e.key) {
         case 'Escape':
@@ -126,17 +111,14 @@ class VersionViewer {
       }
     });
   }
-  
+
   setViewport(viewport) {
-    // Update buttons
     this.viewportBtns.forEach(btn => {
       btn.classList.toggle('active', btn.getAttribute('data-viewport') === viewport);
     });
-    
-    // Update frame
+
     this.deviceFrame.setAttribute('data-viewport', viewport);
-    
-    // Add transition effect
+
     this.deviceFrame.style.opacity = '0.8';
     setTimeout(() => {
       this.deviceFrame.style.opacity = '1';
@@ -196,7 +178,6 @@ class VersionViewer {
   }
 }
 
-// Initialize viewer when DOM is ready
 document.addEventListener('DOMContentLoaded', () => {
   new VersionViewer();
 });

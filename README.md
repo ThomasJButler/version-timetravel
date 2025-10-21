@@ -1,4 +1,4 @@
-# 🚀 Portfolio Version TimeTravel
+# Portfolio Version TimeTravel
 
 > An interactive timeline showcasing the evolution of my portfolio from static HTML to modern React
 
@@ -101,9 +101,7 @@ version-timetravel/
    - Independent from version timeline
    - Available at thomasjbutler.me
 
-## Deployment | ### Vercel |
-
-## 🙏 Acknowledgments
+## My Inspiration
 
 - Inspired by The Matrix (1999)
 - Built with passion in Liverpool, UK

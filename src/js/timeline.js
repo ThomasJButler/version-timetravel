@@ -14,29 +14,18 @@ export class Timeline {
   
   async init() {
     try {
-      // Show loading state
       this.showLoading();
-      
-      // Load version data
       await this.loadVersionData();
-      
-      // Render timeline
       this.render();
-      
-      // Initialize interactions
       this.initInteractions();
-      
-      // Initialize lazy loading
       this.initLazyLoading();
-      
-      // Remove loading state
       this.hideLoading();
     } catch (error) {
-      console.error('Failed to initialize timeline:', error);
+      console.error('Failed to initialise timeline:', error);
       this.showError();
     }
   }
-  
+
   async loadVersionData() {
     try {
       const response = await fetch('/data/versions.json');
@@ -44,7 +33,6 @@ export class Timeline {
       this.versions = data.versions.reverse(); // Show newest first
     } catch (error) {
       console.error('Failed to load version data:', error);
-      // Fallback data
       this.versions = this.getFallbackData();
     }
   }
@@ -312,7 +300,6 @@ export class Timeline {
   }
   
   initInteractions() {
-    // Handle view version buttons
     const viewButtons = this.container.querySelectorAll('.view-version-btn[data-path]');
     viewButtons.forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -320,8 +307,7 @@ export class Timeline {
         this.openVersion(path);
       });
     });
-    
-    // Handle see more buttons
+
     const seeMoreButtons = this.container.querySelectorAll('.see-more-btn');
     seeMoreButtons.forEach(btn => {
       btn.addEventListener('click', (e) => {
@@ -331,7 +317,7 @@ export class Timeline {
         const expandedFeatures = featuresList.querySelector('.features-expanded');
         const btnText = btn.querySelector('.see-more-text');
         const btnIcon = btn.querySelector('i');
-        
+
         if (expandedFeatures) {
           if (expanded) {
             expandedFeatures.style.display = 'none';
@@ -347,56 +333,50 @@ export class Timeline {
         }
       });
     });
-    
-    // Handle screenshot clicks
+
     const desktopShots = this.container.querySelectorAll('.version-desktop');
     const mobileShots = this.container.querySelectorAll('.version-mobile');
-    
+
     [...desktopShots, ...mobileShots].forEach(screenshot => {
       screenshot.addEventListener('click', (e) => {
         const img = screenshot.querySelector('img');
         this.showImageModal(img.src, img.alt);
       });
     });
-    
-    // Add hover effect to timeline dots
+
     const dots = this.container.querySelectorAll('.timeline-dot');
     dots.forEach(dot => {
       dot.addEventListener('mouseenter', () => {
         dot.closest('.version-card').querySelector('.version-box').classList.add('highlight');
       });
-      
+
       dot.addEventListener('mouseleave', () => {
         dot.closest('.version-card').querySelector('.version-box').classList.remove('highlight');
       });
     });
   }
-  
+
   openVersion(path) {
-    // Get version info from the button's parent card
     const btn = event.currentTarget;
     const card = btn.closest('.version-card');
     const versionId = card.getAttribute('data-version');
     const versionBox = card.querySelector('.version-box');
     const versionNum = versionBox.querySelector('.version-info h3').textContent.replace('Version ', '');
     const versionDate = versionBox.querySelector('.version-date').textContent;
-    
-    // Build viewer URL with parameters
+
     const params = new URLSearchParams({
       version: path,
       id: versionId,
       num: versionNum,
       date: versionDate
     });
-    
-    // Open in viewer
+
     window.location.href = `${import.meta.env.BASE_URL}viewer.html?${params.toString()}`;
   }
-  
+
   showImageModal(src, alt) {
     console.log('Opening modal with image:', src);
-    
-    // Create modal structure first
+
     const modal = document.createElement('div');
     modal.className = 'image-modal';
     modal.innerHTML = `
@@ -407,38 +387,33 @@ export class Timeline {
         </div>
       </div>
     `;
-    
+
     document.body.appendChild(modal);
-    
+
     // Force reflow to ensure animation plays
     modal.offsetHeight;
-    
-    // Preload the image
+
     const img = new Image();
-    
+
     img.onload = () => {
       console.log('Image loaded successfully:', src);
-      
-      // Create the actual image element
+
       const imgElement = document.createElement('img');
       imgElement.src = src;
       imgElement.alt = alt;
       imgElement.className = 'loading';
-      
-      // Add image to modal
+
       const modalContent = modal.querySelector('.modal-content');
       modalContent.appendChild(imgElement);
-      
-      // Hide loading spinner
+
       const loadingElement = modal.querySelector('.modal-loading');
       loadingElement.classList.remove('active');
-      
-      // Fade in the image
+
       setTimeout(() => {
         imgElement.classList.remove('loading');
       }, 50);
     };
-    
+
     img.onerror = () => {
       console.error('Failed to load image:', src);
       const modalContent = modal.querySelector('.modal-content');
@@ -451,18 +426,15 @@ export class Timeline {
         </div>
       `;
     };
-    
-    // Start loading the image
+
     img.src = src;
-    
-    // Close on click
+
     modal.addEventListener('click', (e) => {
       if (e.target === modal || e.target.classList.contains('modal-close')) {
         modal.remove();
       }
     });
-    
-    // Close on ESC key
+
     const handleEsc = (e) => {
       if (e.key === 'Escape') {
         modal.remove();
@@ -471,7 +443,7 @@ export class Timeline {
     };
     document.addEventListener('keydown', handleEsc);
   }
-  
+
   showLoading() {
     this.container.innerHTML = `
       <div class="timeline-skeleton">
@@ -499,10 +471,8 @@ export class Timeline {
       </div>
     `;
   }
-  
+
   hideLoading() {
-    // Timeline content is already rendered by render() method
-    // Add fade-in animation
     const cards = this.container.querySelectorAll('.version-card');
     cards.forEach((card, index) => {
       card.classList.add('content-loading');
