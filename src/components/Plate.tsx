@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ImageOffIcon } from 'lucide-react'
+import { media } from '@/lib/asset'
 import { cn } from '@/lib/utils'
 
 /**
@@ -40,7 +41,7 @@ export function Plate({
         <div className="relative w-full overflow-hidden rounded-shot" style={{ aspectRatio: ratio }}>
           {!loaded && <div className="absolute inset-0 animate-pulse bg-surface-hover" />}
           <img
-            src={src}
+            src={media(src)}
             alt={alt}
             loading="lazy"
             decoding="async"

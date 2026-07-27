@@ -7,3 +7,10 @@
  */
 export const asset = (path: string) =>
   `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
+
+/**
+ * Screenshots come from two places while the older versions wait to be re-shot: newly
+ * captured ones live in public/shots, older ones are still on Cloudinary. Absolute URLs pass
+ * through, everything else is treated as repo-relative.
+ */
+export const media = (src: string) => (/^https?:\/\//.test(src) ? src : asset(src))
