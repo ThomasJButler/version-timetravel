@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { ImageOffIcon } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
@@ -13,34 +14,44 @@ export function Plate({
   src,
   alt,
   ratio = '16/10',
-  mat = 16,
+  matClass = 'p-2.5 md:p-4',
   className,
   children,
 }: {
   src?: string
   alt: string
   ratio?: string
-  mat?: number
+  matClass?: string
   className?: string
   children?: React.ReactNode
 }) {
+  const [loaded, setLoaded] = useState(false)
+
   return (
     <div
       className={cn(
         'relative rounded-mount border border-hairline bg-mat transition-colors duration-140',
+        matClass,
         className,
       )}
-      style={{ padding: mat }}
     >
       {src ? (
-        <img
-          src={src}
-          alt={alt}
-          loading="lazy"
-          decoding="async"
-          className="block w-full rounded-shot object-cover object-top"
-          style={{ aspectRatio: ratio }}
-        />
+        // The wrapper reserves the space, so a slow image never reflows the column.
+        <div className="relative w-full overflow-hidden rounded-shot" style={{ aspectRatio: ratio }}>
+          {!loaded && <div className="absolute inset-0 animate-pulse bg-surface-hover" />}
+          <img
+            src={src}
+            alt={alt}
+            loading="lazy"
+            decoding="async"
+            onLoad={() => setLoaded(true)}
+            onError={() => setLoaded(true)}
+            className={cn(
+              'block size-full object-cover object-top transition-opacity duration-300',
+              loaded ? 'opacity-100' : 'opacity-0',
+            )}
+          />
+        </div>
       ) : (
         <div
           className="grid w-full place-items-center rounded-shot border border-dashed border-hairline-strong bg-mat"

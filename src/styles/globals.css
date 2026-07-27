@@ -194,7 +194,53 @@
   }
 }
 
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
 @layer utilities {
+  /* Mount animation for the three hero items and the contact sheet. Cards use an
+     IntersectionObserver instead, so nothing depends on a hard-coded child index. */
+  .animate-rise {
+    animation: rise 260ms var(--ease-out-expo) both;
+  }
+
+  .animate-fade {
+    animation: fade 260ms linear both;
+  }
+
+  /* Entrance only. The element is already visible without it. */
+  .animate-reveal {
+    animation: reveal 300ms var(--ease-out-expo) backwards;
+  }
+
   .tnum {
     font-variant-numeric: tabular-nums;
   }
