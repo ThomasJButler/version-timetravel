@@ -15,6 +15,11 @@
 #
 # Uses headless Chrome and sips, both already on the machine. Deliberately no npm
 # dependency: adding Playwright here would make every Pages deploy download browsers.
+#
+# KNOWN LIMIT: --virtual-time-budget fast-forwards the clock, which does not settle every
+# app. It worked for v3.5 but left v4's lazily-loaded hero blank at any budget, so v4's
+# shots were taken with a real-time Playwright run instead. If the output looks empty,
+# check it before committing rather than assuming the page is at fault.
 
 set -euo pipefail
 

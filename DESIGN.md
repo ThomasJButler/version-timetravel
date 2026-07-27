@@ -469,12 +469,16 @@ A built React app is just static files, so v3.5 / v4 / v5 become fully interacti
 4. Build with `base: '/version-timetravel/archive/<id>/'`, then rename `dist/react.html` → `index.html`.
 5. Delete `sw.js`, `manifest.json` and any nested `404.html` from the output, **and strip the `<link rel="manifest">` and `<link rel="icon">` tags** that reference them — otherwise the archive 404s on load.
 6. Copy the **contents** of `dist` into `public/archive/<id>/`, with an `ARCHIVE.txt` recording ref, SHA and build date.
-7. Gate before committing — note the exclusion, without which the gate flags its own correct output:
+7. **Patch anything that gates mounting or visibility on an animation.** v4 wrapped its routes in `AnimatePresence mode="wait"` keyed on `location.pathname`, so the incoming page only mounted once the outgoing exit animation finished, and four pages used framer-motion's `whileInView`, which holds a section at `opacity: 0` until an observer fires. Inside the frame that was fatal: Projects and About rendered nothing at all, nav updated, content blank. Switch to sync mode and `animate` on mount. Check first, though: v3.5 has neither and needed no patch.
+8. Gate before committing — note both the exclusion, without which the gate flags its own correct output, and the second grep:
 
    ```sh
-   grep -rnE '(src|href)="/[^"]*|http-equiv="refresh"|location\.replace\(.[/]' public/archive/<id>/ \
-     | grep -v '="/version-timetravel/archive/<id>/'
+   { grep -rnE '(src|href)="/[^"]*|http-equiv="refresh"|location\.replace\(.[/]' public/archive/<id>/
+     grep -rhoE '"/[a-zA-Z0-9_-]+\.(svg|png|jpg|json|ico|css|js)"' public/archive/<id>/
+   } | grep -v '="/version-timetravel/archive/<id>/'
    ```
+
+   The second grep exists because the first missed a real one. v3.5's `Header.tsx` had `src="/logo.svg"`, and Vite rewrites root-absolute URLs in HTML and CSS but **not inside JSX string attributes**, so it shipped as a literal in the JS bundle and 404'd against the domain root. Fix that class at source, with `import.meta.env.BASE_URL`.
 
 Measured on v4: **1.1 MB, 36 files, 7s build**. Vendoring all three is roughly 3 MB against a repo that is currently 222 KB, so size is a non-issue.
 
