@@ -70,8 +70,8 @@ export const versions: Version[] = [
       'Custom 404 page',
     ],
     screenshots: {
-      desktop: 'shots/v1-desktop.jpg',
-      mobile: 'shots/v1-mobile.jpg',
+      desktop: `${CLOUDINARY}/f_auto,q_auto,w_1200,c_limit/v1785171417/pmdukz9xfns834saol72.jpg`,
+      mobile: `${CLOUDINARY}/f_auto,q_auto,w_500,c_limit/v1785171417/gyfjcxdhxr3zhhikjivm.jpg`,
     },
   },
   {
@@ -100,8 +100,8 @@ export const versions: Version[] = [
       'Lazy loading for images',
     ],
     screenshots: {
-      desktop: 'shots/v2-desktop.jpg',
-      mobile: 'shots/v2-mobile.jpg',
+      desktop: `${CLOUDINARY}/f_auto,q_auto,w_1200,c_limit/v1785171417/dtils9awlojguxpnsqmp.jpg`,
+      mobile: `${CLOUDINARY}/f_auto,q_auto,w_500,c_limit/v1785171417/hppclc0wmztk6awopfrt.jpg`,
     },
   },
   {
@@ -127,8 +127,8 @@ export const versions: Version[] = [
       'Implemented custom error pages',
     ],
     screenshots: {
-      desktop: 'shots/v2.5-desktop.jpg',
-      mobile: 'shots/v2.5-mobile.jpg',
+      desktop: `${CLOUDINARY}/f_auto,q_auto,w_1200,c_limit/v1785171418/ucgoschpmnujpl4r49yf.jpg`,
+      mobile: `${CLOUDINARY}/f_auto,q_auto,w_500,c_limit/v1785171418/xzemselnalmyxo6hbrrh.jpg`,
     },
   },
   {
@@ -215,8 +215,8 @@ export const versions: Version[] = [
       'Bug fixes and polish',
     ],
     screenshots: {
-      desktop: 'shots/v2.8-desktop.jpg',
-      mobile: 'shots/v2.8-mobile.jpg',
+      desktop: `${CLOUDINARY}/f_auto,q_auto,w_1200,c_limit/v1785171418/tdj4bfidase8bieam7oz.jpg`,
+      mobile: `${CLOUDINARY}/f_auto,q_auto,w_500,c_limit/v1785171418/jemigbruyzavncrpizxb.jpg`,
     },
   },
   {
@@ -251,8 +251,8 @@ export const versions: Version[] = [
       'Enhanced Matrix rain effect',
     ],
     screenshots: {
-      desktop: 'shots/v3-desktop.jpg',
-      mobile: 'shots/v3-mobile.jpg',
+      desktop: `${CLOUDINARY}/f_auto,q_auto,w_1200,c_limit/v1785171418/t1kx3yys8exndwmwjfnb.jpg`,
+      mobile: `${CLOUDINARY}/f_auto,q_auto,w_500,c_limit/v1785171418/xkcy88fucdyrfszaa46e.jpg`,
     },
   },
   {
@@ -288,8 +288,8 @@ export const versions: Version[] = [
       'UX streamlining',
     ],
     screenshots: {
-      desktop: 'shots/v3.5-desktop.jpg',
-      mobile: 'shots/v3.5-mobile.jpg',
+      desktop: `${CLOUDINARY}/f_auto,q_auto,w_1200,c_limit/v1785171419/wgpat5eyoshhyzbpb4dk.jpg`,
+      mobile: `${CLOUDINARY}/f_auto,q_auto,w_500,c_limit/v1785171419/sexbyexfhqvtte4aijpm.jpg`,
     },
   },
   {
@@ -327,8 +327,8 @@ export const versions: Version[] = [
       'Lucide icon set throughout',
     ],
     screenshots: {
-      desktop: 'shots/v4-desktop.jpg',
-      mobile: 'shots/v4-mobile.jpg',
+      desktop: `${CLOUDINARY}/f_auto,q_auto,w_1200,c_limit/v1785171419/otg2xr92ggogoqx5qys5.jpg`,
+      mobile: `${CLOUDINARY}/f_auto,q_auto,w_500,c_limit/v1785171419/bunp0ea8rcnhvubeqefl.jpg`,
     },
   },
   {
@@ -365,8 +365,8 @@ export const versions: Version[] = [
       'Generated sitemap, robots.txt and llms.txt',
     ],
     screenshots: {
-      desktop: 'shots/v5-desktop.jpg',
-      mobile: 'shots/v5-mobile.jpg',
+      desktop: `${CLOUDINARY}/f_auto,q_auto,w_1200,c_limit/v1785171420/ydrw2idbd8wlu3yfypl5.jpg`,
+      mobile: `${CLOUDINARY}/f_auto,q_auto,w_500,c_limit/v1785171420/ekl2pisllezg2fatppz5.jpg`,
     },
   },
 ]
