@@ -1,5 +1,6 @@
 import { ChronologyChips } from '@/components/ChronologyChips'
 import { ChronologyRail } from '@/components/ChronologyRail'
+import { Colophon } from '@/components/Colophon'
 import { ExhibitCard } from '@/components/ExhibitCard'
 import {
   byDate,
@@ -11,6 +12,7 @@ import {
   showContactSheet,
   versionCount,
 } from '@/lib/archive'
+import { media } from '@/lib/asset'
 
 export function Archive() {
   return (
@@ -84,6 +86,7 @@ export function Archive() {
               {displayOrder.map((version) => (
                 <ExhibitCard key={version.id} version={version} />
               ))}
+              <Colophon />
             </div>
           </div>
         </section>
@@ -114,7 +117,7 @@ function ContactSheet() {
             <span className="block h-[68px] w-[108px] overflow-hidden rounded-shot border border-hairline bg-mat">
               {v.screenshots?.desktop ? (
                 <img
-                  src={v.screenshots.desktop}
+                  src={media(v.screenshots.desktop)}
                   alt=""
                   loading="lazy"
                   decoding="async"

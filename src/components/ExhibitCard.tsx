@@ -90,8 +90,15 @@ export function ExhibitCard({ version }: { version: Version }) {
         ways: stacked as title, description, wall label, changes, actions on mobile, and as
         two columns at xl with the label beside the prose.
       */}
-      <div className="mt-7 grid gap-y-5 xl:grid-cols-[minmax(0,1fr)_300px] xl:gap-x-14">
-        <div className="xl:col-start-1 xl:row-start-1">
+      <div className="mt-7 flex flex-col gap-5 xl:flex-row xl:items-start xl:gap-14">
+        {/*
+          display:contents on mobile flattens these two wrappers, so `order` puts the five
+          blocks in the order the design asks for (title, description, wall label, changes,
+          actions). At xl the wrappers become real columns. Grid row spans were the obvious
+          approach and the wrong one: a tall label spanning short rows stretches them.
+        */}
+        <div className="contents xl:block xl:min-w-0 xl:flex-1">
+        <div className="order-1 xl:order-none">
           <div className="flex flex-wrap items-baseline gap-3">
             <span className="font-mono text-[15px] font-medium tnum text-ink-3">
               {version.number}
@@ -105,11 +112,36 @@ export function ExhibitCard({ version }: { version: Version }) {
           </div>
         </div>
 
-        <p className="max-w-[60ch] text-base leading-[1.6] text-ink-2 xl:col-start-1 xl:row-start-2">
+        <p className="order-2 max-w-[60ch] text-base leading-[1.6] text-ink-2 xl:order-none xl:mt-3">
           {version.description}
         </p>
 
-        <div className="xl:col-start-2 xl:row-span-2 xl:row-start-1 xl:border-l xl:border-hairline xl:pl-6">
+        <div className="order-4 xl:order-none xl:mt-5">
+          <p className="label-caps">Changes</p>
+          <ul className="mt-3 grid gap-2 sm:grid-cols-2">
+            {shown.map((feature) => (
+              <li key={feature} className="flex gap-3 text-[14.5px] leading-[1.65] text-ink-2">
+                <span className="mt-[0.7em] h-px w-2 shrink-0 bg-hairline-strong" aria-hidden="true" />
+                {feature}
+              </li>
+            ))}
+          </ul>
+
+          {version.features.length > VISIBLE_FEATURES && (
+            <button
+              type="button"
+              onClick={() => setExpanded((v) => !v)}
+              aria-expanded={expanded}
+              className="mt-4 min-h-11 font-mono text-[12px] uppercase tracking-[0.08em] text-ink-3 transition-colors duration-120 hover:text-ink md:min-h-0"
+            >
+              {expanded ? 'Show fewer' : `Show all ${version.features.length}`}
+            </button>
+          )}
+        </div>
+        </div>
+
+        <div className="contents xl:block xl:w-[300px] xl:shrink-0 xl:border-l xl:border-hairline xl:pl-6">
+        <div className="order-3 xl:order-none">
           <dl className="font-mono text-[12px] leading-[1.5]">
             <Row label="Date">{version.date}</Row>
             <Row label="Medium">
@@ -137,30 +169,7 @@ export function ExhibitCard({ version }: { version: Version }) {
           )}
         </div>
 
-        <div className="xl:col-start-1 xl:row-start-3">
-          <p className="label-caps">Changes</p>
-          <ul className="mt-3 grid gap-2 sm:grid-cols-2">
-            {shown.map((feature) => (
-              <li key={feature} className="flex gap-3 text-[14.5px] leading-[1.65] text-ink-2">
-                <span className="mt-[0.7em] h-px w-2 shrink-0 bg-hairline-strong" aria-hidden="true" />
-                {feature}
-              </li>
-            ))}
-          </ul>
-
-          {version.features.length > VISIBLE_FEATURES && (
-            <button
-              type="button"
-              onClick={() => setExpanded((v) => !v)}
-              aria-expanded={expanded}
-              className="mt-4 min-h-11 font-mono text-[12px] uppercase tracking-[0.08em] text-ink-3 transition-colors duration-120 hover:text-ink md:min-h-0"
-            >
-              {expanded ? 'Show fewer' : `Show all ${version.features.length}`}
-            </button>
-          )}
-        </div>
-
-        <div className="space-y-2 xl:col-start-2 xl:row-start-3 xl:border-l xl:border-hairline xl:pl-6">
+        <div className="order-5 space-y-2 xl:order-none xl:mt-6">
           <PrimaryAction version={version} />
           {version.sourceUrl && (
             <a
@@ -172,6 +181,7 @@ export function ExhibitCard({ version }: { version: Version }) {
               View source ↗
             </a>
           )}
+        </div>
         </div>
       </div>
     </article>
