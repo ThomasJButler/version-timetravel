@@ -276,7 +276,8 @@ export const versions: Version[] = [
     iso: '2026-05',
     description:
       'The design system arrives: Tailwind v4 and shadcn on Base UI, with routed pages for projects, services and updates.',
-    status: 'pending',
+    status: 'restored',
+    path: 'archive/v4/index.html',
     sourceUrl:
       'https://github.com/ThomasJButler/thomasjbutler.github.io/tree/v4.0-ShadCNRedesign',
     techStack: [
@@ -299,6 +300,10 @@ export const versions: Version[] = [
       'Markdown-driven updates page',
       'Lucide icon set throughout',
     ],
+    screenshots: {
+      desktop: 'shots/v4-desktop.jpg',
+      mobile: 'shots/v4-mobile.jpg',
+    },
   },
   {
     id: 'v5',
