@@ -9,3 +9,5 @@ node_modules/
 .vscode/
 .idea/
 DEPLOYMENT.md
+/cloudinary-upload/
+/design-references/
