@@ -82,6 +82,16 @@ export interface Chip {
 }
 
 /**
+ * Never shown as dropped.
+ *
+ * The static entries list languages and the React ones list frameworks, so a naive diff
+ * announced "HTML removed, CSS removed, JavaScript removed" the moment React arrived. None
+ * of the three ever left a web page. Listing them differently is a change of description,
+ * not a change of stack, and the accent must only ever mark real movement.
+ */
+const FOUNDATIONAL = new Set(['HTML', 'CSS', 'JavaScript'])
+
+/**
  * The accent means "added, or current". Chips are diffed against the previous entry in the
  * lineage, so the green earns its place from data rather than copywriting.
  */
@@ -103,7 +113,7 @@ export function techChips(v: Version): Chip[] {
       kind: before.has(label) ? ('kept' as const) : ('added' as const),
     })),
     ...previous.techStack
-      .filter((label) => !now.has(label))
+      .filter((label) => !now.has(label) && !FOUNDATIONAL.has(label))
       .map((label) => ({ label, kind: 'dropped' as const })),
   ]
 }
