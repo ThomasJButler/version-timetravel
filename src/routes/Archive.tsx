@@ -55,19 +55,22 @@ export function Archive() {
             Archive / {firstYear} to {lastYear}
           </p>
 
+          {/* Broken at the full stop rather than wherever the measure runs out, so the two
+              sentences never share a line and the second never orphans a word. */}
           <h1
             className="mt-5 max-w-[1100px] font-display text-[clamp(2.5rem,1.6rem+3vw,4rem)] leading-[1.05] tracking-[-0.02em] text-ink motion-safe:animate-rise"
             style={{ animationDelay: '80ms' }}
           >
-            {versionCount} versions of one portfolio. {runClaim}
+            <span className="block text-balance">{versionCount} versions of one portfolio.</span>
+            <span className="block text-balance">{runClaim}</span>
           </h1>
 
           <p
             className="mt-6 max-w-[58ch] text-[17px] leading-[1.6] text-ink-2 motion-safe:animate-rise"
             style={{ animationDelay: '120ms' }}
           >
-            A working archive of thomasjbutler.me, hand-written HTML in {byDate[0]?.date} through
-            React and shadcn today. Open any version and use it as it shipped.
+            A working archive of thomasjbutler.github.io, hand-written HTML in {byDate[0]?.date}{' '}
+            through React and shadcn today. Open any version and use it as it shipped.
           </p>
 
           {showContactSheet && <ContactSheet />}
