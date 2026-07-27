@@ -28,6 +28,19 @@ import { join } from 'node:path'
 // not render for a capture, so its card keeps the hosted image that shows the page as it was
 // meant to look. Pass it explicitly if that ever changes.
 const ALL = ['v1', 'v2', 'v2.5', 'v2.8', 'v3', 'v3.5', 'v4', 'v5']
+
+/**
+ * Sizes that must not be captured, because a capture is worse than what is already committed.
+ *
+ * Both boot in their light theme, which is the honest default but leaves the Matrix rain almost
+ * invisible, and both are the versions whose whole identity is that rain. Their desktop plates
+ * are the supplied design captures instead, dark and with the rain actually showing. Mobile is
+ * still shot here, so each card pairs a light phone against a dark desktop deliberately.
+ *
+ * Checked per size rather than by dropping the ids from ALL, so naming one explicitly still
+ * refreshes its mobile shot and still cannot overwrite its desktop asset.
+ */
+const SKIP = { v4: ['desktop'], v5: ['desktop'] }
 const ids = process.argv.slice(2).length ? process.argv.slice(2) : ALL
 
 const BASE = process.env.BASE ?? 'http://127.0.0.1:4500/version-timetravel/'
@@ -61,6 +74,7 @@ function entryFile(id) {
 for (const id of ids) {
   const entry = entryFile(id)
   for (const { name, viewport, target } of SIZES) {
+    if (SKIP[id]?.includes(name)) continue
     const ctx = await browser.newContext({ viewport, deviceScaleFactor: 2 })
     const page = await ctx.newPage()
     await page.goto(`${BASE}archive/${id}/${entry}`, { waitUntil: 'load' }).catch(() => {})
