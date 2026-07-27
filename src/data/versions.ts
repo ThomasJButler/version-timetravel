@@ -48,11 +48,11 @@ export const versions: Version[] = [
     id: 'v1',
     number: '1.0',
     title: 'The Beginning',
-    // Corrected from versions.json's "January 2024": the README, the annotation inside the
-    // v1 snapshot itself, and the portfolio repo (created 2024-03-03, first commits
-    // 2024-06-30) all say August 2024.
-    date: 'August 2024',
-    iso: '2024-08',
+    // June 2024, from the portfolio repo itself: commit 0ef2adb on 2024-06-06 is tagged
+    // "v1.0.1", with "v1.1 - Website" the same day. versions.json said January 2024 and the
+    // README said August; the repo has no commits at all in August or September 2024.
+    date: 'June 2024',
+    iso: '2024-06',
     description:
       'The first portfolio. Hand-written HTML and CSS with no build step, no framework and no dependencies.',
     status: 'archived',
@@ -312,8 +312,9 @@ export const versions: Version[] = [
     date: 'July 2026',
     iso: '2026-07',
     description:
-      'Where the personal site stops being a playground. Same design system as v4, plus server rendering and a prerender step, but now services-oriented and AI-focused, with the projects there to back the experience up. This is the one that goes on business cards.',
-    status: 'pending',
+      'Not a portfolio any more, a shop window. Private, local AI for businesses, sold on its own terms: "AI you own, not AI you rent". Same design system as v4, now prerendered so crawlers and language models read real HTML, with published prices and the projects there to back the work up.',
+    status: 'restored',
+    path: 'archive/v5/index.html',
     isLive: true,
     sourceUrl:
       'https://github.com/ThomasJButler/thomasjbutler.github.io/tree/v5.2-Impression',
@@ -330,11 +331,16 @@ export const versions: Version[] = [
     ],
     build: 'Vite 7 + prerender',
     features: [
-      'Server-rendered and prerendered at build time',
-      'Rebrand toward AI engineering',
+      'Prerendered at build time, so crawlers and LLMs get real HTML',
+      'Local and private AI services with published pricing',
+      'Cursor-reactive Matrix rain, performance bounded',
+      'Light circuit and dark neon terminal themes',
+      'Command palette and keyboard navigation',
       'Generated sitemap, robots.txt and llms.txt',
-      'Per-route Open Graph imagery',
-      'Same shadcn + Base UI system as v4',
     ],
+    screenshots: {
+      desktop: 'shots/v5-desktop.jpg',
+      mobile: 'shots/v5-mobile.jpg',
+    },
   },
 ]
