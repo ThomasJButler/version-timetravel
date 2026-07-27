@@ -8,7 +8,7 @@ A working archive of Thomas's portfolio, version by version. Each entry can be o
 
 React 19 + TypeScript + Vite + Tailwind v4 + shadcn (on Base UI). Deployed to GitHub Pages at `https://thomasjbutler.github.io/version-timetravel/`.
 
-The design is **ACCESSION**. `DESIGN.md` is the written spec; `design_handoff_version_timetravel_v2/` holds the visual prototype (five frames, open the `.dc.html` in a browser). The prototype wins on look and shipped copy, `DESIGN.md` wins on measurements and plumbing.
+The design is **ACCESSION**. `DESIGN.md` is the written spec. The five-frame visual prototype it was built from (`design_handoff_version_timetravel_v2/`) has shipped and moved out of the repo; `DESIGN.md` is now the sole reference for measurements, plumbing, look and shipped copy.
 
 ## Commands
 
