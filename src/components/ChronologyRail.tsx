@@ -1,50 +1,27 @@
-import { useEffect, useState } from 'react'
-import { eraGroups, lineage } from '@/lib/archive'
+import { railLabel, shortDate, useActiveVersion } from '@/hooks/useActiveVersion'
+import { eraGroups } from '@/lib/archive'
 import { cn } from '@/lib/utils'
 
-const MONTHS = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec']
-
-/** '2024-10' -> 'Oct 24' */
-function shortDate(iso: string) {
-  const [year, month] = iso.split('-')
-  return `${MONTHS[Number(month) - 1]} ${year.slice(2)}`
-}
-
 /**
- * The only thing that moves as you scroll. A card is "active" once it occupies the middle
- * band of the viewport, which stops the highlight flickering between neighbours.
+ * The full chronology, shown at xl and inside the mobile Sheet.
+ *
+ * Era headers are labels, not controls. A three-way filter over ten items is a control
+ * nobody needs, and it would introduce an empty state that has to be designed.
  */
-function useActiveVersion(): string | null {
-  const [active, setActive] = useState<string | null>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        const visible = entries.find((e) => e.isIntersecting)
-        if (visible) setActive(visible.target.id)
-      },
-      { rootMargin: '-45% 0px -50% 0px' },
-    )
-
-    for (const v of lineage) {
-      const el = document.getElementById(v.id)
-      if (el) observer.observe(el)
-    }
-    return () => observer.disconnect()
-  }, [])
-
-  return active
-}
-
-export function ChronologyRail({ className }: { className?: string }) {
+export function ChronologyRail({
+  className,
+  onNavigate,
+}: {
+  className?: string
+  onNavigate?: () => void
+}) {
   const active = useActiveVersion()
-  const groups = eraGroups()
 
   return (
     <nav aria-label="Version chronology" className={className}>
       <p className="label-caps">Chronology</p>
       <div className="mt-4 space-y-6">
-        {groups.map((group) => (
+        {eraGroups().map((group) => (
           <div key={group.era}>
             <p className="font-mono text-[11px] font-medium uppercase tracking-[0.16em] text-ink-3/70">
               {group.label}
@@ -56,8 +33,9 @@ export function ChronologyRail({ className }: { className?: string }) {
                   <li key={v.id}>
                     <a
                       href={`#${v.id}`}
+                      onClick={onNavigate}
                       aria-current={isActive ? 'true' : undefined}
-                      className="group flex h-8 items-center gap-3 font-mono text-[15px]"
+                      className="group flex h-11 items-center gap-3 font-mono text-[15px] md:h-8"
                     >
                       <span
                         aria-hidden="true"
@@ -72,10 +50,12 @@ export function ChronologyRail({ className }: { className?: string }) {
                       <span
                         className={cn(
                           'tnum transition-colors duration-180',
-                          isActive ? 'font-medium text-ink' : 'text-ink-3 group-hover:text-ink-2',
+                          isActive
+                            ? 'font-medium text-ink'
+                            : 'text-ink-3 group-hover:text-ink-2',
                         )}
                       >
-                        {v.number === 'Landing Page' ? 'LP' : v.number}
+                        {railLabel(v.number)}
                       </span>
                       <span className="ml-auto text-[12px] tnum text-ink-3">
                         {shortDate(v.iso)}
