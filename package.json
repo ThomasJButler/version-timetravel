@@ -11,7 +11,8 @@
     "typecheck": "tsc -b",
     "preview": "vite preview",
     "serve:static": "python3 -m http.server 4173 --directory dist",
-    "shots": "node scripts/shoot-site.mjs"
+    "shots": "node scripts/shoot-site.mjs",
+    "shots:archive": "node scripts/shoot-archive.mjs"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",

@@ -54,7 +54,7 @@ export const versions: Version[] = [
     date: 'June 2024',
     iso: '2024-06',
     description:
-      'The first portfolio. Hand-written HTML and CSS with no build step, no framework and no dependencies.',
+      'Where it starts. Hand-written HTML and CSS, no framework, no build step, nothing to install. Everything after this is a reaction to it.',
     status: 'archived',
     path: 'archive/v1/index.html',
     techStack: ['HTML', 'CSS', 'JavaScript'],
@@ -70,8 +70,8 @@ export const versions: Version[] = [
       'Custom 404 page',
     ],
     screenshots: {
-      desktop: `${CLOUDINARY}/v1737668237/VersionTimeTravelv1desktop_fcmf21.png`,
-      mobile: `${CLOUDINARY}/v1737668237/VersionTimeTravelv1mobile_xd9ypl.png`,
+      desktop: 'shots/v1-desktop.jpg',
+      mobile: 'shots/v1-mobile.jpg',
     },
   },
   {
@@ -84,7 +84,7 @@ export const versions: Version[] = [
     date: 'July 2024',
     iso: '2024-07',
     description:
-      'The Matrix identity arrives. A canvas rain effect behind a responsive grid, still with no build step.',
+      'The Matrix theme arrives and never really leaves. A canvas rain effect behind a responsive grid, still with nothing to compile.',
     status: 'archived',
     path: 'archive/v2/index.html',
     techStack: ['HTML', 'CSS', 'JavaScript', 'Canvas API'],
@@ -100,8 +100,8 @@ export const versions: Version[] = [
       'Lazy loading for images',
     ],
     screenshots: {
-      desktop: `${CLOUDINARY}/v1737668253/VersionTimeTravelv2desktop_gg9tpn.png`,
-      mobile: `${CLOUDINARY}/v1737668253/VersionTimeTravelv2mobile_lcyyvb.png`,
+      desktop: 'shots/v2-desktop.jpg',
+      mobile: 'shots/v2-mobile.jpg',
     },
   },
   {
@@ -127,8 +127,8 @@ export const versions: Version[] = [
       'Implemented custom error pages',
     ],
     screenshots: {
-      desktop: `${CLOUDINARY}/v1737668269/VersionTimeTravelv25desktop_wrj8uu.png`,
-      mobile: `${CLOUDINARY}/v1737668270/VersionTimeTravelv25mobile_ua2l41.png`,
+      desktop: 'shots/v2.5-desktop.jpg',
+      mobile: 'shots/v2.5-mobile.jpg',
     },
   },
   {
@@ -138,7 +138,7 @@ export const versions: Version[] = [
     date: 'November 2024',
     iso: '2024-11',
     description:
-      'A testing ground rather than a release. Navigation concepts, an interactive CV and embedded CodePen experiments that fed into v3.',
+      'A sandbox rather than a release. Navigation ideas, an interactive CV and a few embedded CodePen experiments, most of which fed straight into v3.',
     status: 'archived',
     path: 'archive/landing/landingpage.html',
     techStack: ['HTML', 'CSS', 'JavaScript', 'Font Awesome', 'Canvas API'],
@@ -153,6 +153,11 @@ export const versions: Version[] = [
       'Improved Matrix effects',
       'Refined responsive design',
     ],
+    // The only entry still on Cloudinary apart from Commercial, and for a specific reason:
+    // this page is built around an embedded CodePen carousel. The pen will not render for a
+    // capture (CodePen answers 403 to a headless request), so shooting the archive produces
+    // a grey box with a broken-file icon and tells a reader nothing. A real visitor most
+    // likely does see the pen. The hosted capture shows the page as it was meant to look.
     screenshots: {
       desktop: `${CLOUDINARY}/v1737668231/landingpagedesktop_ssozki.png`,
       mobile: `${CLOUDINARY}/v1737668228/landingpagemobile_exon4w.png`,
@@ -165,7 +170,7 @@ export const versions: Version[] = [
     date: 'December 2024',
     iso: '2024-12',
     description:
-      'The employment-facing site: real work experience, documented for hiring. A separate thing from this lineage, which is where the personal projects live. Its own domain, not archivable here.',
+      'The employment-facing site: real work experience, documented for hiring. A separate thing from this lineage, which is where the personal projects live. Its own domain, so it cannot be archived here.',
     status: 'external',
     isLive: true,
     externalUrl: 'https://thomasjbutler.me',
@@ -194,7 +199,7 @@ export const versions: Version[] = [
     date: 'January 2025',
     iso: '2025-01',
     description:
-      'The last version built without a bundler. Mostly consolidation: the same stack as v2.5, tightened.',
+      'The last one built without a bundler. Same stack as v2.5, tightened until there was nothing obvious left to fix.',
     status: 'archived',
     path: 'archive/v2.8/version28.html',
     techStack: ['HTML', 'CSS', 'JavaScript', 'GSAP', 'ScrollMagic', 'Font Awesome'],
@@ -210,8 +215,8 @@ export const versions: Version[] = [
       'Bug fixes and polish',
     ],
     screenshots: {
-      desktop: `${CLOUDINARY}/v1752549398/v28desktop_f5lxp1.png`,
-      mobile: `${CLOUDINARY}/v1752549394/v28mobile_g7rovj.png`,
+      desktop: 'shots/v2.8-desktop.jpg',
+      mobile: 'shots/v2.8-mobile.jpg',
     },
   },
   {
@@ -221,7 +226,7 @@ export const versions: Version[] = [
     date: 'August 2025',
     iso: '2025-08',
     description:
-      'Where React actually landed. The tag is literally v3.0-React-Migration, and its manifest carries React 19, TypeScript, Vite 7 and Anime.js alongside the GSAP and ScrollMagic held over from the static years. The exhibit is a flattened snapshot rather than that build, because a snapshot is all that was kept.',
+      'Where React actually landed. The tag says so: v3.0-React-Migration. React 19, TypeScript, Vite and Anime.js arrive at once, with GSAP and ScrollMagic carried over from the static years. What opens here is a flattened snapshot rather than that build, because a snapshot is all that was kept.',
     status: 'archived',
     path: 'archive/v3/version30.html',
     techStack: [
@@ -246,9 +251,8 @@ export const versions: Version[] = [
       'Enhanced Matrix rain effect',
     ],
     screenshots: {
-      desktop: `${CLOUDINARY}/v1754541799/v30_sesrmp.png`,
-      // TODO: v3 and v3.5 currently share one asset and reuse it for mobile. Re-shoot.
-      mobile: `${CLOUDINARY}/v1754541799/v30_sesrmp.png`,
+      desktop: 'shots/v3-desktop.jpg',
+      mobile: 'shots/v3-mobile.jpg',
     },
   },
   {
@@ -258,7 +262,7 @@ export const versions: Version[] = [
     date: 'October 2025',
     iso: '2025-10',
     description:
-      'Not the migration, the settling in. A markdown blog, a vertical dev timeline, services pages and a long run of typography, routing and UX passes. It stayed live longer than any other version.',
+      'Not the migration, the settling in. A markdown blog, a dev timeline, services pages, and a long run of typography, routing and UX passes. It stayed live longer than anything else in this archive.',
     status: 'restored',
     path: 'archive/v3.5/index.html',
     sourceUrl: 'https://github.com/ThomasJButler/thomasjbutler.github.io/tree/v3.5',
@@ -297,7 +301,7 @@ export const versions: Version[] = [
     date: 'July 2026',
     iso: '2026-07',
     description:
-      'The design system arrives: Tailwind v4 and shadcn on Base UI, with routed pages for projects, services and updates.',
+      'The design system arrives. Tailwind and shadcn on Base UI replace the hand-rolled CSS and the animation libraries that had been there since 2024. v5.0 was tagged the same day.',
     status: 'restored',
     path: 'archive/v4/index.html',
     sourceUrl:
