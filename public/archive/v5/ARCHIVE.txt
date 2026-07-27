@@ -1,0 +1,24 @@
+Version 5.0 — vendored static build
+
+source     github.com/ThomasJButler/thomasjbutler.github.io
+ref        v5.2-Impression
+sha        cd324ae44aa0be2c2776a44b939d9ddf591cc564
+committed  2026-07-26
+vendored   2026-07-27
+base       /version-timetravel/archive/v5/
+
+Patched for archival, not the original deploy:
+  - BrowserRouter -> MemoryRouter, so the archive cannot write to the parent's
+    URL or hijack the visitor's Back button from inside the iframe.
+  - blog.html dropped from the build. Unlike v3.5 and v4, index.html here is the
+    real entry and carries no meta-refresh shell, so nothing had to be renamed.
+  - Client build only. The full build also runs an SSR pass and a prerender
+    step, which produce per-route static HTML that is redundant inside a frame
+    driven by MemoryRouter.
+  - sw.js and manifest.json deleted, and the manifest link stripped. They came
+    from the app's own public/ and precache root-absolute paths on the shared
+    thomasjbutler.github.io origin.
+
+Kept deliberately: the og-*.png social images, roughly 1.3MB. They are never
+rendered, but they are part of the real build and harmless, and the rule here is
+to patch only what actively breaks the archive.

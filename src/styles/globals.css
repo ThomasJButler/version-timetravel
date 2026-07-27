@@ -1,0 +1,282 @@
+@import 'tailwindcss';
+
+/*
+ * Faces declared explicitly rather than via the Fontsource CSS entry points, for two
+ * reasons. Latin only: the packaged entry points pull cyrillic, greek and vietnamese
+ * subsets nobody here needs. And the *standard* files, not the *wght* ones: Archivo's
+ * width axis is what 'wdth' 112 drives, and the weight-only variable font makes it inert.
+ */
+@font-face {
+  font-family: 'Archivo Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  font-stretch: 62% 125%;
+  src: url('@fontsource-variable/archivo/files/archivo-latin-standard-normal.woff2')
+    format('woff2-variations');
+}
+
+@font-face {
+  font-family: 'Instrument Sans Variable';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400 700;
+  font-stretch: 75% 100%;
+  src: url('@fontsource-variable/instrument-sans/files/instrument-sans-latin-standard-normal.woff2')
+    format('woff2-variations');
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-400-normal.woff2')
+    format('woff2');
+}
+
+@font-face {
+  font-family: 'IBM Plex Mono';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 500;
+  src: url('@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2')
+    format('woff2');
+}
+
+@custom-variant dark (&:is(.dark *));
+
+/*
+ * One hue family (~150) so the shell never reads as pure black.
+ * :root is light, .dark is dark, per shadcn convention. The app ships
+ * <html class="dark"> hard-coded; a toggle can be added later with no token work.
+ */
+:root {
+  --canvas: #ececea;
+  --surface: #f6f7f4;
+  --surface-hover: #ffffff;
+  --mat: #e4e7e2;
+  --hairline: #d2d7d1;
+  --hairline-strong: #b4bcb5;
+  --ink: #171a16;
+  --ink-2: #4e554f;
+  --ink-3: #646b65;
+  /*
+   * Named phosphor, not accent, deliberately: shadcn reserves --accent for hover surfaces,
+   * and letting the two collide would give every shadcn component a bright green hover.
+   */
+  --phosphor: #1f6b33;
+  --phosphor-soft: rgb(31 107 51 / 0.1);
+  --warn: #8a5a00;
+
+  --lift: 0 1px 2px rgb(20 24 20 / 0.06), 0 8px 24px -12px rgb(20 24 20 / 0.12);
+}
+
+.dark {
+  --canvas: #0e100e;
+  --surface: #141714;
+  --surface-hover: #1a1e1a;
+  --mat: #0e100e; /* equals the page, so the plate reads as a hole through the card */
+  --hairline: #262b26;
+  --hairline-strong: #39413a;
+  --ink: #d6dbd6;
+  --ink-2: #9aa39b;
+  --ink-3: #7c857d;
+  --phosphor: #00ff00;
+  --phosphor-soft: rgb(0 255 0 / 0.1);
+  --warn: #e0a82e;
+
+  --lift: inset 0 1px 0 rgb(255 255 255 / 0.03);
+}
+
+/*
+ * Compatibility layer for shadcn/Base UI components, which expect the standard token
+ * names. Mapped onto the palette above so anything pulled in with `shadcn add` renders
+ * correctly without bespoke overrides. #00FF00 never reaches these.
+ */
+:root,
+.dark {
+  --background: var(--canvas);
+  --foreground: var(--ink);
+  --card: var(--surface);
+  --card-foreground: var(--ink);
+  --popover: var(--surface);
+  --popover-foreground: var(--ink);
+  --primary: var(--ink);
+  --primary-foreground: var(--canvas);
+  --secondary: var(--surface-hover);
+  --secondary-foreground: var(--ink);
+  --muted: var(--surface-hover);
+  --muted-foreground: var(--ink-3);
+  --accent: var(--surface-hover);
+  --accent-foreground: var(--ink);
+  --destructive: var(--warn);
+  --destructive-foreground: var(--canvas);
+  --border: var(--hairline);
+  --input: var(--hairline);
+  --ring: var(--phosphor);
+  --radius: 6px;
+}
+
+@theme inline {
+  --color-canvas: var(--canvas);
+  --color-surface: var(--surface);
+  --color-surface-hover: var(--surface-hover);
+  --color-mat: var(--mat);
+  --color-hairline: var(--hairline);
+  --color-hairline-strong: var(--hairline-strong);
+  --color-ink: var(--ink);
+  --color-ink-2: var(--ink-2);
+  --color-ink-3: var(--ink-3);
+  --color-phosphor: var(--phosphor);
+  --color-phosphor-soft: var(--phosphor-soft);
+  --color-warn: var(--warn);
+
+  /* shadcn surfaces, so its components resolve their own utility names */
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+
+  --font-display: 'Archivo Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-sans: 'Instrument Sans Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+  --font-pixel: 'VT323', ui-monospace, monospace;
+
+  --radius-card: 6px;
+  --radius-mount: 4px;
+  --radius-shot: 2px;
+  --radius-thumb: 8px;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    /*
+     * Deliberately NOT height:100%. Combined with body{overflow-y:auto} that made the old
+     * build's page unscreenshottable: Playwright's fullPage stitching repeated the first
+     * viewport instead of scrolling.
+     */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--color-canvas);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  /* Never removed, never animated. outline (not box-shadow) so it survives forced-colors. */
+  :focus-visible {
+    outline: 2px solid var(--color-phosphor);
+    outline-offset: 3px;
+  }
+
+  ::selection {
+    background: var(--color-phosphor-soft);
+  }
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@keyframes fade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes reveal {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+@layer utilities {
+  /* Mount animation for the three hero items and the contact sheet. Cards use an
+     IntersectionObserver instead, so nothing depends on a hard-coded child index. */
+  .animate-rise {
+    animation: rise 260ms var(--ease-out-expo) both;
+  }
+
+  .animate-fade {
+    animation: fade 260ms linear both;
+  }
+
+  /* Entrance only. The element is already visible without it. */
+  .animate-reveal {
+    animation: reveal 300ms var(--ease-out-expo) backwards;
+  }
+
+  .tnum {
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* Archivo's width axis is inert unless it is set explicitly. */
+  .font-display {
+    font-variation-settings: 'wdth' 112;
+    font-weight: 600;
+  }
+
+  .card-lift {
+    box-shadow: var(--lift);
+  }
+
+  .label-caps {
+    font-family: var(--font-mono);
+    font-weight: 500;
+    font-size: 11px;
+    line-height: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.16em;
+    color: var(--color-ink-3);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 120ms !important;
+    transform: none !important;
+  }
+}

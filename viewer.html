@@ -1,68 +1,66 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Version Viewer | TimeTravel</title>
-    
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
-    
-    <!-- Viewer Styles -->
-    <link rel="stylesheet" href="/src/styles/viewer.css">
-    
-    <!-- Viewer Script -->
-    <script type="module" src="/src/js/viewer.js"></script>
-</head>
-<body>
-    <!-- Viewer Controls -->
-    <div class="viewer-controls">
-        <div class="controls-left">
-            <button class="control-btn" id="back-btn" title="Back to Timeline">
-                <i class="fas fa-arrow-left"></i>
-                <span>Back to Timeline</span>
-            </button>
-            <div class="version-info">
-                <span id="version-number"></span>
-                <span id="version-date"></span>
-            </div>
-        </div>
-        
-        <div class="controls-center">
-            <div class="viewport-toggles">
-                <button class="viewport-btn active" data-viewport="desktop" title="Desktop View">
-                    <i class="fas fa-desktop"></i>
-                </button>
-                <button class="viewport-btn" data-viewport="tablet" title="Tablet View">
-                    <i class="fas fa-tablet-alt"></i>
-                </button>
-                <button class="viewport-btn" data-viewport="mobile" title="Mobile View">
-                    <i class="fas fa-mobile-alt"></i>
-                </button>
-            </div>
-        </div>
-        
-        <div class="controls-right">
-            <button class="control-btn" id="fullscreen-btn" title="Fullscreen">
-                <i class="fas fa-expand"></i>
-            </button>
-            <button class="control-btn" id="refresh-btn" title="Refresh">
-                <i class="fas fa-sync-alt"></i>
-            </button>
-        </div>
-    </div>
-    
-    <!-- Version Preview -->
-    <div class="viewer-container">
-        <div class="device-frame" data-viewport="desktop">
-            <iframe id="version-frame" src="" frameborder="0"></iframe>
-        </div>
-    </div>
-    
-    <!-- Loading Overlay -->
-    <div class="loading-overlay">
-        <div class="loading-spinner"></div>
-        <p>Loading version...</p>
-    </div>
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Redirecting… | Version TimeTravel</title>
+    <meta name="robots" content="noindex" />
+    <style>
+      body {
+        margin: 0;
+        display: grid;
+        place-items: center;
+        height: 100vh;
+        background: #0e100e;
+        color: #7c857d;
+        font: 12px ui-monospace, monospace;
+        letter-spacing: 0.1em;
+      }
+    </style>
+  </head>
+  <body>
+    <p>REDIRECTING TO THE ARCHIVE…</p>
+
+    <!--
+      Legacy deep-link shim.
+
+      The pre-2026 build linked to viewer.html?version=<file>&id=&num=&date=. GitHub Pages
+      cannot redirect, so this has to stay as a real file or every existing bookmark 404s
+      silently. It maps the old contract onto the /v/:id route and then gets out of the way.
+    -->
+    <script>
+      (function () {
+        var BASE = '/version-timetravel/'
+        var params = new URLSearchParams(window.location.search)
+
+        // Old path values, which were bare filenames relative to the site root.
+        var byPath = {
+          'version30.html': 'v3',
+          'version28.html': 'v2-8',
+          'version25.html': 'v2-5',
+          'version2.html': 'v2',
+          'version1.html': 'v1',
+          'landingpage.html': 'landing',
+          'src/versions/v1/index.html': 'v1',
+          'src/versions/v2/index.html': 'v2',
+        }
+
+        // Old ids used dots; the new ones are URL-safe.
+        var byId = {
+          v1: 'v1',
+          v2: 'v2',
+          'v2.5': 'v2-5',
+          landing: 'landing',
+          'v2.8': 'v2-8',
+          v3: 'v3',
+          'v3.5': 'v3-5',
+          commercial: 'commercial',
+        }
+
+        var version = (params.get('version') || '').replace(/^\//, '')
+        var id = byPath[version] || byId[params.get('id')] || null
+
+        window.location.replace(BASE + (id ? 'v/' + id : ''))
+      })()
+    </script>
+  </body>
 </html>

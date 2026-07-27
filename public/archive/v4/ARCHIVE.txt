@@ -1,0 +1,22 @@
+Version 4.0 — vendored static build
+
+source     github.com/ThomasJButler/thomasjbutler.github.io
+ref        v4.0-ShadCNRedesign
+sha        88642958dba714e8f4acd43bf122cd883cbf3a2e
+committed  2026-07-13
+vendored   2026-07-27
+base       /version-timetravel/archive/v4/
+
+Patched for archival, not the original deploy:
+  - BrowserRouter -> MemoryRouter, so the archive cannot write to the parent's
+    URL or hijack the visitor's Back button from inside the iframe.
+  - index.html and blog.html dropped from the build; both are
+    <meta http-equiv="refresh"> shells pointing at /react.html, which Vite never
+    rewrites. react.html is the real entry and was renamed to index.html.
+  - sw.js and manifest.json deleted, and their <link> tags stripped.
+  - AnimatePresence mode="wait" -> sync, and MotionSection's whileInView ->
+    animate. Both gated whether content mounted or became visible on an
+    animation completing (also in ServicesPage, AboutPage, UpdatesPage and
+    HomePage). In the frame that left Projects and About rendering
+    nothing at all: the nav updated, the page stayed blank. Appearance is
+    unchanged; only the trigger is.

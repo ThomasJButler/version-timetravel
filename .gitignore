@@ -1,5 +1,7 @@
 node_modules/
-dist/
+/dist/
+!public/archive/**
+*.tsbuildinfo
 .DS_Store
 *.log
 .env
@@ -7,3 +9,5 @@ dist/
 .vscode/
 .idea/
 DEPLOYMENT.md
+/cloudinary-upload/
+/design-references/

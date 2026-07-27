@@ -1,0 +1,12 @@
+/*
+ * VT323 is used on exactly one surface in the whole product: the viewer's loading plate.
+ * It lives here rather than in globals.css so it ships with the lazily-loaded viewer route
+ * and never costs the archive page anything.
+ */
+@font-face {
+  font-family: 'VT323';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400;
+  src: url('@fontsource/vt323/files/vt323-latin-400-normal.woff2') format('woff2');
+}
