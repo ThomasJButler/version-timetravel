@@ -1,3 +1,4 @@
+import { ChronologyChips } from '@/components/ChronologyChips'
 import { ChronologyRail } from '@/components/ChronologyRail'
 import { ExhibitCard } from '@/components/ExhibitCard'
 import {
@@ -21,8 +22,8 @@ export function Archive() {
         Skip to main content
       </a>
 
-      <header className="sticky top-0 z-40 border-b border-hairline bg-[color-mix(in_oklab,var(--canvas)_85%,transparent)] backdrop-blur-[12px]">
-        <div className="mx-auto flex h-14 max-w-[1560px] items-center justify-between px-5 md:px-14">
+      <header className="sticky top-0 z-40 border-b border-hairline bg-[color-mix(in_oklab,var(--canvas)_85%,transparent)] backdrop-blur-[12px] motion-safe:animate-rise">
+        <div className="mx-auto flex h-14 max-w-[1560px] items-center justify-between px-5 md:px-10 xl:px-14">
           <span className="flex items-center gap-2.5">
             <span className="size-1.5 bg-phosphor" aria-hidden="true" />
             <span className="font-mono text-[13px] font-medium tracking-[0.14em] text-ink">
@@ -40,19 +41,31 @@ export function Archive() {
         </div>
       </header>
 
+      {/* Below xl the rail collapses to this strip, which carries the mobile Sheet too. */}
+      <ChronologyChips className="sticky top-14 z-30 px-2 md:px-8 xl:hidden" />
+
       <main id="main">
-        <section className="mx-auto min-h-[72vh] max-w-[1560px] px-5 pt-12 md:px-14 md:pt-18">
-          <p className="font-mono text-[12px] font-medium uppercase leading-4 tracking-[0.14em] text-ink-3">
+        <section className="mx-auto min-h-[72vh] max-w-[1560px] px-5 pt-12 md:px-10 md:pt-18 xl:px-14">
+          <p
+            className="font-mono text-[12px] font-medium uppercase leading-4 tracking-[0.14em] text-ink-3 motion-safe:animate-rise"
+            style={{ animationDelay: '40ms' }}
+          >
             Archive / {firstYear} to {lastYear}
           </p>
 
-          <h1 className="mt-5 max-w-[1100px] font-display text-[clamp(2.5rem,1.6rem+3vw,4rem)] leading-[1.05] tracking-[-0.02em] text-ink">
+          <h1
+            className="mt-5 max-w-[1100px] font-display text-[clamp(2.5rem,1.6rem+3vw,4rem)] leading-[1.05] tracking-[-0.02em] text-ink motion-safe:animate-rise"
+            style={{ animationDelay: '80ms' }}
+          >
             {versionCount} versions of one portfolio. {runClaim}
           </h1>
 
-          <p className="mt-6 max-w-[58ch] text-[17px] leading-[1.6] text-ink-2">
-            A working archive of thomasjbutler.me, hand-written HTML in {byDate[0]?.date}{' '}
-            through React and shadcn today. Open any version and use it as it shipped.
+          <p
+            className="mt-6 max-w-[58ch] text-[17px] leading-[1.6] text-ink-2 motion-safe:animate-rise"
+            style={{ animationDelay: '120ms' }}
+          >
+            A working archive of thomasjbutler.me, hand-written HTML in {byDate[0]?.date} through
+            React and shadcn today. Open any version and use it as it shipped.
           </p>
 
           {showContactSheet && <ContactSheet />}
@@ -64,10 +77,10 @@ export function Archive() {
           </div>
         </section>
 
-        <section className="mx-auto max-w-[1560px] px-5 pb-32 pt-16 md:px-14">
-          <div className="grid gap-18 lg:grid-cols-[216px_minmax(0,1fr)]">
-            <ChronologyRail className="sticky top-22 hidden max-h-[calc(100vh-120px)] self-start overflow-y-auto border-r border-hairline pr-4 lg:block" />
-            <div className="grid gap-16">
+        <section className="mx-auto max-w-[1560px] px-5 pb-32 pt-16 md:px-10 xl:px-14">
+          <div className="grid xl:grid-cols-[216px_minmax(0,1fr)] xl:gap-18">
+            <ChronologyRail className="sticky top-22 hidden max-h-[calc(100vh-120px)] self-start overflow-y-auto border-r border-hairline pr-4 xl:block" />
+            <div className="mx-auto grid w-full max-w-[900px] gap-10 md:gap-16 xl:max-w-none">
               {displayOrder.map((version) => (
                 <ExhibitCard key={version.id} version={version} />
               ))}
@@ -82,13 +95,22 @@ export function Archive() {
 /**
  * The thesis object: at 108px the neon reads as texture, so you can watch the work get
  * louder and then calm down. Full colour, never tinted.
+ *
+ * The design calls for a Tooltip here. It uses the native title attribute instead: Base UI's
+ * Tooltip costs 57kB raw for a hover label the browser already provides, which is a poor
+ * trade on a page whose whole argument is restraint.
  */
 function ContactSheet() {
   return (
-    <ul className="mt-10 flex snap-x gap-2 overflow-x-auto pb-2">
-      {byDate.map((v) => (
+    <ul className="mt-10 flex snap-x snap-proximity gap-2 overflow-x-auto pb-2">
+      {byDate.map((v, i) => (
         <li key={v.id} className="shrink-0 snap-start">
-          <a href={`#${v.id}`} className="block" title={`${v.number} · ${v.date}`}>
+          <a
+            href={`#${v.id}`}
+            title={`${v.number} · ${v.date}`}
+            className="block motion-safe:animate-fade"
+            style={{ animationDelay: `${160 + i * 24}ms` }}
+          >
             <span className="block h-[68px] w-[108px] overflow-hidden rounded-shot border border-hairline bg-mat">
               {v.screenshots?.desktop ? (
                 <img

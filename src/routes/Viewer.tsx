@@ -373,7 +373,7 @@ function FailurePanel({ version }: { version: ReturnType<typeof byId> }) {
           src={version.screenshots?.mobile}
           alt={`Version ${version.number} mobile`}
           ratio="9/19.5"
-          mat={6}
+          matClass="p-1.5"
         />
       </div>
       <div className="mt-6 flex gap-3 font-mono text-[12.5px] uppercase tracking-[0.08em]">
