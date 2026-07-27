@@ -1,0 +1,21 @@
+Version 3.5 — vendored static build
+
+source     github.com/ThomasJButler/thomasjbutler.github.io
+ref        main
+sha        2b60f9c727efd7a0aef691b8c685516171212a99
+committed  2026-03-29
+vendored   2026-07-27
+base       /version-timetravel/archive/v3.5/
+
+Patched for archival, not the original deploy:
+  - BrowserRouter -> MemoryRouter, so the archive cannot write to the parent's
+    URL or hijack the visitor's Back button from inside the iframe.
+  - index.html and blog.html dropped from the build. Both are
+    <meta http-equiv="refresh"> shells pointing at /react.html, which Vite never
+    rewrites, so leaving them in would redirect the frame to the live site.
+    react.html is the real entry and was renamed to index.html.
+  - @vitejs/plugin-legacy removed; it roughly doubles the output for no
+    archival value.
+  - sw.js and manifest.json deleted, and their <link> tags stripped. They came
+    from the app's own public/ and precache root-absolute paths on the shared
+    thomasjbutler.github.io origin.

@@ -163,7 +163,7 @@ export const versions: Version[] = [
     date: 'December 2024',
     iso: '2024-12',
     description:
-      'A separate professional site rather than a step in this lineage. It lives at its own domain and is not archivable here.',
+      'The employment-facing site: real work experience, documented for hiring. A separate thing from this lineage, which is where the personal projects live. Its own domain, not archivable here.',
     status: 'external',
     isLive: true,
     externalUrl: 'https://thomasjbutler.me',
@@ -247,8 +247,9 @@ export const versions: Version[] = [
     date: 'September 2025',
     iso: '2025-09',
     description:
-      'A full rewrite in React and TypeScript. The first version that was an application rather than a document.',
-    status: 'pending',
+      'A full rewrite in React and TypeScript. The first version that was an application rather than a document, and the one that stayed live longest.',
+    status: 'restored',
+    path: 'archive/v3.5/index.html',
     sourceUrl: 'https://github.com/ThomasJButler/thomasjbutler.github.io/tree/v3.5',
     techStack: ['React 19', 'TypeScript', 'Vite 7', 'Anime.js', 'SCSS'],
     build: 'Vite 7',
@@ -262,6 +263,10 @@ export const versions: Version[] = [
       'Optimized performance',
       'Modern development workflow',
     ],
+    screenshots: {
+      desktop: 'shots/v3.5-desktop.jpg',
+      mobile: 'shots/v3.5-mobile.jpg',
+    },
   },
   {
     id: 'v4',
@@ -302,7 +307,7 @@ export const versions: Version[] = [
     date: 'July 2026',
     iso: '2026-07',
     description:
-      'The current site. Same design system as v4, plus server-side rendering and a prerender step, and a repositioning toward AI engineering.',
+      'Where the personal site stops being a playground. Same design system as v4, plus server rendering and a prerender step, but now services-oriented and AI-focused, with the projects there to back the experience up. This is the one that goes on business cards.',
     status: 'pending',
     isLive: true,
     sourceUrl:
