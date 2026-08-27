@@ -341,7 +341,6 @@ export const versions: Version[] = [
       'Not a portfolio any more, a shop window. Private, local AI for businesses, sold on its own terms: "AI you own, not AI you rent". Same design system as v4, now prerendered so crawlers and language models read real HTML, with published prices and the projects there to back the work up.',
     status: 'restored',
     path: 'archive/v5/index.html',
-    isLive: true,
     sourceUrl:
       'https://github.com/ThomasJButler/thomasjbutler.github.io/tree/v5.2-Impression',
     techStack: [
@@ -367,6 +366,42 @@ export const versions: Version[] = [
     screenshots: {
       desktop: `${CLOUDINARY}/f_auto,q_auto,w_1200,c_limit/v1785171420/ydrw2idbd8wlu3yfypl5.jpg`,
       mobile: `${CLOUDINARY}/f_auto,q_auto,w_500,c_limit/v1785171420/ekl2pisllezg2fatppz5.jpg`,
+    },
+  },
+  {
+    id: 'v5-5',
+    number: '5.5',
+    title: 'Repoint',
+    date: 'August 2026',
+    iso: '2026-08',
+    description:
+      'The shop window comes out and it goes back to being a portfolio. Same build as 5.0, pointed at a different reader: a hiring manager rather than a buyer. The offer, the prices and the services route are gone, the hero is a greeting again, and About opens by asking why the site exists at all. The Local and Private AI version is not deleted, it is parked. It is the exhibit one card down, and the tag it was cut from will bring it back when the timing is right.',
+    status: 'restored',
+    path: 'archive/v5.5/index.html',
+    isLive: true,
+    sourceUrl: 'https://github.com/ThomasJButler/thomasjbutler.github.io',
+    techStack: [
+      'React 19',
+      'TypeScript',
+      'Vite 7',
+      'Tailwind 4',
+      'shadcn/ui',
+      'Base UI',
+      'Framer Motion',
+      'React Router 7',
+      'SSR prerender',
+    ],
+    build: 'Vite 7 + prerender',
+    features: [
+      'A Portfolio tag on the projects filter, separating what was built to learn from what was built to exist',
+      'CRT vignette and scanlines gated behind the effects toggle, so they stop dimming the text',
+      'A circular wipe between themes, from the toggle, via the View Transitions API',
+      'Still prerendered, so crawlers and language models get real HTML',
+      'Leeds, Yorkshire on every surface that names a place',
+    ],
+    screenshots: {
+      desktop: 'shots/v5-5-desktop.jpg',
+      mobile: 'shots/v5-5-mobile.jpg',
     },
   },
 ]

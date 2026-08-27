@@ -1,0 +1,16 @@
+# Tom Butler
+
+> Software developer in Leeds, Yorkshire. Career changer: professional cricket, commercial diving and financial paraplanning, then two years as a DWP Work Coach, then a standing start in early 2022 to building AI systems. Currently looking for full-time work: junior for general software, any non-senior level for AI. This site is the personal work, built because I wanted it to exist. The paid work is at https://thomasjbutler.me.
+
+Contact: dev@thomasjbutler.me
+
+## Work
+
+- [Case study](https://thomasjbutler.github.io/case-study): ISQ Agent, a RAG agent that drafts supplier security questionnaires, grounds every answer in the organisation's own policy documents with citations, scores confidence on each answer, and routes weak ones to a human. Python/FastAPI RAG engine with an n8n orchestration tier, 480+ tests. Built for a technical assessment with RiverAI and presented in person. The build ran on hosted models (Claude, Voyage, Pinecone); the model sits behind an interface, so the same pipeline runs against open models on your own hardware.
+- [Projects](https://thomasjbutler.github.io/projects): AI, web, mobile and learning projects, including Sanctuary (an offline, on-device iOS app for neurodiverse users), ModelViz (multi-provider AI model comparison), SQL Ball (natural language to SQL over football data), Morpheus (document Q&A with RAG), ReviewBot Protocol (automated PR review), and Version TimeTravel (nine versions of this site, every one still running).
+- [Dev Journey](https://thomasjbutler.github.io/updates): a timeline of the work, from the first line of code in November 2022 to production AI systems, by way of the DWP and an agency apprenticeship.
+
+## About
+
+- [About](https://thomasjbutler.github.io/about): why this site exists, the tech stack, and how I got here. Runs local models (Ollama) for personal use and contributes to Odysseus, an open source local AI project.
+- [Contact](https://thomasjbutler.github.io/contact): get in touch about a role, or just say hello.
