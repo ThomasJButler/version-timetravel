@@ -38,7 +38,7 @@ export function Colophon() {
       </div>
 
       <p className="mt-8 font-mono text-[12px] tracking-[0.10em] tnum text-ink-3">
-        {versionCount} versions kept running · Liverpool, UK
+        {versionCount} versions kept running · Leeds, Yorkshire
       </p>
     </section>
   )
