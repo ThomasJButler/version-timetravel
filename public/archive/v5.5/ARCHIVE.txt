@@ -1,0 +1,26 @@
+Version 5.5 — vendored static build
+
+source     github.com/ThomasJButler/thomasjbutler.github.io
+ref        main (PR #75, "Morpheus goes local, two new projects, and stop the
+           CRT layers dimming the text")
+sha        76ce19726f936dca28586ee1415ae74c39b24674
+committed  2026-08-27
+vendored   2026-08-28
+base       /version-timetravel/archive/v5.5/
+
+Patched for archival, not the original deploy, following the same rules as v5:
+  - BrowserRouter -> MemoryRouter, so the archive cannot write to the parent's
+    URL or hijack the visitor's Back button from inside the iframe.
+  - Client build only. The full build also runs an SSR pass and a prerender
+    step, which produce per-route static HTML that is redundant inside a frame
+    driven by MemoryRouter.
+  - sw.js and manifest.json deleted, and the manifest link stripped. They came
+    from the app's own public/ and precache root-absolute paths on the shared
+    thomasjbutler.github.io origin.
+  - blog.html and services.html dropped. Both are meta-refresh redirect shells
+    pointing at root-absolute paths, which resolve to the wrong origin from
+    inside the archive. Their in-app routes still work under MemoryRouter.
+
+Kept deliberately: the og-*.png social images and src/content/blog/*.md, as in
+v5. Neither is ever rendered, both are part of the real build, and the rule here
+is to patch only what actively breaks the archive.

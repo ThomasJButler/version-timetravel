@@ -1,9 +1,15 @@
-import { versions, type Version } from '@/data/versions'
+import { versions as allVersions, type Version } from '@/data/versions'
 
 /**
  * Everything on the page is derived from the data. No count, date range or ordinal is ever
  * typed into copy, so shipping v6 cannot make the page lie.
+ *
+ * `hidden` is filtered out here, once, rather than at each call site. Every count, ordinal,
+ * rail group, neighbour and lookup below reads from `versions`, so a withheld entry leaves
+ * no trace: no gap in the accession numbers, no dead step in the viewer's paging, and no
+ * URL that still resolves. Unhiding is the same one line in reverse.
  */
+const versions = allVersions.filter((v) => !v.hidden)
 
 /** Commercial is a separate site, not a step in this portfolio's lineage. */
 export const isLineage = (v: Version) => v.status !== 'external'

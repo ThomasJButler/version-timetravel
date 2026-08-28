@@ -39,6 +39,12 @@ export interface Version {
   build?: string
   pages?: number
   screenshots?: { desktop?: string; mobile?: string }
+  /**
+   * Withheld from the site: not on the wall, not in the rail, not in any derived count,
+   * and its own URL reports not found. The entry and its vendored build stay in the repo,
+   * so restoring it is this one line.
+   */
+  hidden?: boolean
 }
 
 const CLOUDINARY = 'https://res.cloudinary.com/depqttzlt/image/upload'
@@ -301,7 +307,7 @@ export const versions: Version[] = [
     date: 'July 2026',
     iso: '2026-07',
     description:
-      'The design system arrives. Tailwind and shadcn on Base UI replace the hand-rolled CSS and the animation libraries that had been there since 2024. v5.0 was tagged the same day.',
+      'The design system arrives. Tailwind and shadcn on Base UI replace the hand-rolled CSS and the animation libraries that had been there since 2024.',
     status: 'restored',
     path: 'archive/v4/index.html',
     sourceUrl:
@@ -332,6 +338,13 @@ export const versions: Version[] = [
     },
   },
   {
+    /**
+     * Hidden while Tom is job hunting. This is the shop-window version, and its plate,
+     * its description and the build it opens all lead with an offer he is not currently
+     * making. Employers are the readers now. The Local and Private AI positioning comes
+     * back in late 2026 or 2027, and this entry comes back with it.
+     */
+    hidden: true,
     id: 'v5',
     number: '5.0',
     title: 'Impression',
@@ -341,7 +354,6 @@ export const versions: Version[] = [
       'Not a portfolio any more, a shop window. Private, local AI for businesses, sold on its own terms: "AI you own, not AI you rent". Same design system as v4, now prerendered so crawlers and language models read real HTML, with published prices and the projects there to back the work up.',
     status: 'restored',
     path: 'archive/v5/index.html',
-    isLive: true,
     sourceUrl:
       'https://github.com/ThomasJButler/thomasjbutler.github.io/tree/v5.2-Impression',
     techStack: [
@@ -367,6 +379,42 @@ export const versions: Version[] = [
     screenshots: {
       desktop: `${CLOUDINARY}/f_auto,q_auto,w_1200,c_limit/v1785171420/ydrw2idbd8wlu3yfypl5.jpg`,
       mobile: `${CLOUDINARY}/f_auto,q_auto,w_500,c_limit/v1785171420/ekl2pisllezg2fatppz5.jpg`,
+    },
+  },
+  {
+    id: 'v5-5',
+    number: '5.5',
+    title: 'Refit',
+    date: 'August 2026',
+    iso: '2026-08',
+    description:
+      'The current site. A personal portfolio pointed at one reader: someone deciding whether to interview me. The hero is a greeting, About opens by asking why the site exists at all, and the projects page separates what was built to learn from what was built because I wanted it to exist. Still prerendered, so crawlers and language models get real HTML rather than an empty div.',
+    status: 'restored',
+    path: 'archive/v5.5/index.html',
+    isLive: true,
+    sourceUrl: 'https://github.com/ThomasJButler/thomasjbutler.github.io',
+    techStack: [
+      'React 19',
+      'TypeScript',
+      'Vite 7',
+      'Tailwind 4',
+      'shadcn/ui',
+      'Base UI',
+      'Framer Motion',
+      'React Router 7',
+      'SSR prerender',
+    ],
+    build: 'Vite 7 + prerender',
+    features: [
+      'A Portfolio tag on the projects filter, separating what was built to learn from what was built to exist',
+      'CRT vignette and scanlines gated behind the effects toggle, so they stop dimming the text',
+      'A circular wipe between themes, from the toggle, via the View Transitions API',
+      'Still prerendered, so crawlers and language models get real HTML',
+      'Leeds, Yorkshire on every surface that names a place',
+    ],
+    screenshots: {
+      desktop: 'shots/v5-5-desktop.jpg',
+      mobile: 'shots/v5-5-mobile.jpg',
     },
   },
 ]

@@ -101,4 +101,4 @@ Archived snapshots are historical records: they get fixed for path or deploy bre
 
 **Thomas J Butler** | [Portfolio](https://thomasjbutler.github.io) | [Commercial](https://thomasjbutler.me) | [LinkedIn](https://www.linkedin.com/in/thomasbutleruk/) | [GitHub](https://github.com/ThomasJButler)
 
-Inspired by The Matrix (1999). Built in Liverpool, UK.
+Inspired by The Matrix (1999). Built in Leeds, Yorkshire.
