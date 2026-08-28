@@ -383,7 +383,9 @@ export const versions: Version[] = [
   },
   {
     id: 'v5-5',
-    number: '5.5',
+    // Displayed as 5.0, not 5.5. The 5.0 entry is hidden, so a visible 5.5 would imply a
+    // card that is not there. The id stays v5-5 because 'v5' belongs to the hidden entry.
+    number: '5.0',
     title: 'Refit',
     date: 'August 2026',
     iso: '2026-08',
