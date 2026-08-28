@@ -39,6 +39,12 @@ export interface Version {
   build?: string
   pages?: number
   screenshots?: { desktop?: string; mobile?: string }
+  /**
+   * Withheld from the site: not on the wall, not in the rail, not in any derived count,
+   * and its own URL reports not found. The entry and its vendored build stay in the repo,
+   * so restoring it is this one line.
+   */
+  hidden?: boolean
 }
 
 const CLOUDINARY = 'https://res.cloudinary.com/depqttzlt/image/upload'
@@ -301,7 +307,7 @@ export const versions: Version[] = [
     date: 'July 2026',
     iso: '2026-07',
     description:
-      'The design system arrives. Tailwind and shadcn on Base UI replace the hand-rolled CSS and the animation libraries that had been there since 2024. v5.0 was tagged the same day.',
+      'The design system arrives. Tailwind and shadcn on Base UI replace the hand-rolled CSS and the animation libraries that had been there since 2024.',
     status: 'restored',
     path: 'archive/v4/index.html',
     sourceUrl:
@@ -332,6 +338,13 @@ export const versions: Version[] = [
     },
   },
   {
+    /**
+     * Hidden while Tom is job hunting. This is the shop-window version, and its plate,
+     * its description and the build it opens all lead with an offer he is not currently
+     * making. Employers are the readers now. The Local and Private AI positioning comes
+     * back in late 2026 or 2027, and this entry comes back with it.
+     */
+    hidden: true,
     id: 'v5',
     number: '5.0',
     title: 'Impression',
@@ -371,11 +384,11 @@ export const versions: Version[] = [
   {
     id: 'v5-5',
     number: '5.5',
-    title: 'Repoint',
+    title: 'Refit',
     date: 'August 2026',
     iso: '2026-08',
     description:
-      'The shop window comes out and it goes back to being a portfolio. Same build as 5.0, pointed at a different reader: a hiring manager rather than a buyer. The offer, the prices and the services route are gone, the hero is a greeting again, and About opens by asking why the site exists at all. The Local and Private AI version is not deleted, it is parked. It is the exhibit one card down, and the tag it was cut from will bring it back when the timing is right.',
+      'The current site. A personal portfolio pointed at one reader: someone deciding whether to interview me. The hero is a greeting, About opens by asking why the site exists at all, and the projects page separates what was built to learn from what was built because I wanted it to exist. Still prerendered, so crawlers and language models get real HTML rather than an empty div.',
     status: 'restored',
     path: 'archive/v5.5/index.html',
     isLive: true,
